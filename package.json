@@ -1,0 +1,26 @@
+{
+  "name": "mathlib",
+  "author": "Maruf Hasan",
+  "main": "index.js",
+  "license": "MIT",
+  "version": "1.0.1",
+  "description": "a math library with 70+ features which can make a programme more beautiful and mathametical.",
+  "keywords": [
+    "math",
+    "mathlib",
+    "mathLib",
+    "math library"
+  ],
+  "scripts": {
+    "math": "node index.js",
+    "test": "echo \"mathLib version 1.0.1\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bicitrobiggan/mathlib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bicitrobiggan/mathlib/issues"
+  },
+  "homepage": "https://github.com/bicitrobiggan/mathlib#readme"
+}
