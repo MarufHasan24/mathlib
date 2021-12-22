@@ -5,8 +5,7 @@ Description : return data to user
 Date : 4 October, 2021
 */
 
-//dependencies
-const error = require('./../error.js');
+// dependencies
 const fs = require('fs');
 
 //main function to expot

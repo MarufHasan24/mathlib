@@ -16,6 +16,12 @@ handelar.odd = require('./../assets/others/odd.js');
 handelar.sums = require('./../assets/others/sums.js');
 handelar.permut = require('./../assets/others/permutation.js');
 handelar.combo = require('./../assets/others/combination.js');
+handelar.sec = require('./../assets/others/secant.js');
+handelar.cosec = require('./../assets/others/cosecant.js');
+handelar.cot = require('./../assets/others/cotangent.js');
+handelar.tanx = require('./../assets/others/tangent.js');
+handelar.sinx = require('./../assets/others/sine.js');
+handelar.cosx = require('./../assets/others/cosine.js');
 
 //export and share
 module.exports = handelar;

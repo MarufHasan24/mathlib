@@ -6,17 +6,18 @@ Date : , 2021
 */
 
 //dependencies
-const error = require('./../../error.js');
+const handelar = require("./../../.localhandelar.js");
 
 //main function to export
 function Farenheit_2_Celcius(farenheit) {
   let result;
-  let num = typeof(farenheit) === 'number' ? farenheit : NaN;
+  let num = typeof farenheit === "number" ? farenheit : NaN;
   if (num) {
     result = (5 / 9) * (num - 32);
-    return result;
+    handelar.record(result);
+    return handelar.mood(result);
   } else {
-    error('a number', 'farenheit', 'fr2C()');
+    handelar.error("a number", "farenheit", "fr2C()");
   }
 }
 

@@ -5,17 +5,18 @@ Description : genarate a random number between 2 numbers
 Date : 5 October, 2021
 */
 
-//dependencies
-const error = require('./../error.js');
+// dependencies
+const handelar = require("../.localhandelar");
 
 //main function to export
 function random(minimum, maximum, type = null) {
   let result;
   let res;
-  const max = typeof(maximum) === 'number' ? maximum : NaN;
-  const min = typeof(minimum) === 'number' ? minimum : NaN;
-  if (max && min) {
-    res = min + (Math.random() * (max - min));
+  const max = typeof maximum === "number" ? maximum : NaN;
+  const min = typeof minimum === "number" ? minimum : NaN;
+  const typ = typeof type === "number" ? type : null;
+  if (max !== NaN && min !== NaN) {
+    res = min + Math.random() * (max - min);
     if (type === 0) {
       result = Math.floor(res);
     } else if (type === null || type >= 12) {
@@ -23,12 +24,13 @@ function random(minimum, maximum, type = null) {
     } else {
       result = res.toFixed(type);
     }
-    return result;
+    handelar.record(result, { maximum, minimum, type }, "rand");
+    return handelar.mood(result);
   } else {
-    if (min) {
-      error('a number', 'maximum', 'random()');
+    if (min === NaN) {
+      handelar.error("a number", "maximum", "random()");
     } else {
-      error('a number', 'minimum', 'random()');
+      handelar.error("a number", "minimum", "random()");
     }
   }
 }

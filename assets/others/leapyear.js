@@ -6,12 +6,12 @@ Date :
 */
 
 //dependencies
-const error = require('./../../error.js');
+const { record, mood } = require("./../../.localhandelar.js");
 
 //main function to export
 function leapYear(year) {
   let result;
-  let num = typeof(year) === 'number' ? year : NaN;
+  let num = typeof year === "number" ? year : NaN;
   if (num % 100 === 0) {
     if (num % 400 === 0) {
       result = true;
@@ -25,7 +25,8 @@ function leapYear(year) {
       result = false;
     }
   }
-  return result;
+  handelar.record(result, year, "leapYear");
+  return handelar.mood(result);
 }
 //export amd share
 module.exports = leapYear;

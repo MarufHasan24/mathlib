@@ -6,28 +6,32 @@ Date : 5 October, 2021
 */
 
 //dependencies
-const error = require('./../../error.js');
-
+const handelar = require("./../../.localhandelar.js");
 //main function to export
 function prime(number) {
-  if (typeof(number) === 'number') {
+  if (typeof number === "number" && Number.isSafeInteger(number)) {
     if (number === 2) {
+      handelar.record(true);
       return true;
     } else if (number > 1) {
       for (let i = 2; i < number; i++) {
         if (number % i !== 0) {
+          handelar.record(true, number, "prime");
           return true;
         } else if (number === i * i) {
-          return false
+          handelar.record(false, number, "prime");
+          return false;
         } else {
+          handelar.record(false, number, "prime");
           return false;
         }
       }
     } else {
+      handelar.record(false, number, "prime");
       return false;
     }
   } else {
-    return NaN;
+    handelar.error("a natural number", "number", "odd()");
   }
 }
 

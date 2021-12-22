@@ -2,22 +2,24 @@
 Title : Odd
 Author : Maruf Hasan
 Description : cheak the number is odd or not
-Date : , 2021
+Date : 7 December, 2021
 */
 
 //dependencies
-const error = require('./../../error.js');
+const handelar = require("./../../.localhandelar");
 
 //main function to export
 function odd(number) {
-  if (typeof(number) === 'number') {
+  if (typeof number === "number" && Number.isSafeInteger(number)) {
     if (number % 2 !== 0) {
+      handelar.record(true, number, "odd");
       return true;
     } else {
+      handelar.record(false, number, "odd");
       return false;
     }
   } else {
-    return NaN;
+    handelar.error("a natural number", "number", "odd()");
   }
 }
 
