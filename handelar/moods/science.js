@@ -13,9 +13,9 @@ function main(number, answer) {
   let ans = typeof answer === "number" ? answer : null;
   if (ans && num) {
     if (Math.abs(answer) >= 1) {
-      local(ans, num, 1);
+      return local(ans, num, 1);
     } else {
-      local(ans, num, 0);
+      return local(ans, num, 0);
     }
   } else {
   }
@@ -34,6 +34,7 @@ function local(ans, num, tru) {
       }
     }
   } else {
+    console.log("not ok");
   }
 }
 //export and share
