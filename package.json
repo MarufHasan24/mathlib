@@ -4,7 +4,7 @@
   "author": "Maruf Hasan",
   "main": "index.js",
   "license": "MIT",
-  "version": "2.24.49",
+  "version": "3.0.01",
   "description": "a math library with 110+ features which can make a nodeJs programme more beautiful and mathametical.",
   "keywords": [
     "math",
@@ -17,9 +17,8 @@
   ],
   "scripts": {
     "math": "node index.js",
-    "test": "echo \"mathLib-n version 2.24.49\" && exit 1",
-    "fix-memo": "ls",
-    "M_fix-memo": "cd .mathLib && rm -fv *.json && echo '{}' > user.json && node ./../clear.js && cd ../",
+    "test": "echo \"mathLib-n version 3.0.01\" && exit 1",
+    "fix-memo": "node ./.workplace/fix_memo",
     "mood": "node ./.workplace/moodchanger && node clear.js"
   },
   "repository": {

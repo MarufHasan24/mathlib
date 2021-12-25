@@ -159,7 +159,7 @@ function __addTheMathObject() {
   }
   return local;
 }
-
+require("./handelar/trush")();
 function __addConstantsToTheMainMathObject() {
   const fs = require("fs");
   let data = fs.readFileSync(`${__dirname}/constants.json`, "utf8");

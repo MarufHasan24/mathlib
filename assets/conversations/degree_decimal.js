@@ -6,7 +6,6 @@ Date : 24 October , 2021
 */
 
 //dependencies
-const { record } = require("./../../.localhandelar.js");
 const handelar = require("./../../.localhandelar.js");
 
 //main functions to export
@@ -126,7 +125,6 @@ function deg2DcmLocal(array) {
   return result;
 }
 
-console.log(deg2Dcm([1, 14, 8.313408600000152]));
 //export and share
 module.exports = {
   deg2Dcm,

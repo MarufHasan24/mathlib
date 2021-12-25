@@ -14,20 +14,18 @@ function rootx(base = 0, power = 1) {
     p = typeof power === "number" ? power : NaN;
   if (b !== NaN && p !== NaN) {
     if (!odd(p) && base >= 0) {
-      return Math.pow(b, 1 / p);
+      result = Math.pow(b, 1 / p);
     } else if (odd(p) && base >= 0) {
-      return Math.pow(b, 1 / p);
+      result = Math.pow(b, 1 / p);
     } else if (odd(p) && base < 0 && p > 0) {
       b = -b;
-      return -Math.pow(b, 1 / p);
+      result = -Math.pow(b, 1 / p);
     } else if (odd(p) && p < 0 && base < 0) {
       b = -b;
       p = -p;
-      let result = -1 / Math.pow(b, 1 / p) - 0.0000000000000001;
-      handelar.record(result, { base, power }, "rootx");
-      return handelar.mood(result);
+      result = -1 / Math.pow(b, 1 / p) - 0.0000000000000001;
     } else {
-      return NaN;
+      result = NaN;
     }
   } else {
     if (b === NaN) {
@@ -36,6 +34,8 @@ function rootx(base = 0, power = 1) {
       handelar.error("a number", "power", "rootx()");
     }
   }
+  handelar.record(result, { base, power }, "rootx");
+  return handelar.mood(result);
 }
 
 //export and share

@@ -6,7 +6,7 @@ Date :
 */
 
 //dependencies
-const { record, mood } = require("./../../.localhandelar.js");
+const handelar = require("./../../.localhandelar.js");
 
 //main function to export
 function leapYear(year) {

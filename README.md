@@ -32,11 +32,11 @@ npm i mathlib-n
 
 ### cheak installation
 
-```posh
+```ps
 npm run test --prefix node_modules/mathlib-n
 ```
 
-Expected output : `mathlib-n version 1.4.0`
+Expected output : `mathlib-n version 3.0.01`
 
 ## uses
 
@@ -46,14 +46,24 @@ const math = require("mathlib-n");
 
 ### fix memory
 
-**Be sure that, you don't use any synchronise loop like for or while loop with asynchronous memo()**
+**Be sure that, you don't use any synchronise loop like for or while loop with asynchronous memo()**.
 if you use that, the memory will ruined. Then you should do this work :
 
 ```ps
 npm run fix-memo --prefix node_modules/mathlib-n
 ```
 
-if there is a message like : `mathlib-n : ready to use` then you are good to go.
+there will be an animation of `MathLib` ,but you can skip it by pressing `ctrl + c` for windows and `cmd + c` for mac. But if you continue with the animation you can know the current mood and status and you can also know about your records and trushes.
+
+### change or intalige mood
+
+Two moods are available now on mathlib-n. They are science and fix mood. `sci` for science and `fix` for fix mood. and status is the count of how many number will be after decimal.
+
+```ps
+npm run moodchanger --prefix node_modules/mathlib-n
+```
+
+There will be an animation of `MathLib` ,but you can skip it by pressing `ctrl + c` for windows and `cmd + c` for mac. But if you continue with the animation you can know the current mood and status and you can also know about your records and trushes.
 
 ## Keywords
 
@@ -117,11 +127,15 @@ MIT
 ## History
 
 - main version (^3.0.0):
-  - 3.0.0 (latest version) :
+  - 3.0.01 (latest version) :
+    -
+  - 3.0.0 (latest stable version) :
     - mood italize in numaric result
     - store all data with mood info, Time and Date
     - added fractonal answer mood
     - bug fixed
+    - put 30 days old record on trush
+    - and delete more than 60 days old record forever
 - main version (^2.0.0) :
   - 2.24.49 :
     - refine constant values

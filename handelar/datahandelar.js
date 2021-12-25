@@ -8,6 +8,7 @@ Date : 13 November, 2021
 //dependencies
 const fs = require("fs");
 const rcdPath = `${__dirname}/../.record`;
+const recordCCpath = `${__dirname}/../../../../`;
 let record = {};
 
 const moods = {};
@@ -72,9 +73,7 @@ function main(answer, input, from = "hidden") {
       typeof moodData.status === "number" &&
       !Number.isNaN(moodData.status)
     ) {
-      console.log("success");
       if (moodData.mood === "science") {
-        console.log("double success");
         fresult = `${moods.sci(moodData.status, ans)}`;
         local(ans, fresult, mood, inp, calculetor);
       } else if (moodData.mood === "fixed") {
