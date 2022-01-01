@@ -33,7 +33,7 @@ class MATH {
     //extended sine
     this.sinx = handelar.sinx;
     //extended cosine
-    this.cos = handelar.cosx;
+    this.cosx = handelar.cosx;
     //extended tangent
     this.tanx = handelar.tanx;
     //cotangent
