@@ -21,5 +21,19 @@ function Farenheit_2_Celcius(farenheit) {
   }
 }
 
+function Celcius_2_Farenheit(celcius) {
+  let result;
+  let num = typeof celcius === "number" ? celcius : NaN;
+  if (num) {
+    result = (9 / 5) * num + 32;
+    handelar.record(result);
+    return handelar.mood(result);
+  } else {
+    handelar.error("a number", "celcius", "fr2C()");
+  }
+}
 //export and share
-module.exports = Farenheit_2_Celcius;
+module.exports = {
+  Farenheit_2_Celcius,
+  Celcius_2_Farenheit,
+};

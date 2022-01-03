@@ -18,7 +18,7 @@ class MATH {
     this.mathlib = handelar.mathlib;
     this.info = handelar.info;
     /*--important functions--*/
-    //check prime number
+    //check prime number done!
     this.prime = handelar.prime;
     //check odd numbers
     this.odd = handelar.odd;
@@ -26,23 +26,23 @@ class MATH {
     this.rand = handelar.random;
     //get value of x from quadratic function
     this.qudrt = handelar.qudrt;
-    //get average numbers
+    //get average numbers done!
     this.average = handelar.average;
     //cheak leap year
     this.leapYear = handelar.leapYear;
     //extended sine
     this.sinx = handelar.sinx;
-    //extended cosine
+    //extended cosine done!
     this.cosx = handelar.cosx;
     //extended tangent
     this.tanx = handelar.tanx;
-    //cotangent
+    //cotangent done!
     this.cot = handelar.cot;
-    //cosecant
+    //cosecant done!
     this.cosec = handelar.cosec;
     //secant
     this.sec = handelar.sec;
-    //age calculation
+    //age calculation done!
     this.age = handelar.age;
     //get factorial of a number
     this.fact = handelar.fact;
@@ -56,12 +56,13 @@ class MATH {
     this.memo = handelar.memo;
     //get a memorized data
     this.deMemo = handelar.deMemo;
+    // delete memory
     this.delMemo = handelar.delMemo;
     //solve linear equations
     this.linearEq = handelar.linearEq;
-    //get a permutation of a number
+    //get a permutation of a number done!
     this.permut = handelar.permut;
-    //get the complementary combination
+    //get the complementary combination done!
     this.combo = handelar.combo;
 
     /*--measurement calculation--*/
@@ -85,12 +86,14 @@ class MATH {
     this.quadLines = handelar.quadLines;
     //get some information about a quad
     this.quad = handelar.quad;
-    //calculate multiAngelArea by it's dots
+    //calculate multiAngelArea by it's dots done!
     this.polyArea = handelar.multiAngelArea;
 
     /*--conversations--*/
     //Farenheit 2 Celcius
     this.fr2C = handelar.fr2C;
+    //Celcius 2 Farenheit done!
+    this.c2Fr = handelar.c2Fr;
     //degree to radian
     this.deg2Rad = handelar.deg2Rad;
     //radian to degree
@@ -105,7 +108,7 @@ class MATH {
     this.ft2M = handelar.ft2M;
     //@inch to centimeter
     this.in2Cm = handelar.in2Cm;
-    //@centimeter to inch
+    //@centimeter to inch done!
     this.cm2In = handelar.cm2In;
     //@mile to kilometer
     this.mile2Km = handelar.mile2Km;
