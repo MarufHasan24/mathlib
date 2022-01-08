@@ -118,7 +118,7 @@ class MATH {
     this.caller = handelar.caller;
 
     // fractional math
-    this.frac = handelar.fract;
+    this.fract = handelar.fract;
   }
   //constructor ends
   multiply(...numbers) {

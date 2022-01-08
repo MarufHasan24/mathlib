@@ -8,7 +8,7 @@ Date : 13 November, 2021
 // dependensis
 const fs = require("fs");
 const date = new Date();
-const Dir = "./../.record";
+const Dir = __dirname + "/../.record";
 
 // trush
 function trush() {
