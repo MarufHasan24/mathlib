@@ -43,10 +43,11 @@ function usrInpuTheMood() {
           }
         );
       } else {
+        let confarmationNum = Math.floor(Math.random() * 899 + 100);
         readline.question(
-          `Are you setting mood as normal? Please confrim! Enter number 212 . $_ `,
+          `Are you setting mood as normal? Please confrim! Enter number ${confarmationNum} . $_ `,
           (status) => {
-            if (status == 212) {
+            if (status == confarmationNum) {
               status = null;
               fs.writeFileSync(
                 `${__dirname}/../handelar/moods/mood.json`,

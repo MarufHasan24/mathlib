@@ -10,8 +10,6 @@ tempData : require('./../assets/');
 let handelar = {};
 
 //dependencies :
-const fs = require("fs");
-
 /*---important functions---*/
 
 //@main squad :
@@ -34,12 +32,13 @@ handelar.average = require("./../assets/average.js");
 handelar.logx = require("./../assets/logarithm.js");
 handelar.rootx = require("./../assets/rootx.js");
 handelar.fract = require("./../assets/fractions.js");
+handelar.mathlib = require("./../clear");
 
 //size
 handelar.length =
   Object.keys(handelar).length +
   Object.getOwnPropertyNames(Math).length +
-  2 +
+  3 +
   __addConstantsToTheMainMathObjectCount();
 handelar.info = {
   mathlib_functions: Object.keys(handelar).length - 2,
@@ -55,7 +54,7 @@ handelar.info = {
   total_features:
     Object.keys(handelar).length +
     Object.getOwnPropertyNames(Math).length +
-    1 +
+    2 +
     __addConstantsToTheMainMathObjectCount(),
 };
 /*important function*/
