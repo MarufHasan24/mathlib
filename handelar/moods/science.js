@@ -25,8 +25,10 @@ function main(number, answer) {
     } else if (Math.abs(ans) < 1) {
       return local0(ans, num);
     } else {
+      return typeof answer;
     }
   } else {
+    return typeof answer;
   }
 }
 

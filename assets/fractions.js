@@ -43,7 +43,7 @@ function fract(input) {
     }
   }
   handelar.record(result, input, "fract");
-  return handelar.mood(result);
+  return result;
 }
 
 //export and share
