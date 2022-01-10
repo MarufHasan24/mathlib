@@ -1,15 +1,22 @@
 /*
 Title : 
 Author : Maruf Hasan
-Description :
-Date : , 2021
+Description : clear
+Date : jan 10 , 2022
 */
 
 //dependencies
 const fs = require("fs");
+const { dirname } = require("path");
 let moods = JSON.parse(
   fs.readFileSync(`${__dirname}/handelar/moods/mood.json`, "utf-8")
 );
+try {
+  JSON.parse(fs.readFileSync(`${__dirname}/.mathLib/user.json`, "utf-8"));
+} catch {
+  fs.unlinkSync(`${__dirname}/.mathLib/user.json`);
+  fs.writeFileSync(`${__dirname}/.mathLib/user.json`, JSON.stringify({}));
+}
 let record = fs.readdirSync(__dirname + "/.record/");
 record = record.splice(1);
 let trush = fs.readdirSync(__dirname + "/.record/.trush/");
