@@ -1,7 +1,7 @@
 # mathlib-n
 
 ## vertion
-  on github : 3.0.01
+  on github : 3.0.36
 
 **mathlib-n** is a math library
 which can solve our simple and day to day lifes problem. like :
