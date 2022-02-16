@@ -41,20 +41,20 @@ handelar.length =
   3 +
   __addConstantsToTheMainMathObjectCount();
 handelar.info = {
-  mathlib_functions: Object.keys(handelar).length,
+  mathlib_functions: Object.keys(handelar).length - 2,
   builtIn_functions: 35,
-  total_functions: Object.keys(handelar).length + 36,
+  total_functions: Object.keys(handelar).length + 34,
   mathlib_constants: __addConstantsToTheMainMathObjectCount(),
   builtIn_constants: 8,
   total_constants: __addConstantsToTheMainMathObjectCount() + 8,
   mathlib_features:
-    Object.keys(handelar).length + __addConstantsToTheMainMathObjectCount(),
+    Object.keys(handelar).length - 2 + __addConstantsToTheMainMathObjectCount(),
   builtIn_features: 43,
   extra_features: 3,
   total_features:
     Object.keys(handelar).length +
     Object.getOwnPropertyNames(Math).length +
-    4 +
+    2 +
     __addConstantsToTheMainMathObjectCount(),
 };
 /*important function*/
