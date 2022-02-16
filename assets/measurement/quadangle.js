@@ -10,7 +10,6 @@ const handelar = require("./../../.localhandelar.js");
 const quadArea = require("./quadanglearea.js");
 const quadAngles = require("./quadangleangles.js");
 const quadLines = require("./quadanglelines.js");
-const lineWidth = require("./lineWidth.js");
 const quadCorners = require("./quadanglecorners.js");
 
 //main function to export
