@@ -15,7 +15,7 @@ function random(minimum, maximum, type = null) {
   const max = typeof maximum === "number" ? maximum : NaN;
   const min = typeof minimum === "number" ? minimum : NaN;
   const typ = typeof type === "number" ? type : null;
-  if (max !== NaN && min !== NaN) {
+  if (max !== NaN && min !== NaN && typ !== NaN) {
     res = min + Math.random() * (max - min);
     if (type === 0) {
       result = Math.floor(res);
