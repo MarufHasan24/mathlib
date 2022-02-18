@@ -64,6 +64,8 @@ class MATH {
     this.permut = handelar.permut;
     //get the complementary combination done!
     this.combo = handelar.combo;
+    //get Greatest common divisor between two oe more numbers
+    this.GCD = handelar.GCD;
 
     /*--measurement calculation--*/
     //find out the distance between 2 dots

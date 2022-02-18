@@ -32,6 +32,7 @@ handelar.average = require("./../assets/average.js");
 handelar.logx = require("./../assets/logarithm.js");
 handelar.rootx = require("./../assets/rootx.js");
 handelar.fract = require("./../assets/fractions.js");
+handelar.GCD = require("./../assets/GreatestCommonDivisor.js");
 handelar.mathlib = require("./../clear");
 
 //size
