@@ -48,7 +48,6 @@ function GCD(...numbers) {
   handelar.record(result, numbers, "GCD");
   return handelar.mood(result);
 }
-
 function checkEveryoneIsSame(nums) {
   let sym = [...nums];
   let i = 0;
