@@ -15,7 +15,7 @@ function age(year, month, date, customDate = null) {
     cstDate = customDate;
   if (customDate !== null) {
     cstDate =
-      typeof customDate === "object" && customDate.length === 3
+      typeof Array.isArray(customDate) && customDate.length === 3
         ? customDate
         : handelar.error(
             "an Array like [yyyy,mm,dd]",
