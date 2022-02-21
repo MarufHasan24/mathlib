@@ -11,9 +11,9 @@ const handelar = require("../.localhandelar");
 //main function to export
 function qudrt(a, b, c) {
   let x1, x2, d;
-  let aN = typeof a === "number" ? a : NaN;
-  let bN = typeof b === "number" ? b : NaN;
-  let cN = typeof c === "number" ? c : NaN;
+  let aN = typeof a === "number" ? a : false;
+  let bN = typeof b === "number" ? b : false;
+  let cN = typeof c === "number" ? c : false;
   if (aN && bN && cN) {
     d = bN ** 2 - 4 * aN * cN;
     if (d < 0) {
@@ -25,9 +25,9 @@ function qudrt(a, b, c) {
       return [x1, x2];
     }
   } else {
-    if (aN !== NaN) {
+    if (aN !== false) {
       handelar.error("a number", "'a'", "qudrt()");
-    } else if (bN !== NaN) {
+    } else if (bN !== false) {
       handelar.error("a number", "'b'", "qudrt()");
     } else {
       handelar.error("a number", "'c'", "qudrt()");

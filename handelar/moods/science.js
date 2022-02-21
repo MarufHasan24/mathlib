@@ -16,7 +16,7 @@ function main(number, answer) {
     number > 0
       ? number
       : 1;
-  let ans = typeof answer === "number" ? answer : NaN;
+  let ans = typeof answer === "number" ? answer : false;
   if (num) {
     if (ans === 0) {
       return `${ans.toFixed(num - 1)}e0`;

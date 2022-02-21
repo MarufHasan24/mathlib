@@ -33,7 +33,7 @@ function tanx(input = 0) {
 
 //local function, not to export
 function local(d) {
-  if (d !== NaN) {
+  if (d !== false) {
     if (odd(rad2Deg(d / 90) % 4) || rad2Deg(d) === 90) {
       return Infinity;
     } else if (rad2Deg(d) % 180 === 0 || rad2Deg(d) === 0) {

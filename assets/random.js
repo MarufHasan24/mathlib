@@ -12,10 +12,10 @@ const handelar = require("../.localhandelar");
 function random(minimum, maximum, type = null) {
   let result;
   let res;
-  const max = typeof maximum === "number" ? maximum : NaN;
-  const min = typeof minimum === "number" ? minimum : NaN;
+  const max = typeof maximum === "number" ? maximum : false;
+  const min = typeof minimum === "number" ? minimum : false;
   const typ = typeof type === "number" ? type : null;
-  if (max !== NaN && min !== NaN && typ !== NaN) {
+  if (max !== false && min !== false && typ !== false) {
     res = min + Math.random() * (max - min);
     if (type === 0) {
       result = Math.floor(res);
@@ -27,7 +27,7 @@ function random(minimum, maximum, type = null) {
     handelar.record(result, { maximum, minimum, type }, "rand");
     return handelar.mood(result);
   } else {
-    if (min === NaN) {
+    if (min === false) {
       handelar.error("a number", "maximum", "random()");
     } else {
       handelar.error("a number", "minimum", "random()");

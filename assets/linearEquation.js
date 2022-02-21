@@ -72,7 +72,7 @@ function linearEq(first_Equation = [0, 0, 0], second_Equation = [0, 0, 0]) {
     let result = {};
     let x = (c1 * b2 - c2 * b1) / (a1 * b2 - b1 * a2);
     let y = (c1 * a2 - c2 * a1) / (b1 * a2 - a1 * b2);
-    if (x !== NaN && y !== NaN) {
+    if (x !== false && y !== false) {
       result = { x, y };
       handelar.record(result, { first_Equation, second_Equation }, "linear");
       return handelar.mood(result);

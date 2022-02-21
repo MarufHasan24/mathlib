@@ -18,7 +18,7 @@ function deg2Rad(input = [0, 0, 0]) {
     let deg = input.length && typeof input[0] === "number" ? input[0] : 0,
       min = input.length >= 2 && typeof input[1] === "number" ? input[1] : 0,
       sec = input.length === 3 && typeof input[2] === "number" ? input[2] : 0;
-    if (deg !== NaN && min !== NaN && sec !== NaN) {
+    if (deg !== false && min !== false && sec !== false) {
       result = localDeg([deg, min, sec]);
     } else {
       if (!deg) {

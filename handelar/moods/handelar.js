@@ -38,10 +38,22 @@ function main(answer) {
       } else {
       }
     } else {
-      error("Math error", "answer", "main()", RangeError);
+      error(
+        "Math error",
+        "answer",
+        "main()",
+        RangeError,
+        "report the bug : https://github.com/MarufHasan24/mathlib/pulls"
+      );
     }
   } else {
-    error("Math error", "answer", "main()", RangeError);
+    error(
+      "Math error",
+      "answer",
+      "main()",
+      RangeError,
+      "report the bug : https://github.com/MarufHasan24/mathlib/pulls"
+    );
   }
 }
 

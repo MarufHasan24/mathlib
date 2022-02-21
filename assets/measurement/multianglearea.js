@@ -16,8 +16,8 @@ function multiAngleArea(...dots) {
     result = 0;
   for (let i = 0; i < n.length; i++) {
     if (n && Array.isArray(n[i]) && n[i].length === 2) {
-      d[`x${i + 1}`] = typeof n[i][0] === "number" ? n[i][0] : NaN;
-      d[`y${i + 1}`] = typeof n[i][1] === "number" ? n[i][1] : NaN;
+      d[`x${i + 1}`] = typeof n[i][0] === "number" ? n[i][0] : false;
+      d[`y${i + 1}`] = typeof n[i][1] === "number" ? n[i][1] : false;
     } else {
       if (n === null) {
         throw SyntaxError(

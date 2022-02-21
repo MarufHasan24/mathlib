@@ -11,8 +11,8 @@ const handelar = require("./../../.localhandelar.js");
 //main function to export
 function sec(radian = 0) {
   let result;
-  let d = typeof radian === "number" ? radian : NaN;
-  if (d !== NaN) {
+  let d = typeof radian === "number" ? radian : false;
+  if (d !== false) {
     result = 1 / Math.cos(d);
     handelar.record(result, radian, "sec");
     return handelar.mood(result);

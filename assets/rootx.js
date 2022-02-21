@@ -11,8 +11,8 @@ const odd = require("./others/odd.js");
 //main function to export
 function rootx(base = 0, power = 1) {
   let b = typeof base === "number" ? base : NaN,
-    p = typeof power === "number" ? power : NaN;
-  if (b !== NaN && p !== NaN) {
+    p = typeof power === "number" ? power : false;
+  if (b !== false && p !== false) {
     if (!odd(p) && base >= 0) {
       result = Math.pow(b, 1 / p);
     } else if (odd(p) && base >= 0) {
@@ -28,7 +28,7 @@ function rootx(base = 0, power = 1) {
       result = NaN;
     }
   } else {
-    if (b === NaN) {
+    if (b === false) {
       handelar.error("a number", "base", "rootx()");
     } else {
       handelar.error("a number", "power", "rootx()");

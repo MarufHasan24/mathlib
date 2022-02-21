@@ -84,8 +84,8 @@ function deg2Dcm(input = [0, 0, 0]) {
 }
 
 function dcm2Deg(number) {
-  let num = typeof number === "number" ? number : NaN;
-  if (num !== NaN) {
+  let num = typeof number === "number" ? number : false;
+  if (num !== false) {
     let deg, min, sec;
     deg = Math.ceil(num) - 1;
     min = Math.ceil((num - deg) * 60) - 1;

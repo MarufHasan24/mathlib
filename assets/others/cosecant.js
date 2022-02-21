@@ -11,8 +11,8 @@ const handelar = require("./../../.localhandelar.js");
 //main function to export
 function cosec(radian) {
   let result;
-  let d = typeof radian === "number" ? radian : NaN;
-  if (d !== NaN) {
+  let d = typeof radian === "number" ? radian : false;
+  if (d !== false) {
     result = 1 / Math.sin(d);
   } else {
     handelar.error("a number", "radian", "cosec()");

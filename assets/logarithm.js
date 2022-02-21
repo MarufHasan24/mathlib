@@ -11,7 +11,7 @@ const handelar = require("../.localhandelar");
 //main function to export
 function logx(base, angle) {
   let bs = typeof base === "number" ? base : NaN,
-    ang = typeof angle === "number" ? angle : NaN;
+    ang = typeof angle === "number" ? angle : false;
   if (bs !== 1 && bs > 0 && ang > 0) {
     let result = Math.log10(ang) / Math.log10(bs);
     handelar.record(result, { base, angle }, "logx");

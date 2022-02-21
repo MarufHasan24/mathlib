@@ -10,10 +10,10 @@ const handelar = require("./../../.localhandelar.js");
 
 //main function to export
 function sums(end, start = 0) {
-  let srt = typeof start === "number" ? start : NaN;
+  let srt = typeof start === "number" ? start : false;
   let result = srt;
-  let num = typeof end === "number" ? end : NaN;
-  if (num && srt !== NaN) {
+  let num = typeof end === "number" ? end : false;
+  if (num && srt !== false) {
     for (let i = 1; i <= num; i++) {
       result += i;
     }

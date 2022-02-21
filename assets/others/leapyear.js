@@ -11,7 +11,7 @@ const handelar = require("./../../.localhandelar.js");
 //main function to export
 function leapYear(year) {
   let result;
-  let num = typeof year === "number" ? year : NaN;
+  let num = typeof year === "number" ? year : false;
   if (num % 100 === 0) {
     if (num % 400 === 0) {
       result = true;
@@ -25,8 +25,8 @@ function leapYear(year) {
       result = false;
     }
   }
-  handelar.record(result, year, "leapYear");
-  return handelar.mood(result);
+  handelar.record(result, year, "leapYear()");
+  return result;
 }
 //export amd share
 module.exports = leapYear;

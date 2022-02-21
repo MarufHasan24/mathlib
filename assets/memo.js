@@ -12,7 +12,8 @@ let fresult;
 //main function to export
 function memo(number, name, asynchronous = false, callBack = null) {
   let regXp = /^[0-9]/gi;
-  let num = typeof number === "number" || Array.isArray(number) ? number : NaN;
+  let num =
+    typeof number === "number" || Array.isArray(number) ? number : false;
   if (typeof num === "number") {
     num = [num];
   }

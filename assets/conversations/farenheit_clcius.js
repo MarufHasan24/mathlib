@@ -11,7 +11,7 @@ const handelar = require("./../../.localhandelar.js");
 //main function to export
 function Farenheit_2_Celcius(farenheit) {
   let result;
-  let num = typeof farenheit === "number" ? farenheit : NaN;
+  let num = typeof farenheit === "number" ? farenheit : false;
   if (num) {
     result = (5 / 9) * (num - 32);
     handelar.record(result);
@@ -23,7 +23,7 @@ function Farenheit_2_Celcius(farenheit) {
 
 function Celcius_2_Farenheit(celcius) {
   let result;
-  let num = typeof celcius === "number" ? celcius : NaN;
+  let num = typeof celcius === "number" ? celcius : false;
   if (num) {
     result = (9 / 5) * num + 32;
     handelar.record(result);

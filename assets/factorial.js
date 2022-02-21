@@ -14,7 +14,7 @@ function fact(number) {
   let num =
     typeof number === "number" && number >= 0 && Number.isInteger(number)
       ? number
-      : NaN;
+      : false;
   if (num) {
     for (let i = 1; i <= num; i++) {
       result *= i;
