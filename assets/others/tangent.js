@@ -22,10 +22,15 @@ function tanx(input = 0) {
       let i = parseFloat(input.substring(0, input.search(regXp) + 1));
       result = local(i * Math.PI);
     } else {
-      throw error;
+      handelar.error('string with a "π"', "input", "tanx()", SyntaxError);
     }
   } else {
-    throw error;
+    handelar.error(
+      'a number or string with a "π"',
+      "input",
+      "tanx()",
+      SyntaxError
+    );
   }
   handelar.record(result, input, "tanx");
   return handelar.mood(result);
@@ -42,7 +47,7 @@ function local(d) {
       return Math.tan(d);
     }
   } else {
-    handelar.error("a number", "input", "tanx()");
+    handelar.error("a number", "input", "tanx");
   }
 }
 

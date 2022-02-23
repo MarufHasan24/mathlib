@@ -29,9 +29,11 @@ function rootx(base = 0, power = 1) {
     }
   } else {
     if (b === false) {
-      handelar.error("a number", "base", "rootx()");
+      handelar.error("a number", "base", "rootx");
+    } else if (p === false) {
+      handelar.error("a number", "power", "rootx");
     } else {
-      handelar.error("a number", "power", "rootx()");
+      console.error("Somthing went wrong in rootx()");
     }
   }
   handelar.record(result, { base, power }, "rootx");

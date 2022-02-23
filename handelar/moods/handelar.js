@@ -43,7 +43,7 @@ function main(answer) {
         "answer",
         "main()",
         RangeError,
-        "report the bug : https://github.com/MarufHasan24/mathlib/pulls"
+        "report the bug : https://github.com/bicitrobiggan/mathlib-n/issues"
       );
     }
   } else {
@@ -52,7 +52,7 @@ function main(answer) {
       "answer",
       "main()",
       RangeError,
-      "report the bug : https://github.com/MarufHasan24/mathlib/pulls"
+      "report the bug : https://github.com/bicitrobiggan/mathlib-n/issues"
     );
   }
 }

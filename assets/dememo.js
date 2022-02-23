@@ -16,15 +16,18 @@ function deMemo(name, asynchronous = false, callBack = null) {
     name.trim().length > 0 &&
     name.search(regXp) === -1
       ? name
-      : null;
+      : false;
+  let result;
   let asy = typeof asynchronous === "boolean" ? asynchronous : null;
   if (nam && asy !== null) {
     if (asy === true) {
-      return deMemoNode(nam, asy, (call) => {
-        callBack(call);
+      deMemoNode(nam, asy, (call) => {
+        result = callBack(call);
+        handelar.record(result, { name, asynchronous }, "deMemo");
       });
     } else {
-      return deMemoNode(nam, asy);
+      result = deMemoNode(nam, asy);
+      handelar.record(result, { name, asynchronous }, "deMemo");
     }
   } else {
     handelar.error(
@@ -45,7 +48,7 @@ function deMemoNode(name1, asynchronous1 = false, callBack = null) {
       let output = JSON.parse(data);
       let keyArr = Object.keys(output);
       if (keyArr.indexOf(name1) >= 0) {
-        return handelar.mood(output[name1]);
+        return output[name1];
       } else {
         return `not found`;
       }
@@ -61,7 +64,7 @@ function deMemoNode(name1, asynchronous1 = false, callBack = null) {
           let output = JSON.parse(data);
           let keyArr = Object.keys(output);
           if (keyArr.indexOf(name1) >= 0) {
-            callBack(handelar.mood(output[name1]));
+            callBack(output[name1]);
           } else {
             callBack(`not found`);
           }
@@ -72,5 +75,6 @@ function deMemoNode(name1, asynchronous1 = false, callBack = null) {
     );
   }
 }
+
 //export and share
 module.exports = deMemo;

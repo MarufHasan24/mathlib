@@ -40,10 +40,14 @@ function GCD(...numbers) {
           return b - a;
         })[0] * checkData[1];
     } else {
-      handelar.error("numbers must have same sign", "numbers", "GCD()");
+      if (checkData[0] === false) {
+        handelar.error("numbers must have same sign", "numbers", "GCD");
+      } else {
+        console.error("Somthing went wrong in GCD()");
+      }
     }
   } else {
-    handelar.error("2 or more number", "numbers", "GCD()");
+    handelar.error("2 or more number", "numbers", "GCD");
   }
   handelar.record(result, numbers, "GCD");
   return handelar.mood(result);

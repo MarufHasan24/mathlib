@@ -12,12 +12,12 @@ const handelar = require("./../../.localhandelar.js");
 function Farenheit_2_Celcius(farenheit) {
   let result;
   let num = typeof farenheit === "number" ? farenheit : false;
-  if (num) {
+  if (num !== false) {
     result = (5 / 9) * (num - 32);
     handelar.record(result);
     return handelar.mood(result);
   } else {
-    handelar.error("a number", "farenheit", "fr2C()");
+    handelar.error("a number", "farenheit", "fr2C");
   }
 }
 
@@ -29,7 +29,7 @@ function Celcius_2_Farenheit(celcius) {
     handelar.record(result);
     return handelar.mood(result);
   } else {
-    handelar.error("a number", "celcius", "fr2C()");
+    handelar.error("a number", "celcius", "fr2C");
   }
 }
 //export and share

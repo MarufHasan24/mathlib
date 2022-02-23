@@ -17,7 +17,7 @@ function sec(radian = 0) {
     handelar.record(result, radian, "sec");
     return handelar.mood(result);
   } else {
-    handelar.error("a number", "radian", "sec()");
+    handelar.error("a number", "radian", "sec");
   }
 }
 

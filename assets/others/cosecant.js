@@ -15,7 +15,7 @@ function cosec(radian) {
   if (d !== false) {
     result = 1 / Math.sin(d);
   } else {
-    handelar.error("a number", "radian", "cosec()");
+    handelar.error("a number", "radian", "cosec");
   }
   handelar.record(result, radian, "cosec");
   return handelar.mood(result);

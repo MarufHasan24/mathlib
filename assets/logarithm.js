@@ -10,21 +10,23 @@ const handelar = require("../.localhandelar");
 
 //main function to export
 function logx(base, angle) {
-  let bs = typeof base === "number" ? base : NaN,
-    ang = typeof angle === "number" ? angle : false;
-  if (bs !== 1 && bs > 0 && ang > 0) {
+  let bs = typeof base === "number" && bs !== 1 && bs > 0 ? base : false,
+    ang = typeof angle === "number" && ang > 0 ? angle : false;
+  if (bs !== false && ang !== false) {
     let result = Math.log10(ang) / Math.log10(bs);
     handelar.record(result, { base, angle }, "logx");
     return handelar.mood(result);
   } else {
-    if (!bs || bs === 1) {
+    if (bs === false) {
       handelar.error(
         "a number whish is grater than 0 and not 1",
         "base",
         "logx()"
       );
+    } else if (ang === false) {
+      handelar.error("a number whish is grater than 0", "angle", "logx");
     } else {
-      handelar.error("a number whish is grater than 0", "angle", "logx()");
+      console.error("Somthing went wrong in logx()");
     }
   }
 }

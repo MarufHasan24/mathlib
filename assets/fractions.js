@@ -30,7 +30,6 @@ function fract(input) {
       result = [`${input / Math.PI}π`];
     } else if (srt.search(regex) > 0) {
       let int = parseInt(srt.substring(0, srt.search(regex))),
-        // intln = int.length,
         flot = parseInt(srt.substring(srt.search(regex) + 1)),
         flotln = srt.substring(srt.search(regex) + 1).length;
       var into = 10;
@@ -39,7 +38,7 @@ function fract(input) {
       }
       result = [[int * into + flot, into], `${int * into + flot}/${into}`];
     } else {
-      handelar.error("A number", "input", "fract()");
+      handelar.error("A number", "input", "fract");
     }
   }
   handelar.record(result, input, "fract");

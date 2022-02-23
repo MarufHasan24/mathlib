@@ -14,10 +14,10 @@ function qudrt(a, b, c) {
   let aN = typeof a === "number" ? a : false;
   let bN = typeof b === "number" ? b : false;
   let cN = typeof c === "number" ? c : false;
-  if (aN && bN && cN) {
+  if (aN !== false && bN !== false && cN !== false) {
     d = bN ** 2 - 4 * aN * cN;
     if (d < 0) {
-      handelar.error("some valid number", "a,b,c", "qudrt()");
+      handelar.error("some valid number", "a,b,c", "qudrt");
     } else {
       x1 = (d ** 0.5 - bN) / (2 * aN);
       x2 = (-(d ** 0.5) - bN) / (2 * aN);
@@ -26,11 +26,13 @@ function qudrt(a, b, c) {
     }
   } else {
     if (aN !== false) {
-      handelar.error("a number", "'a'", "qudrt()");
+      handelar.error("a number", "'a'", "qudrt");
     } else if (bN !== false) {
-      handelar.error("a number", "'b'", "qudrt()");
+      handelar.error("a number", "'b'", "qudrt");
+    } else if (cN !== false) {
+      handelar.error("a number", "'c'", "qudrt");
     } else {
-      handelar.error("a number", "'c'", "qudrt()");
+      console.error("Somthing went wrong in qudrt()");
     }
   }
 }

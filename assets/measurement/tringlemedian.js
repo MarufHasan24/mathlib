@@ -19,17 +19,17 @@ function tringleMid(
   let fspnt =
       Array.isArray(first_point) && first_point.length === 2
         ? first_point
-        : null,
+        : false,
     scpnt =
       Array.isArray(second_point) && second_point.length === 2
         ? second_point
-        : null,
+        : false,
     trpnt =
       Array.isArray(third_point) && third_point.length === 2
         ? third_point
-        : null;
+        : false;
 
-  if (fspnt && scpnt && trpnt) {
+  if (fspnt !== false && scpnt !== false && trpnt !== false) {
     let d = {
       x1: fspnt[0],
       y1: fspnt[1],
@@ -62,24 +62,26 @@ function tringleMid(
     );
     return result;
   } else {
-    if (!fspnt) {
+    if (fspnt === false) {
       handelar.error(
         "an array contains 2 numbers[x,y]",
         "first_point",
         "tringleMid()"
       );
-    } else if (!scpnt) {
+    } else if (scpnt === false) {
       handelar.error(
         "an array contains 2 numbers[x,y]",
         "second_point",
         "tringleMid()"
       );
-    } else {
+    } else if (trpnt === false) {
       handelar.error(
         "an array contains 2 numbers[x,y]",
         "third_point",
         "tringleMid()"
       );
+    } else {
+      console.error("Something went wrong in tringleMid()");
     }
   }
 }

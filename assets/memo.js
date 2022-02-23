@@ -7,6 +7,7 @@ Date : 4 October, 2021
 
 // dependencies
 const handelar = require("../.localhandelar");
+const deMemo = require("./dememo");
 
 let fresult;
 //main function to export
@@ -14,29 +15,36 @@ function memo(number, name, asynchronous = false, callBack = null) {
   let regXp = /^[0-9]/gi;
   let num =
     typeof number === "number" || Array.isArray(number) ? number : false;
-  if (typeof num === "number") {
-    num = [num];
-  }
+  let asy = typeof asynchronous === "boolean" ? asynchronous : false;
   let nam =
     typeof name === "string" &&
     name.trim().length > 0 &&
     name.search(regXp) === -1
       ? name
-      : null;
-  let asy = typeof asynchronous === "boolean" ? asynchronous : null;
-  if (num && nam && asy !== null) {
+      : false;
+  if (num !== false && nam !== false && asy !== null) {
+    num = num;
     if (asy === false) {
       fresult = MemoNode(num, nam, asy);
-      handelar.record(num, { number, name, asynchronous, callBack }, "memo");
+      handelar.record(
+        num,
+        { number, type: typeof number, name, asynchronous, callBack },
+        "memo"
+      );
     } else {
       MemoNode(num, nam, asy, (call) => {
         callBack(call);
+        handelar.record(
+          num,
+          { number, type: typeof number, name, asynchronous, callBack },
+          "memo"
+        );
       });
     }
   } else {
-    if (!num) {
-      handelar.error("a number", "number", "memo()");
-    } else if (!nam) {
+    if (num === false) {
+      handelar.error("a number", "number", "memo");
+    } else if (nam === false) {
       handelar.error(
         "a string",
         "name",
@@ -44,8 +52,10 @@ function memo(number, name, asynchronous = false, callBack = null) {
         TypeError,
         "And don't add any number[0-9] at the starting of the name"
       );
+    } else if (asy === null) {
+      handelar.error("a boolean value", "asynchronous", "memo");
     } else {
-      handelar.error("a boolean value", "asynchronous", "memo()");
+      console.error("Somthing went wrong in memo()");
     }
   }
 }
@@ -70,6 +80,8 @@ function MemoNode(number1, name1, asynchronous1, callBack = null) {
       input = { ...JSON.parse(data) };
       input[nam1] = {
         number: num1,
+        type: typeof num1,
+        type: typeof num1,
         date: new Date().toString(),
         asynch: asynchronous1,
       };
@@ -83,6 +95,7 @@ function MemoNode(number1, name1, asynchronous1, callBack = null) {
     } catch (e) {
       input[nam1] = {
         number: num1,
+        type: typeof num1,
         date: new Date().toString(),
         asynch: asynchronous1,
       };
@@ -115,6 +128,7 @@ function MemoNode(number1, name1, asynchronous1, callBack = null) {
             input = { ...JSON.parse(data) };
             input[nam1] = {
               number: num1,
+              type: typeof num1,
               date: new Date().toString(),
               asynch: asynchronous1,
             };
@@ -127,6 +141,7 @@ function MemoNode(number1, name1, asynchronous1, callBack = null) {
           } else {
             input[nam1] = {
               number: num1,
+              type: typeof num1,
               date: new Date().toString(),
               asynch: asynchronous1,
             };
@@ -143,6 +158,7 @@ function MemoNode(number1, name1, asynchronous1, callBack = null) {
           if (!error0) {
             input[nam1] = {
               number: num1,
+              type: typeof num1,
               date: new Date().toString(),
               asynch: asynchronous1,
             };

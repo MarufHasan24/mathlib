@@ -13,15 +13,17 @@ function sums(end, start = 0) {
   let srt = typeof start === "number" ? start : false;
   let result = srt;
   let num = typeof end === "number" ? end : false;
-  if (num && srt !== false) {
+  if (num !== false && srt !== false) {
     for (let i = 1; i <= num; i++) {
       result += i;
     }
   } else {
-    if (!num) {
-      handelar.error("a number", "end", "sums()");
+    if (num === false) {
+      handelar.error("a number", "end", "sums");
+    } else if (srt === false) {
+      handelar.error("a number", "start", "sums");
     } else {
-      handelar.error("a number", "start", "sums()");
+      console.error("Somthin went wrong in sums()");
     }
   }
   handelar.record(result, { end, start }, "sums");

@@ -14,8 +14,8 @@ const { rad2Deg } = require("./../conversations/degree_radian.js");
 function sinx(input = 0) {
   let result;
   let inp =
-    typeof input === "string" || typeof input === "number" ? input : null;
-  if (inp !== null) {
+    typeof input === "string" || typeof input === "number" ? input : false;
+  if (inp !== false) {
     if (typeof input === "number") {
       let inp = deg2Rad(input).radian;
       if (input % 180 === 0) {
@@ -28,14 +28,18 @@ function sinx(input = 0) {
       let inp =
         input.search(regXp) >= 0
           ? parseFloat(input.substring(0, input.search(regXp) + 1)) * Math.PI
-          : null;
-      let linp = rad2Deg(inp);
-      if (linp % 180 === 0 && input !== "0") {
-        result = 0;
-      } else if (input === "0") {
-        result = 0;
+          : false;
+      if (inp !== false) {
+        let linp = rad2Deg(inp);
+        if (linp % 180 === 0 && input !== "0") {
+          result = 0;
+        } else if (input === "0") {
+          result = 0;
+        } else {
+          result = Math.sin(inp);
+        }
       } else {
-        result = Math.sin(inp);
+        handelar.error("a valid string with a π", "input", "sinx");
       }
     } else {
       handelar.error("a valid string or a number", "input", "sinx");

@@ -28,13 +28,13 @@ function age(date, month, year, customDate = []) {
         a[i] = e;
       } else {
         if (i === 0) {
-          handelar.error("a number", "date of customDate[" + i + "]", "age()");
+          handelar.error("a number", "date of customDate[" + i + "]", "age");
         } else if (i === 1) {
-          handelar.error("a number", "month of customDate[" + i + "]", "age()");
+          handelar.error("a number", "month of customDate[" + i + "]", "age");
         } else if (i === 2) {
-          handelar.error("a number", "year of customDate[" + i + "]", "age()");
+          handelar.error("a number", "year of customDate[" + i + "]", "age");
         } else {
-          console.error("somthing went wrong in age()");
+          console.error("somthing went wrong in age");
         }
       }
     });
@@ -73,25 +73,25 @@ function age(date, month, year, customDate = []) {
         result.time = "future";
         // future
       } else {
-        console.warn("Wrong input in Date parameter of age()");
+        console.error("Wrong input in Date parameter of age");
       }
       return result;
     } else {
       if (!checkDateValidity(...newDate)[0]) {
-        console.warn("Wrong input in Date parameter of age()");
+        console.error("Wrong input in Date parameter of age");
       } else if (!checkDateValidity(...CustomDate)[0]) {
-        console.warn("Wrong input in customDate parameter of age()");
+        console.error("Wrong input in customDate parameter of age");
       } else {
-        console.warn("somthing went wrong in age()");
+        console.error("somthing went wrong in age");
       }
     }
   } else {
     if (DATE === false) {
-      handelar.error("a number", "date", "age()");
+      handelar.error("a number", "date", "age");
     } else if (MONTH === false) {
-      handelar.error("a number", "month", "age()");
+      handelar.error("a number", "month", "age");
     } else if (YEAR === false) {
-      handelar.error("a number", "year", "age()");
+      handelar.error("a number", "year", "age");
     } else {
       console.error("somthing went wrong in age()");
     }

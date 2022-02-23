@@ -15,20 +15,28 @@ function fact(number) {
     typeof number === "number" && number >= 0 && Number.isInteger(number)
       ? number
       : false;
-  if (num) {
-    for (let i = 1; i <= num; i++) {
-      result *= i;
+  if (num !== false) {
+    if (num === 0) {
+      result = result;
+    } else if (num > 0) {
+      for (let i = 1; i <= num; i++) {
+        result *= i;
+      }
+    } else {
+      console.error("Somthing went wrong in fact()");
     }
-  } else if (num === 0) {
-    result = result;
   } else {
-    handelar.error(
-      "a valid number",
-      "number",
-      "fact()",
-      TypeError,
-      "Be sure the number is an integer type positave number"
-    );
+    if (num === false) {
+      handelar.error(
+        "a valid number",
+        "number",
+        "fact()",
+        TypeError,
+        "Be sure the number is an integer type positave number"
+      );
+    } else {
+      console.error("Somthing went wrong in fact()");
+    }
   }
   handelar.record(result, number, "fact");
   return handelar.mood(result);

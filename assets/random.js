@@ -28,9 +28,11 @@ function random(minimum, maximum, type = null) {
     return handelar.mood(result);
   } else {
     if (min === false) {
-      handelar.error("a number", "maximum", "random()");
+      handelar.error("a number", "maximum", "random");
+    } else if (max === false) {
+      handelar.error("a number", "minimum", "random");
     } else {
-      handelar.error("a number", "minimum", "random()");
+      console.error("Somthing went wrong in rand()");
     }
   }
 }

@@ -19,7 +19,7 @@ function odd(number) {
       return false;
     }
   } else {
-    handelar.error("a natural number", "number", "odd()");
+    handelar.error("a natural number", "number", "odd");
   }
 }
 

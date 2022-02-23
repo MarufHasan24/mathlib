@@ -14,14 +14,19 @@ function average(...number) {
     sum = 0;
   let result;
   for (let i = 0; i < number.length; i++) {
-    num[i] =
-      typeof number[i] === "number"
-        ? number[i]
-        : handelar.error("some numbers", "number", "average()");
-    sum += num[i];
+    num[i] = typeof number[i] === "number" ? number[i] : false;
+    if (num[i] !== false) {
+      sum += num[i];
+    } else {
+      if (num[i] === false) {
+        handelar.error("a number", `${i + 1}no. number`, "average");
+      } else {
+        console.error("Somthing went wrong in average()");
+      }
+    }
   }
   result = sum / num.length;
-  handelar.record(result, { number: [...num] }, "avarage");
+  handelar.record(result, { numbers: [...num] }, "avarage");
   return handelar.mood(result);
 }
 

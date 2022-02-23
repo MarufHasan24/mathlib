@@ -10,18 +10,18 @@ const handelar = require("./../../.localhandelar.js");
 
 //main function to export
 function multiAngleArea(...dots) {
-  let n = dots.length >= 3 ? dots : null;
+  let n = dots.length >= 3 ? dots : false;
   var d = {};
   var fresult,
     result = 0;
   for (let i = 0; i < n.length; i++) {
-    if (n && Array.isArray(n[i]) && n[i].length === 2) {
+    if (n !== false && Array.isArray(n[i]) && n[i].length === 2) {
       d[`x${i + 1}`] = typeof n[i][0] === "number" ? n[i][0] : false;
       d[`y${i + 1}`] = typeof n[i][1] === "number" ? n[i][1] : false;
     } else {
-      if (n === null) {
+      if (n === false) {
         throw SyntaxError(
-          "unexpected end of input : enter at least 3 dots hare"
+          "An unexpected end of input : enter at least 3 dots hare"
         );
       } else if (!Array.isArray(n[i])) {
         handelar.error(
@@ -40,6 +40,7 @@ function multiAngleArea(...dots) {
     } else if (i === n.length) {
       result += d[`x${i}`] * d[`y${1}`] - d[`x${1}`] * d[`y${i}`];
     } else {
+      console.error("Something went wrong in polyArea()");
     }
   }
   fresult = Math.abs(0.5 * result);

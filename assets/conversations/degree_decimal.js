@@ -11,8 +11,8 @@ const handelar = require("./../../.localhandelar.js");
 //main functions to export
 function deg2Dcm(input = [0, 0, 0]) {
   let result;
-  let inp = typeof input === "string" || Array.isArray(input) ? input : null;
-  if (inp !== null) {
+  let inp = typeof input === "string" || Array.isArray(input) ? input : false;
+  if (inp !== false) {
     if (Array.isArray(input)) {
       if (!inp.length) {
         inp = [0, 0, 0];

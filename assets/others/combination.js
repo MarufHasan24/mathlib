@@ -19,9 +19,11 @@ function combo(n, r) {
     return handelar.mood(result);
   } else {
     if (_n === false || _n < 0) {
-      handelar.error("a number", "n", "combo()");
+      handelar.error("a number", "n", "combo");
+    } else if (_n === false || _n <= 0) {
+      handelar.error("a number", "r", "combo");
     } else {
-      handelar.error("a number", "r", "combo()");
+      console.error("Somthing went wrong in combo()");
     }
   }
 }

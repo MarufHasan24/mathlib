@@ -15,7 +15,7 @@ function caller(string) {
   let string1 =
     typeof string === "string" && string.trim().length > 0
       ? string
-      : handelar.error("a string", "string", "caller()");
+      : handelar.error("a string", "string", "caller");
   let inch = /(\dinch)$/gi,
     cm = /\d(cm)$/gi,
     m = /\d(m)$/gi,
