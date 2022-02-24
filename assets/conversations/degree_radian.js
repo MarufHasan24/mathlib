@@ -65,11 +65,11 @@ function deg2Rad(input = [0, 0, 0]) {
     handelar.error(
       "an Array contains 3 numbers or a string",
       "input",
-      "deg2Rad()"
+      "deg2Rad"
     );
   }
-  handelar.record(result);
-  return handelar.mood(result);
+  handelar.record(result, input, "rad2Deg");
+  return result;
 }
 
 //convert radian into degree
@@ -98,12 +98,14 @@ function rad2Deg(radian) {
       be4deg = rad % (Math.PI / 180);
       result = localRad(be4deg);
     } else {
-      throw TypeError(`Please put a π symbol at the last of your string`);
+      console.error(
+        `TypeError : Please put a π symbol at the last of your string`
+      );
     }
   } else {
     handelar.error("a number or a string", "radian", "rad2Deg");
   }
-  handelar.record(result);
+  handelar.record(result, radian, "deg2Rad");
   return result;
 }
 
@@ -120,7 +122,7 @@ function localRad(be4deg) {
     min = 0;
     deg++;
   }
-  return [deg, min, sec];
+  return { array: [deg, min, sec], degree: deg + min / 60 + sec / 3600 };
 }
 
 function localDeg(array) {

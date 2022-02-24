@@ -10,8 +10,8 @@ const handelar = require("../.localhandelar");
 
 //main function to export
 function logx(base, angle) {
-  let bs = typeof base === "number" && bs !== 1 && bs > 0 ? base : false,
-    ang = typeof angle === "number" && ang > 0 ? angle : false;
+  let bs = typeof base === "number" && base !== 1 && base > 0 ? base : false,
+    ang = typeof angle === "number" && angle > 0 ? angle : false;
   if (bs !== false && ang !== false) {
     let result = Math.log10(ang) / Math.log10(bs);
     handelar.record(result, { base, angle }, "logx");

@@ -14,7 +14,7 @@ function Farenheit_2_Celcius(farenheit) {
   let num = typeof farenheit === "number" ? farenheit : false;
   if (num !== false) {
     result = (5 / 9) * (num - 32);
-    handelar.record(result);
+    handelar.record(result, farenheit, "fr2C");
     return handelar.mood(result);
   } else {
     handelar.error("a number", "farenheit", "fr2C");
@@ -26,7 +26,7 @@ function Celcius_2_Farenheit(celcius) {
   let num = typeof celcius === "number" ? celcius : false;
   if (num) {
     result = (9 / 5) * num + 32;
-    handelar.record(result);
+    handelar.record(result, farenheit, "fr2C");
     return handelar.mood(result);
   } else {
     handelar.error("a number", "celcius", "fr2C");

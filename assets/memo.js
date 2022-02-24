@@ -7,7 +7,6 @@ Date : 4 October, 2021
 
 // dependencies
 const handelar = require("../.localhandelar");
-const deMemo = require("./dememo");
 
 let fresult;
 //main function to export
@@ -31,6 +30,7 @@ function memo(number, name, asynchronous = false, callBack = null) {
         { number, type: typeof number, name, asynchronous, callBack },
         "memo"
       );
+      return fresult;
     } else {
       MemoNode(num, nam, asy, (call) => {
         callBack(call);
@@ -43,7 +43,7 @@ function memo(number, name, asynchronous = false, callBack = null) {
     }
   } else {
     if (num === false) {
-      handelar.error("a number", "number", "memo");
+      handelar.error("a number on an array", "number", "memo");
     } else if (nam === false) {
       handelar.error(
         "a string",
@@ -68,30 +68,34 @@ function MemoNode(number1, name1, asynchronous1, callBack = null) {
   if (!asynchronous1) {
     try {
       callBack = null;
-      fs.readdirSync("./.mathLib");
+      let folder = fs.readdirSync(`${__dirname}/../.mathLib`);
       const data = fs.readFileSync(
         `${__dirname}/../.mathLib/user.json`,
         "utf-8"
-      );
-      const fileDescriptor = fs.openSync(
-        `${__dirname}/../.mathLib/user.json`,
-        "r+"
       );
       input = { ...JSON.parse(data) };
       input[nam1] = {
         number: num1,
         type: typeof num1,
-        type: typeof num1,
         date: new Date().toString(),
         asynch: asynchronous1,
       };
-      // let ftrs = fs.ftruncateSync(fileDescriptor);
-      fs.writeFileSync(
-        `${__dirname}/../.mathLib/user.json`,
-        JSON.stringify(input),
-        { encoding: "utf-8", flag: "w+" }
-      );
-      return "success";
+      if (folder) {
+        fs.writeFileSync(
+          `${__dirname}/../.mathLib/user.json`,
+          JSON.stringify(input),
+          { encoding: "utf-8", flag: "w+" }
+        );
+        return "saved";
+      } else {
+        fs.mkdirSync(`${__dirname}/../.mathLib`);
+        fs.writeFileSync(
+          `${__dirname}/../.mathLib/user.json`,
+          JSON.stringify(input),
+          { encoding: "utf-8", flag: "w+" }
+        );
+        return "saved";
+      }
     } catch (e) {
       input[nam1] = {
         number: num1,
@@ -100,29 +104,29 @@ function MemoNode(number1, name1, asynchronous1, callBack = null) {
         asynch: asynchronous1,
       };
       try {
-        fs.mkdirSync("./.mathLib");
+        fs.mkdirSync(`${__dirname}/../.mathLib`);
         fs.writeFileSync(
           `${__dirname}/../.mathLib/user.json`,
           JSON.stringify(input),
           { encoding: "utf-8", flag: "w+" }
         );
-        return "success";
+        return "saved";
       } catch (e) {
         console.log("Don't delete the user.json file from .mathLib folder!");
-        if (!fs.readdirSync("./.mathLib").length) {
+        if (!fs.readdirSync(`${__dirname}/../.mathLib`).length) {
           fs.writeFileSync(
             `${__dirname}/../.mathLib/user.json`,
             JSON.stringify(input),
             { encoding: "utf-8", flag: "w+" }
           );
-          return "success";
+          return "saved";
         }
       }
     }
   } else {
     //asynchronous
     fs.readdir(`${__dirname}/../.mathLib`, (error, files) => {
-      if (!error) {
+      if (!error && files) {
         fs.readFile(`${__dirname}/../.mathLib/user.json`, (errorM, data) => {
           if (!errorM && data.length) {
             input = { ...JSON.parse(data) };
@@ -190,7 +194,7 @@ function asyncMainMemoNode(fs, fileName, input, callBack) {
             if (!error2) {
               fs.close(fileDescriptor, (error3) => {
                 if (!error3) {
-                  callBack("success");
+                  callBack("saved");
                 } else {
                   callBack(error3);
                 }
@@ -208,7 +212,7 @@ function asyncMainMemoNode(fs, fileName, input, callBack) {
             if (!error2) {
               fs.close(fileDescriptor, (error3) => {
                 if (!error3) {
-                  callBack("success");
+                  callBack("saved");
                 } else {
                   callBack(error3);
                 }

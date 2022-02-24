@@ -32,51 +32,70 @@ function deg2Dcm(input = [0, 0, 0]) {
         deg,
         min,
         sec,
-        linp;
-      if (regXpDeg.test(inp) && regXpMin.test(inp) && regXpSec.test(inp)) {
-        deg = parseFloat(inp.substring(0, inp.search(regXpDeg) + 1));
-        min = parseFloat(
+        linp,
+        data;
+      data = [
+        parseFloat(inp.substring(0, inp.search(regXpDeg) + 1)),
+        parseFloat(
           inp.substring(inp.search(regXpDeg) + 2, inp.search(regXpMin) + 1)
-        );
-        sec = parseFloat(
+        ),
+        parseFloat(
           inp.substring(inp.search(regXpMin) + 2, inp.search(regXpSec) + 1)
-        );
-        linp = [deg, min, sec];
-        result = deg2DcmLocal(linp);
-      } else if (
-        inp.search(regXpDeg) >= 0 &&
-        inp.search(regXpMin) >= 0 &&
-        !regXpSec.test(inp)
-      ) {
-        deg = parseFloat(inp.substring(0, inp.search(regXpDeg) + 1));
-        min = parseFloat(
-          inp.substring(inp.search(regXpDeg) + 2, inp.search(regXpMin) + 1)
-        );
-        linp = [deg, min, 0];
-        result = deg2DcmLocal(linp);
-      } else if (
-        inp.search(regXpDeg) >= 0 &&
-        inp.search(regXpMin) < 0 &&
-        !regXpSec.test(inp)
-      ) {
-        deg = parseFloat(inp.substring(0, inp.search(regXpDeg) + 1));
-        linp = [deg, 0, 0];
-        result = deg2DcmLocal(linp);
+        ),
+      ];
+      (deg =
+        typeof data[0] === "number" && !Number.isNaN(data[0])
+          ? data[0]
+          : false),
+        (min =
+          typeof data[1] === "number" && !Number.isNaN(data[1])
+            ? data[1]
+            : false),
+        (sec =
+          typeof data[2] === "number" && !Number.isNaN(data[2])
+            ? data[2]
+            : false);
+      if (deg !== false && min !== false && sec !== false) {
+        if (regXpDeg.test(inp) && regXpMin.test(inp) && regXpSec.test(inp)) {
+          linp = [deg, min, sec];
+          result = deg2DcmLocal(linp);
+        } else if (
+          inp.search(regXpDeg) >= 0 &&
+          inp.search(regXpMin) >= 0 &&
+          !regXpSec.test(inp)
+        ) {
+          deg = parseFloat(inp.substring(0, inp.search(regXpDeg) + 1));
+          min = parseFloat(
+            inp.substring(inp.search(regXpDeg) + 2, inp.search(regXpMin) + 1)
+          );
+          linp = [deg, min, 0];
+          result = deg2DcmLocal(linp);
+        } else if (
+          inp.search(regXpDeg) >= 0 &&
+          inp.search(regXpMin) < 0 &&
+          !regXpSec.test(inp)
+        ) {
+          deg = parseFloat(inp.substring(0, inp.search(regXpDeg) + 1));
+          linp = [deg, 0, 0];
+          result = deg2DcmLocal(linp);
+        } else {
+          throw "Enter at least a number and symbols like °,',\"";
+        }
       } else {
-        throw "Enter at least a number and symbols like °,',\"";
+        throw "somthing went wrong in deg2Dcm() inpput. please enter a valid srting here";
       }
     } else {
       handelar.error(
         "a number or a string which contains °,' or \"",
         "input",
-        "deg2Dcm()"
+        "deg2Dcm"
       );
     }
   } else {
     handelar.error(
       "a number or a string which contains °,' or \"",
       "input",
-      "deg2Dcm()"
+      "deg2Dcm"
     );
   }
   handelar.record(result, input, "deg2Dcm");
@@ -111,6 +130,7 @@ function dcm2Deg(number) {
       string: `${deg}°${min}'${sec}"`,
     };
   } else {
+    handelar.error("a number", "number", "dcm2Deg");
   }
 }
 

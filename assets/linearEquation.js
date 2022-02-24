@@ -98,6 +98,4 @@ function linearEq(first_Equation = [0, 0, 0], second_Equation = [0, 0, 0]) {
 }
 
 //export and share
-//module.exports = linearEq;
-console.clear();
-console.log(linearEq([1, 2, 30], [2, NaN, 3]));
+module.exports = linearEq;
