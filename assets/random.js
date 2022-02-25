@@ -22,15 +22,15 @@ function random(minimum, maximum, type = null) {
     } else if (type === null || type >= 12) {
       result = res;
     } else {
-      result = res.toFixed(type);
+      result = parseFloat(res.toFixed(type));
     }
     handelar.record(result, { maximum, minimum, type }, "rand");
     return handelar.mood(result);
   } else {
     if (min === false) {
-      handelar.error("a number", "maximum", "random");
+      handelar.error("a number", "maximum", "rand");
     } else if (max === false) {
-      handelar.error("a number", "minimum", "random");
+      handelar.error("a number", "minimum", "rand");
     } else {
       console.error("Somthing went wrong in rand()");
     }

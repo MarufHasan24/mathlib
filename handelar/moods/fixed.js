@@ -14,7 +14,9 @@ function main(number, answer) {
   const ans = typeof answer === "number" ? answer : null;
   if (num !== null && ans !== null) {
     const result = ans.toFixed(num);
-    return result;
+    return parseFloat(result);
+  } else {
+    console.error("somthig went wrong in nfixed.js");
   }
 }
 // export and share

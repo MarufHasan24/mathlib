@@ -44,11 +44,7 @@ function multiAngleArea(...dots) {
     }
   }
   fresult = Math.abs(0.5 * result);
-  handelar.record(
-    fresult,
-    { first_point, second_point, third_point, fourth_point },
-    "polyArea"
-  );
+  handelar.record(fresult, { ...dots }, "polyArea");
   return handelar.mood(fresult);
 }
 

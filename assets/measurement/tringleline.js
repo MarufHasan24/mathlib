@@ -7,6 +7,8 @@ Date: 17 October , 2021
 
 //dependencies
 const handelar = require("./../../.localhandelar.js");
+const lineWidth = require("./lineWidth.js");
+
 //main function to export
 function tringleLines(
   first_point = [0, 0],
@@ -53,19 +55,19 @@ function tringleLines(
       handelar.error(
         "an array contains 2 numbers[x,y]",
         "first_point",
-        "tringleLines()"
+        "tringleLines"
       );
     } else if (scpnt === false) {
       handelar.error(
         "an array contains 2 numbers[x,y]",
         "second_point",
-        "tringleLines()"
+        "tringleLines"
       );
     } else if (trpnt === false) {
       handelar.error(
         "an array contains 2 numbers[x,y]",
         "third_point",
-        "tringleLines()"
+        "tringleLines"
       );
     } else {
       console.error("Something went wrong in tringleLines()");

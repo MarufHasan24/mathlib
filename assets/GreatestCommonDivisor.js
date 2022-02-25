@@ -41,7 +41,11 @@ function GCD(...numbers) {
         })[0] * checkData[1];
     } else {
       if (checkData[0] === false) {
-        handelar.error("numbers must have same sign", "numbers", "GCD");
+        handelar.error(
+          "numbers must have same sign and not 0",
+          "numbers",
+          "GCD"
+        );
       } else {
         console.error("Somthing went wrong in GCD()");
       }

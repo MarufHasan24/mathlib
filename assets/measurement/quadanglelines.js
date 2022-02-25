@@ -70,28 +70,28 @@ function quadLines(
       handelar.error(
         "an array contains 2 numbers[x,y]",
         "first_point",
-        "QuadLines()"
+        "quadLines"
       );
     } else if (scpnt === false) {
       handelar.error(
         "an array contains 2 numbers[x,y]",
         "second_point",
-        "QuadLines()"
+        "quadLines"
       );
     } else if (trpnt === false) {
       handelar.error(
         "an array contains 2 numbers[x,y]",
         "third_point",
-        "QuadLines()"
+        "quadLines"
       );
     } else if (frpnt === false) {
       handelar.error(
         "an array contains 2 numbers[x,y]",
         "fourth_point",
-        "QuadLines()"
+        "quadLines"
       );
     } else {
-      console.error("Something went wrong in QuadLines()");
+      console.error("Something went wrong in quadLines");
     }
   }
 }

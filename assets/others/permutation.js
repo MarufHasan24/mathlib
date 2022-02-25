@@ -11,7 +11,7 @@ const fact = require("./../factorial.js");
 
 //main function to export
 function permut(n, r) {
-  let _n = typeof n === "number" ? n && _n < 0 : false,
+  let _n = typeof n === "number" && n > 0 ? n : false,
     _r = typeof r === "number" && r >= 0 && r <= n ? r : false;
   if (_n !== false && _r !== false) {
     let result = fact(_n) / fact(_n - _r);
@@ -19,9 +19,9 @@ function permut(n, r) {
     return handelar.mood(result);
   } else {
     if (_n === false) {
-      handelar.error("a number", "n", "combo");
+      handelar.error("a valid number", "n", "permut");
     } else if (_r === false) {
-      handelar.error("a number", "r", "combo");
+      handelar.error("a valid number", "r", "permut");
     } else {
       console.error("Somthing went wrong in permut()");
     }

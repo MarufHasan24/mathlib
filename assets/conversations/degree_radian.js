@@ -83,7 +83,13 @@ function rad2Deg(radian) {
   if (typeof radian === "number") {
     rad = radian;
     deg = rad * (180 / Math.PI);
-    result = deg;
+    min = Number.isInteger(deg)
+      ? 0
+      : Math.ceil((deg - (Math.ceil(deg) - 1)) * 60) - 1;
+    sec = Number.isInteger((deg - (Math.ceil(deg) - 1)) * 60)
+      ? 0
+      : ((deg - (Math.ceil(deg) - 1)) * 60 - min) * 60;
+    result = { degree: deg, array: [Math.floor(deg), min, sec] };
   } else if (typeof radian === "string") {
     if (radian.search(regXp) >= 0) {
       rad = radian.substring(0, radian.search(regXp));

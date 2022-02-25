@@ -45,9 +45,9 @@ function tringle(
       line_a = lineWidth([d.x2, d.y2], [d.x3, d.y3]),
       line_b = lineWidth([d.x3, d.y3], [d.x1, d.y1]),
       cntrd = [(d.x1 + d.x2 + d.x3) / 3, (d.y1 + d.y2 + d.y3) / 3],
-      thetaA = rad2Deg(Math.asin((2 * area) / (line_c * line_b))),
-      thetaB = rad2Deg(Math.asin((2 * area) / (line_c * line_a))),
-      thetaC = rad2Deg(Math.asin((2 * area) / (line_a * line_b)));
+      thetaA = rad2Deg(Math.asin((2 * area) / (line_c * line_b))).degree,
+      thetaB = rad2Deg(Math.asin((2 * area) / (line_c * line_a))).degree,
+      thetaC = rad2Deg(Math.asin((2 * area) / (line_a * line_b))).degree;
     let result = {
       area,
       line_a,
@@ -64,25 +64,25 @@ function tringle(
       { first_point, second_point, third_point },
       "tringle"
     );
-    return handelar.mood(result);
+    return result;
   } else {
     if (fspnt === false) {
       handelar.error(
         "an array contains 2 numbers[x,y]",
         "first_point",
-        "tringle()"
+        "tringle"
       );
     } else if (scpnt === false) {
       handelar.error(
         "an array contains 2 numbers[x,y]",
         "second_point",
-        "tringle()"
+        "tringle"
       );
     } else if (trpnt === false) {
       handelar.error(
         "an array contains 2 numbers[x,y]",
         "third_point",
-        "tringle()"
+        "tringle"
       );
     } else {
       console.error("Something went wrong in tringle()");

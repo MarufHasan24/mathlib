@@ -10,13 +10,22 @@ const handelar = require("./../../.localhandelar");
 
 //main function to export
 function odd(number) {
-  if (typeof number === "number" && Number.isSafeInteger(number)) {
-    if (number % 2 !== 0) {
-      handelar.record(true, number, "odd");
-      return true;
+  num = typeof number === "number" && !Number.isNaN(number) ? number : false;
+  if (num !== false) {
+    if (Number.isSafeInteger(number)) {
+      if (number % 2 !== 0) {
+        handelar.record(true, number, "odd");
+        return true;
+      } else {
+        handelar.record(false, number, "odd");
+        return false;
+      }
     } else {
-      handelar.record(false, number, "odd");
-      return false;
+      if (!Number.isSafeInteger(number)) {
+        return false;
+      } else {
+        handelar.error("a natural number", "number", "odd");
+      }
     }
   } else {
     handelar.error("a natural number", "number", "odd");

@@ -43,9 +43,9 @@ function tringleAngles(
     let line_c = lineWidth([d.x1, d.y1], [d.x2, d.y2]),
       line_a = lineWidth([d.x2, d.y2], [d.x3, d.y3]),
       line_b = lineWidth([d.x3, d.y3], [d.x1, d.y1]),
-      thetaA = rad2Deg(Math.asin((2 * area) / (line_c * line_b))),
-      thetaB = rad2Deg(Math.asin((2 * area) / (line_c * line_a))),
-      thetaC = rad2Deg(Math.asin((2 * area) / (line_a * line_b)));
+      thetaA = rad2Deg(Math.asin((2 * area) / (line_c * line_b))).degree,
+      thetaB = rad2Deg(Math.asin((2 * area) / (line_c * line_a))).degree,
+      thetaC = rad2Deg(Math.asin((2 * area) / (line_a * line_b))).degree;
     let result = {
       thetaA,
       thetaB,
@@ -62,19 +62,19 @@ function tringleAngles(
       handelar.error(
         "an array contains 2 numbers[x,y]",
         "first_point",
-        "tringleAngles()"
+        "tringleAngles"
       );
     } else if (scpnt === false) {
       handelar.error(
         "an array contains 2 numbers[x,y]",
         "second_point",
-        "tringleAngles()"
+        "tringleAngles"
       );
     } else if (trpnt === false) {
       handelar.error(
         "an array contains 2 numbers[x,y]",
         "third_point",
-        "tringleAngles()"
+        "tringleAngles"
       );
     } else {
       console.error("Something went wrong in tringleAngles()");

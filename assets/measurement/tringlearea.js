@@ -48,19 +48,19 @@ function tringleArea(
       handelar.error(
         "an array contains 2 numbers[x,y]",
         "first_point",
-        "tringleArea()"
+        "tringleArea"
       );
     } else if (scpnt === false) {
       handelar.error(
         "an array contains 2 numbers[x,y]",
         "second_point",
-        "tringleArea()"
+        "tringleArea"
       );
     } else if (trpnt === false) {
       handelar.error(
         "an array contains 2 numbers[x,y]",
         "third_point",
-        "tringleArea()"
+        "tringleArea"
       );
     } else {
       console.error("Something went wrong in tringleArea()");
