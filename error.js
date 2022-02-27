@@ -7,17 +7,17 @@ Date : 5 October, 2021
 
 /*---Error function---*/
 function error(type, place, name, ErrorType = TypeError, customString = "") {
-  let errorData;
+  let err;
   if (typeof type === "string" && typeof place === "string") {
-    errorData = new ErrorType(
+    err = new ErrorType(
       `There is an error in the ${place} parameter of the math.${name}(). Please enter ${type} here! ${customString}If you think that it's a bug you can report this bug here : https://github.com/bicitrobiggan/mathlib-n/issues
       `
     );
   } else {
-    errorData = `There is an error in your input!`;
+    err = `There is an error in your input!`;
   }
   //console.error(errorData);
-  throw errorData;
+  throw err;
 }
 //export amd share
 module.exports = error;
