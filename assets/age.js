@@ -115,7 +115,7 @@ function checkDateValidity(date, month, year) {
         handelar.error(
           `number between (1 to 31) because it's ${month}th month of the year`,
           "date",
-          "age()",
+          "age",
           RangeError
         );
         return false;
@@ -127,7 +127,7 @@ function checkDateValidity(date, month, year) {
         handelar.error(
           `number between (1 to 30) because it's ${month}th month of the year`,
           "date",
-          "age()",
+          "age",
           RangeError
         );
         return false;
@@ -140,7 +140,7 @@ function checkDateValidity(date, month, year) {
           handelar.error(
             `number between (1 to 29) because it's February and leapyear also`,
             "date",
-            "age()",
+            "age",
             RangeError
           );
           return false;
@@ -152,18 +152,18 @@ function checkDateValidity(date, month, year) {
           handelar.error(
             `number between (1 to 28) because it's February`,
             "date",
-            "age()",
+            "age",
             RangeError
           );
           return false;
         }
       }
     } else {
-      handelar.error(`number between (1 to 31)`, "date", "age()", RangeError);
+      handelar.error(`number between (1 to 31)`, "date", "age", RangeError);
       return false;
     }
   } else {
-    handelar.error("number between (1 to 12)", "month", "age()", RangeError);
+    handelar.error("number between (1 to 12)", "month", "age", RangeError);
     return false;
   }
 }
