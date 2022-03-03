@@ -7,7 +7,7 @@ Date : 4 October, 2021
 
 // dependencies
 const handelar = require("../.localhandelar");
-const leapYear = require("./others/leapyear.js");
+const checkDateValidity = require("../.workplace/checkDateValidity");
 
 // main function to export
 function age(date, month, year, customDate = []) {
@@ -96,76 +96,6 @@ function age(date, month, year, customDate = []) {
     } else {
       console.error("somthing went wrong in age()");
     }
-  }
-}
-
-function checkDateValidity(date, month, year) {
-  if (month >= 1 && month <= 12) {
-    if (
-      month === 1 ||
-      month === 3 ||
-      month === 5 ||
-      month === 7 ||
-      month === 8 ||
-      month === 10 ||
-      month === 12
-    ) {
-      if (date >= 1 && date <= 31) {
-        return [true, 31];
-      } else {
-        handelar.error(
-          `number between (1 to 31) because it's ${month}th month of the year`,
-          "date",
-          "age",
-          RangeError
-        );
-        return false;
-      }
-    } else if (month === 4 || month === 6 || month === 9 || month === 11) {
-      if (date >= 1 && date <= 30) {
-        return [true, 30];
-      } else {
-        handelar.error(
-          `number between (1 to 30) because it's ${month}th month of the year`,
-          "date",
-          "age",
-          RangeError
-        );
-        return false;
-      }
-    } else if (month === 2) {
-      if (leapYear(year)) {
-        if (date >= 1 && date <= 29) {
-          return [true, 29];
-        } else {
-          handelar.error(
-            `number between (1 to 29) because it's February and leapyear also`,
-            "date",
-            "age",
-            RangeError
-          );
-          return false;
-        }
-      } else {
-        if (date >= 1 && date <= 28) {
-          return [true, 28];
-        } else {
-          handelar.error(
-            `number between (1 to 28) because it's February`,
-            "date",
-            "age",
-            RangeError
-          );
-          return false;
-        }
-      }
-    } else {
-      handelar.error(`number between (1 to 31)`, "date", "age", RangeError);
-      return false;
-    }
-  } else {
-    handelar.error("number between (1 to 12)", "month", "age", RangeError);
-    return false;
   }
 }
 
