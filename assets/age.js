@@ -28,11 +28,11 @@ function age(date, month, year, customDate = []) {
         a[i] = e;
       } else {
         if (i === 0) {
-          handelar.error("a number", "date of customDate[" + i + "]", "age");
+          handelar.error("a number", `date of customDate[${i}]`, "age");
         } else if (i === 1) {
-          handelar.error("a number", "month of customDate[" + i + "]", "age");
+          handelar.error("a number", `month of customDate[${i}]`, "age");
         } else if (i === 2) {
-          handelar.error("a number", "year of customDate[" + i + "]", "age");
+          handelar.error("a number", `year of customDate[${i}]`, "age");
         } else {
           console.error("somthing went wrong in age");
         }
@@ -75,6 +75,7 @@ function age(date, month, year, customDate = []) {
       } else {
         console.error("Wrong input in Date parameter of age");
       }
+      handelar.record(result, [date, month, year, customDate], "age");
       return result;
     } else {
       if (!checkDateValidity(...newDate)[0]) {
