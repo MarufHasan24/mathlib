@@ -14,7 +14,11 @@ class MATH {
   constructor() {
     /*--information--*/
     this.length = handelar.length;
-    //style the name
+    //extras
+    this.delRecord = handelar.delRecord;
+    this.list = handelar.list;
+    this.restore = handelar.restore;
+    this.record = handelar.record;
     this.mathlib = handelar.mathlib;
     this.info = handelar.info;
     /*--important functions--*/
@@ -64,8 +68,10 @@ class MATH {
     this.permut = handelar.permut;
     //get the complementary combination done!
     this.combo = handelar.combo;
-    //get Greatest common divisor between two oe more numbers
+    //get Greatest common divisor between two or more numbers
     this.GCD = handelar.GCD;
+    //get Least Common Multiple between two or more numbers
+    this.LCM = handelar.LCM;
 
     /*--measurement calculation--*/
     //find out the distance between 2 dots
