@@ -7,7 +7,7 @@ Date : 4 October, 2021
 
 // dependencies
 const handelar = require("../.localhandelar");
-const checkDateValidity = require("../.workplace/checkDateValidity");
+const checkDateValidity = require("./../.mathlibLocal/checkDateValidity");
 
 // main function to export
 function age(date, month, year, customDate = []) {
@@ -38,10 +38,9 @@ function age(date, month, year, customDate = []) {
         }
       }
     });
-    if (
-      checkDateValidity(...newDate)[0] &&
-      checkDateValidity(...CustomDate)[0]
-    ) {
+    let validNewDate = checkDateValidity(...newDate);
+    let validCustomDate = checkDateValidity(...CustomDate);
+    if (validNewDate[0] && validCustomDate[0]) {
       let { newDateString, CustomDateString } = stringifyDate(
         newDate,
         CustomDate
@@ -52,24 +51,14 @@ function age(date, month, year, customDate = []) {
         // past and present
         d1 = [...newDate];
         d2 = [...CustomDate];
-        result = calculation(
-          d1,
-          d2,
-          checkDateValidity(...newDate)[1],
-          checkDateValidity(...CustomDate)[1]
-        );
+        result = calculation(d1, d2, validNewDate[1], validCustomDate[1]);
         result.time = "past";
       } else if (
         Number.parseInt(newDateString) > Number.parseInt(CustomDateString)
       ) {
         d1 = [...CustomDate];
         d2 = [...newDate];
-        result = calculation(
-          d1,
-          d2,
-          checkDateValidity(...CustomDate)[1],
-          checkDateValidity(...newDate)[1]
-        );
+        result = calculation(d1, d2, validCustomDate[1], validNewDate[1]);
         result.time = "future";
         // future
       } else {
@@ -78,10 +67,15 @@ function age(date, month, year, customDate = []) {
       handelar.record(result, [date, month, year, customDate], "age");
       return result;
     } else {
-      if (!checkDateValidity(...newDate)[0]) {
-        console.error("Wrong input in Date parameter of age");
-      } else if (!checkDateValidity(...CustomDate)[0]) {
-        console.error("Wrong input in customDate parameter of age");
+      if (!validNewDate[0]) {
+        handelar.error(validNewDate[1], validNewDate[2], "age", RangeError);
+      } else if (!validCustomDate[0]) {
+        handelar.error(
+          validCustomDate[1],
+          validCustomDate[2],
+          "age",
+          RangeError
+        );
       } else {
         console.error("somthing went wrong in age");
       }
@@ -119,7 +113,7 @@ function calculation(d1, d2, ml1, ml2) {
       result.month = d2[1] + 12 - (d1[1] + 1);
       result.year = d2[2] - (d1[2] + 1);
     } else {
-      result.month = d2[1] - d1[1];
+      result.month = d2[1] - (d1[1] + 1);
       result.year = d2[2] - d1[2];
       //normal
     }
