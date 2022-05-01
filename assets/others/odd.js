@@ -15,14 +15,14 @@ function odd(number) {
     if (Number.isSafeInteger(number)) {
       if (number % 2 !== 0) {
         handelar.record(true, number, "odd");
-        return true;
+        return handelar.mood(true);
       } else {
         handelar.record(false, number, "odd");
-        return false;
+        return handelar.mood(false);
       }
     } else {
       if (!Number.isSafeInteger(number)) {
-        return false;
+        return handelar.mood(false);
       } else {
         handelar.error("a natural number", "number", "odd");
       }

@@ -12,23 +12,23 @@ function prime(number) {
   if (typeof number === "number" && Number.isSafeInteger(number)) {
     if (number === 2) {
       handelar.record(true);
-      return true;
+      return handelar.mood(true);
     } else if (number > 1) {
       for (let i = 2; i < number; i++) {
         if (number % i !== 0) {
           handelar.record(true, number, "prime");
-          return true;
+          return handelar.mood(true);
         } else if (number === i * i) {
           handelar.record(false, number, "prime");
-          return false;
+          return handelar.mood(false);
         } else {
           handelar.record(false, number, "prime");
-          return false;
+          return handelar.mood(false);
         }
       }
     } else {
       handelar.record(false, number, "prime");
-      return false;
+      return handelar.mood(false);
     }
   } else {
     handelar.error("a natural number", "number", "prime");

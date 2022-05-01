@@ -56,7 +56,7 @@ function tringleAngles(
       { first_point, second_point, third_point },
       "tringleAngles"
     );
-    return result;
+    return handelar.mood(result);
   } else {
     if (fspnt === false) {
       handelar.error(

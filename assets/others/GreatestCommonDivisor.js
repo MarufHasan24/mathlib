@@ -6,7 +6,8 @@ Date : 18 February, 2022
 */
 
 //dependencies
-const handelar = require("./../.localhandelar");
+const handelar = require("./../../.localhandelar");
+const intersection = require("./intersection");
 
 function GCD(...numbers) {
   let result;
@@ -21,20 +22,28 @@ function GCD(...numbers) {
         i = 0,
         destination = Math.min(...nums),
         resultArray = [];
+      resultSet = new Set();
       while (decider && i < nums.length - 1) {
+        global[`set${i}`] = new Set();
         for (let j = 1; j <= destination; j++) {
           if (
             Number.isInteger(nums[i] / j) &&
             Number.isInteger(nums[i + 1] / j)
           ) {
             decider = true;
-            resultArray.push(j);
+            global[`set${i}`].add(j);
           } else {
-            decider = false;
+            decider = true;
+          }
+          if (i >= 1 && j === destination) {
+            resultSet = intersection(global.set0, global[`set${i}`]);
+          } else if (i === 0) {
+            resultSet = global.set0;
           }
         }
         i++;
       }
+      resultArray = Array.from(resultSet);
       result =
         resultArray.sort(function (a, b) {
           return b - a;
@@ -56,6 +65,7 @@ function GCD(...numbers) {
   handelar.record(result, numbers, "GCD");
   return handelar.mood(result);
 }
+
 function checkEveryoneIsSame(nums) {
   let sym = [...nums];
   let i = 0;

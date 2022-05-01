@@ -30,7 +30,7 @@ function leapYear(year) {
     handelar.error("a year", "year", "leapYear");
   }
   handelar.record(result, year, "leapYear");
-  return result;
+  return handelar.mood(result);
 }
 //export amd share
 module.exports = leapYear;

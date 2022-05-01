@@ -86,7 +86,7 @@ function deg2Dcm(input = [0, 0, 0]) {
       }
     } else {
       handelar.error(
-        "a number or a string which contains °,' or \"",
+        "an array containing 3 numbers or a string which contains °,' or \"",
         "input",
         "deg2Dcm"
       );
@@ -125,10 +125,10 @@ function dcm2Deg(number) {
       number,
       "dcm2Deg"
     );
-    return {
+    return handelar.mood({
       result: [deg, min, sec],
       string: `${deg}°${min}'${sec}"`,
-    };
+    });
   } else {
     handelar.error("a number", "number", "dcm2Deg");
   }
@@ -142,7 +142,7 @@ function deg2DcmLocal(array) {
     sec = data[2];
   let result;
   result = deg + min / 60 + sec / 3600;
-  return result;
+  return handelar.mood(result);
 }
 
 //export and share

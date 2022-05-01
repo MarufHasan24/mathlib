@@ -16,7 +16,7 @@ function main(number, answer) {
     const result = ans.toFixed(num);
     return parseFloat(result);
   } else {
-    console.error("somthig went wrong in nfixed.js");
+    console.error("somthig went wrong in fixed.js");
   }
 }
 // export and share

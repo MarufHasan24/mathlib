@@ -9,7 +9,7 @@ Date: 15 October , 2021
 const handelar = require("./../../.localhandelar.js");
 const lineWidth = require("./lineWidth.js");
 const { rad2Deg } = require("./../conversations/degree_radian.js");
-const tringleMid = require("./tringlemedian.js");
+const tringleMed = require("./tringlemedian.js");
 
 //main function to export
 function tringle(
@@ -57,14 +57,14 @@ function tringle(
       thetaA,
       thetaB,
       thetaC,
-      ...tringleMid(fspnt, scpnt, trpnt),
+      ...tringleMed(fspnt, scpnt, trpnt),
     };
     handelar.record(
       result,
       { first_point, second_point, third_point },
       "tringle"
     );
-    return result;
+    return handelar.mood(result);
   } else {
     if (fspnt === false) {
       handelar.error(

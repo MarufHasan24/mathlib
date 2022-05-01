@@ -16,9 +16,9 @@ class MATH {
     this.length = handelar.length;
     //extras
     this.delRecord = handelar.delRecord;
-    this.list = handelar.list;
+    this.recList = handelar.list;
     this.restore = handelar.restore;
-    this.record = handelar.record;
+    this.read = handelar.read;
     this.mathlib = handelar.mathlib;
     this.info = handelar.info;
     /*--important functions--*/
@@ -72,6 +72,10 @@ class MATH {
     this.GCD = handelar.GCD;
     //get Least Common Multiple between two or more numbers
     this.LCM = handelar.LCM;
+    // intersection between 2 sets
+    this.intersect = handelar.intersect;
+    // union of 2 sets
+    this.union = handelar.union;
 
     /*--measurement calculation--*/
     //find out the distance between 2 dots
@@ -84,6 +88,8 @@ class MATH {
     this.tringleLines = handelar.tringleLines;
     //calculate tringle Angles by dots
     this.tringleAngles = handelar.tringleAngles;
+    //calculate tringle medians by dots
+    this.tringleMed = handelar.tringleMed;
     //calculate quadangle's area by its dots
     this.quadArea = handelar.quadArea;
     //calculate the corners length and cross point of the corners
@@ -95,7 +101,7 @@ class MATH {
     //get some information about a quad
     this.quad = handelar.quad;
     //calculate multiAngelArea by it's dots done!
-    this.polyArea = handelar.multiAngelArea;
+    this.polyArea = handelar.polyArea;
 
     /*--conversations--*/
     //Farenheit 2 Celcius
@@ -127,38 +133,38 @@ class MATH {
 
     // fractional math
     this.fract = handelar.fract;
+    this.sum = (...numbers) => {
+      if (numbers.length > 1) {
+        let result = 0;
+        for (let i = 0; i < numbers.length; i++) {
+          if (typeof numbers[i] === "number") {
+            result += numbers[i];
+          } else {
+            handelar.error("a number", numbers[i]);
+          }
+        }
+        return result;
+      } else {
+        throw `Please enter at least two numbers to sum.`;
+      }
+    };
+    this.multiply = (...numbers) => {
+      if (numbers.length > 1) {
+        let result = 1;
+        for (let i = 0; i < numbers.length; i++) {
+          if (typeof numbers[i] === "number") {
+            result *= numbers[i];
+          } else {
+            handelar.error("a number", numbers[i]);
+          }
+        }
+        return result;
+      } else {
+        throw `Please enter at least two numbers to multiply.`;
+      }
+    };
   }
   //constructor ends
-  multiply(...numbers) {
-    if (numbers.length > 1) {
-      let result = 1;
-      for (let i = 0; i < numbers.length; i++) {
-        if (typeof numbers[i] === "number") {
-          result *= numbers[i];
-        } else {
-          handelar.error("a number", numbers[i]);
-        }
-      }
-      return result;
-    } else {
-      throw `Please enter at least two numbers to multiply.`;
-    }
-  }
-  sum(...numbers) {
-    if (numbers.length > 1) {
-      let result = 0;
-      for (let i = 0; i < numbers.length; i++) {
-        if (typeof numbers[i] === "number") {
-          result += numbers[i];
-        } else {
-          handelar.error("a number", numbers[i]);
-        }
-      }
-      return result;
-    } else {
-      throw `Please enter at least two numbers to sum.`;
-    }
-  }
 }
 
 /*--add the math object--*/

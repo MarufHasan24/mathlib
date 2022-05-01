@@ -39,11 +39,11 @@ function tanx(input = 0) {
 function local(d) {
   if (d !== false) {
     if (odd(rad2Deg(d / 90).degree % 4) || rad2Deg(d).degree === 90) {
-      return Infinity;
+      return handelar.mood(Infinity);
     } else if (rad2Deg(d).degree % 180 === 0 || rad2Deg(d).degree === 0) {
-      return 0;
+      return handelar.mood(0);
     } else {
-      return Math.tan(d);
+      return handelar.mood(Math.tan(d));
     }
   } else {
     handelar.error("a number", "input", "tanx");

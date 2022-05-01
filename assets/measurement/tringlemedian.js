@@ -10,7 +10,7 @@ const handelar = require("./../../.localhandelar.js");
 const lineWidth = require("./lineWidth.js");
 
 //main function to export
-function tringleMid(
+function tringleMed(
   first_point = [0, 0],
   second_point = [0, 0],
   third_point = [0, 0]
@@ -58,33 +58,33 @@ function tringleMid(
     handelar.record(
       result,
       { first_point, second_point, third_point },
-      "tringleMid"
+      "tringleMed"
     );
-    return result;
+    return handelar.mood(result);
   } else {
     if (fspnt === false) {
       handelar.error(
         "an array contains 2 numbers[x,y]",
         "first_point",
-        "tringleMid"
+        "tringleMed"
       );
     } else if (scpnt === false) {
       handelar.error(
         "an array contains 2 numbers[x,y]",
         "second_point",
-        "tringleMid"
+        "tringleMed"
       );
     } else if (trpnt === false) {
       handelar.error(
         "an array contains 2 numbers[x,y]",
         "third_point",
-        "tringleMid"
+        "tringleMed"
       );
     } else {
-      console.error("Something went wrong in tringleMid()");
+      console.error("Something went wrong in tringleMed()");
     }
   }
 }
 
 //export and share
-module.exports = tringleMid;
+module.exports = tringleMed;

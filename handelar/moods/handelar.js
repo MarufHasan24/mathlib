@@ -16,8 +16,8 @@ moods.fix = require("./fixed.js");
 function main(answer) {
   let fresult;
   const ans =
-    typeof answer === "number" && Number.isFinite(answer) ? answer : NaN;
-  if (ans !== NaN) {
+    typeof answer === "number" && Number.isFinite(answer) ? answer : false;
+  if (ans) {
     const moodData = JSON.parse(
       fs.readFileSync(__dirname + "/mood.json", "utf-8")
     );
@@ -36,6 +36,9 @@ function main(answer) {
         fresult = moods.fix(moodData.status, ans);
         return fresult;
       } else {
+        console.error(
+          "Somthing went wrong. Report the bug on https://github.com/bicitrobiggan/mathlib-n/issues"
+        );
       }
     } else {
       error(
@@ -47,13 +50,7 @@ function main(answer) {
       );
     }
   } else {
-    error(
-      "Math error",
-      "answer",
-      "main()",
-      RangeError,
-      "report the bug : https://github.com/bicitrobiggan/mathlib-n/issues"
-    );
+    return answer;
   }
 }
 

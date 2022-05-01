@@ -69,7 +69,7 @@ function deg2Rad(input = [0, 0, 0]) {
     );
   }
   handelar.record(result, input, "rad2Deg");
-  return result;
+  return handelar.mood(result);
 }
 
 //convert radian into degree
@@ -112,7 +112,7 @@ function rad2Deg(radian) {
     handelar.error("a number or a string", "radian", "rad2Deg");
   }
   handelar.record(result, radian, "deg2Rad");
-  return result;
+  return handelar.mood(result);
 }
 
 function localRad(be4deg) {
@@ -128,7 +128,10 @@ function localRad(be4deg) {
     min = 0;
     deg++;
   }
-  return { array: [deg, min, sec], degree: deg + min / 60 + sec / 3600 };
+  return handelar.mood({
+    array: [deg, min, sec],
+    degree: deg + min / 60 + sec / 3600,
+  });
 }
 
 function localDeg(array) {
@@ -140,7 +143,7 @@ function localDeg(array) {
   radian = (deg + min / 60 + sec / 3600) * (Math.PI / 180);
   string = `${radian / Math.PI}π`;
   result = { radian, string };
-  return result;
+  return handelar.mood(result);
 }
 
 //export and share

@@ -27,9 +27,9 @@ function usrInpuTheMood() {
       }
       if (name !== "normal") {
         readline.question(
-          `Enter the status of ${name} here. 1~12  $_ `,
+          `Enter the status of ${name} here. 1~15  $_ `,
           (status) => {
-            status = parseInt(status);
+            status = parseInt(status) <= 15 ? parseInt(status) : 15;
             fs.writeFileSync(
               `${__dirname}/../handelar/moods/mood.json`,
               JSON.stringify({

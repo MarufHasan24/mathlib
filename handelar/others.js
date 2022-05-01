@@ -3,7 +3,7 @@ Title : others.js
 Author : Maruf Hasan
 Description : get together all the others assets and provide them to math.js
 Date : 5 October, 2021
-tempData : require('./../assets/others');
+tempData : require("./../assets/others");
 */
 
 //module scaffolding
@@ -24,6 +24,8 @@ handelar.sinx = require("./../assets/others/sine.js");
 handelar.cosx = require("./../assets/others/cosine.js");
 handelar.GCD = require("./../assets/others/GreatestCommonDivisor.js");
 handelar.LCM = require("./../assets/others/LeastCommonMultiple");
+handelar.intersect = require("./../assets/others/intersection");
+handelar.union = require("./../assets/others/union");
 
 //export and share
 module.exports = handelar;

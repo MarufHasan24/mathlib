@@ -60,7 +60,7 @@ function quadAngles(
       { first_point, second_point, third_point, fourth_point },
       "quadAngles"
     );
-    return result;
+    return handelar.mood(result);
   } else {
     if (fspnt === false) {
       handelar.error(

@@ -22,7 +22,7 @@ function qudrt(a, b, c) {
       x1 = (d ** 0.5 - bN) / (2 * aN);
       x2 = (-(d ** 0.5) - bN) / (2 * aN);
       handelar.record([x1, x2], { a, b, c }, "qudrt");
-      return [x1, x2];
+      return handelar.mood([x1, x2]);
     }
   } else {
     if (aN !== false) {

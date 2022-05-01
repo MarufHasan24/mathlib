@@ -38,11 +38,11 @@ function fract(input) {
       }
       result = [[int * into + flot, into], `${int * into + flot}/${into}`];
     } else {
-      handelar.error("A number", "input", "fract");
+      handelar.error("a number with (.) (float type number)", "input", "fract");
     }
   }
   handelar.record(result, input, "fract");
-  return result;
+  return handelar.mood(result);
 }
 
 //export and share

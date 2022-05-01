@@ -65,7 +65,7 @@ function age(date, month, year, customDate = []) {
         console.error("Wrong input in Date parameter of age");
       }
       handelar.record(result, [date, month, year, customDate], "age");
-      return result;
+      return handelar.mood(result);
     } else {
       if (!validNewDate[0]) {
         handelar.error(validNewDate[1], validNewDate[2], "age", RangeError);
@@ -102,7 +102,7 @@ function stringifyDate(newDate, CustomDate) {
   let CustomDateStringDate =
     CustomDate[0] <= 9 ? `0${CustomDate[0]}` : `${CustomDate[0]}`;
   let CustomDateString = `${CustomDate[2]}${CustomDateStringMonth}${CustomDateStringDate}`;
-  return { newDateString, CustomDateString };
+  return handelar.mood({ newDateString, CustomDateString });
 }
 
 function calculation(d1, d2, ml1, ml2) {
@@ -129,7 +129,7 @@ function calculation(d1, d2, ml1, ml2) {
     }
     //normal
   }
-  return result;
+  return handelar.mood(result);
 }
 
 //export and share

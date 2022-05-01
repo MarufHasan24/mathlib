@@ -25,7 +25,7 @@ handelar.memo = require("./../assets/memo.js");
 handelar.deMemo = require("./../assets/dememo.js");
 handelar.list = require("./../assets/recordList");
 handelar.delRecord = require("./../assets/deleteRecord");
-handelar.record = require("./../assets/recordShow");
+handelar.read = require("./../assets/recordShow");
 handelar.restore = require("./../assets/restoreFromTrush");
 handelar.qudrt = require("./../assets/quadratic.js");
 handelar.random = require("./../assets/random.js");
@@ -42,10 +42,10 @@ handelar.mathlib = require("./../clear");
 handelar.length =
   Object.keys(handelar).length +
   Object.getOwnPropertyNames(Math).length +
-  3 +
+  2 +
   __addConstantsToTheMainMathObjectCount();
 handelar.info = {
-  mathlib_functions: Object.keys(handelar).length - 1,
+  mathlib_functions: Object.keys(handelar) /* .length - 1 */,
   builtIn_functions: 35,
   total_functions: Object.keys(handelar).length + 34,
   mathlib_constants: __addConstantsToTheMainMathObjectCount(),
@@ -58,15 +58,13 @@ handelar.info = {
   total_features:
     Object.keys(handelar).length +
     Object.getOwnPropertyNames(Math).length +
-    3 +
+    2 +
     __addConstantsToTheMainMathObjectCount(),
 };
 /*important function*/
 function __addConstantsToTheMainMathObjectCount() {
-  const fs = require("fs");
-  let data = fs.readFileSync(`${__dirname}/../constants.json`, "utf8");
-  let obj = { ...JSON.parse(data) };
-  return Object.keys(obj).length;
+  let data = require(`${__dirname}/../constants.json`);
+  return Object.keys(data).length;
 }
 
 //export and share

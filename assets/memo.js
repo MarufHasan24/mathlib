@@ -30,7 +30,7 @@ function memo(number, name, asynchronous = false, callBack = null) {
         { number, type: typeof number, name, asynchronous, callBack },
         "memo"
       );
-      return fresult;
+      return handelar.mood(fresult);
     } else {
       MemoNode(num, nam, asy, (call) => {
         callBack(call);
@@ -86,7 +86,7 @@ function MemoNode(number1, name1, asynchronous1, callBack = null) {
           JSON.stringify(input),
           { encoding: "utf-8", flag: "w+" }
         );
-        return "saved";
+        return handelar.mood("saved");
       } else {
         fs.mkdirSync(`${__dirname}/../.mathLib`);
         fs.writeFileSync(
@@ -94,7 +94,7 @@ function MemoNode(number1, name1, asynchronous1, callBack = null) {
           JSON.stringify(input),
           { encoding: "utf-8", flag: "w+" }
         );
-        return "saved";
+        return handelar.mood("saved");
       }
     } catch (e) {
       input[nam1] = {
@@ -110,7 +110,7 @@ function MemoNode(number1, name1, asynchronous1, callBack = null) {
           JSON.stringify(input),
           { encoding: "utf-8", flag: "w+" }
         );
-        return "saved";
+        return handelar.mood("saved");
       } catch (e) {
         console.log("Don't delete the user.json file from .mathLib folder!");
         if (!fs.readdirSync(`${__dirname}/../.mathLib`).length) {
@@ -119,7 +119,7 @@ function MemoNode(number1, name1, asynchronous1, callBack = null) {
             JSON.stringify(input),
             { encoding: "utf-8", flag: "w+" }
           );
-          return "saved";
+          return handelar.mood("saved");
         }
       }
     }

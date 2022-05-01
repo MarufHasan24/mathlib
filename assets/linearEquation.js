@@ -45,9 +45,9 @@ function linearEq(first_Equation = [0, 0, 0], second_Equation = [0, 0, 0]) {
       if (x !== false && y !== false) {
         result = { x, y };
         handelar.record(result, { first_Equation, second_Equation }, "linear");
-        return result;
+        return handelar.mood(result);
       } else {
-        return "no solve found";
+        return handelar.mood("no solve found");
       }
     } else {
       if (a1 === false) {

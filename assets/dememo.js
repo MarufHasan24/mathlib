@@ -48,9 +48,9 @@ function deMemoNode(name1, asynchronous1 = false, callBack = null) {
       let output = JSON.parse(data);
       let keyArr = Object.keys(output);
       if (keyArr.indexOf(name1) >= 0) {
-        return output[name1];
+        return handelar.mood(output[name1]);
       } else {
-        return `not found`;
+        return handelar.mood(`not found`);
       }
     } catch (e) {
       console.log(e);

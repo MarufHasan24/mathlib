@@ -49,7 +49,7 @@ function tringleLines(
       { first_point, second_point, third_point },
       "tringleLines"
     );
-    return result;
+    return handelar.mood(result);
   } else {
     if (fspnt === false) {
       handelar.error(

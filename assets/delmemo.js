@@ -42,14 +42,14 @@ function delMemoLocal(name1, asynchronous1, callback) {
           `${__dirname}/../.mathLib/user.json`,
           JSON.stringify(output)
         );
-        return "done";
+        return handelar.mood("done");
       } else if (name1 === "ALL") {
         output = {};
         fs.writeFileSync(
           `${__dirname}/../.mathLib/user.json`,
           JSON.stringify(output)
         );
-        return "all clear";
+        return handelar.mood("all clear");
       } else {
         throw ReferenceError(`${name1} can't found in local databage.`);
       }

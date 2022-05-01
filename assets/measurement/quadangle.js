@@ -53,7 +53,7 @@ function quad(
       { first_point, second_point, third_point, fourth_point },
       "quad"
     );
-    return obj;
+    return handelar.mood(obj);
   } else {
     if (fspnt === false) {
       handelar.error(

@@ -21,7 +21,7 @@ function logx(base, angle) {
       handelar.error(
         "a number whish is grater than 0 and not 1",
         "base",
-        "logx()"
+        "logx"
       );
     } else if (ang === false) {
       handelar.error("a number whish is grater than 0", "angle", "logx");

@@ -42,7 +42,7 @@ function tringleArea(
       { first_point, second_point, third_point },
       "tringleArea"
     );
-    return area;
+    return handelar.mood(area);
   } else {
     if (fspnt === false) {
       handelar.error(

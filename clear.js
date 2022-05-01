@@ -7,7 +7,6 @@ Date : jan 10 , 2022
 
 //dependencies
 const fs = require("fs");
-const { dirname } = require("path");
 let moods = JSON.parse(
   fs.readFileSync(`${__dirname}/handelar/moods/mood.json`, "utf-8")
 );
@@ -18,11 +17,15 @@ try {
   fs.writeFileSync(`${__dirname}/.mathLib/user.json`, JSON.stringify({}));
 }
 let record = fs.readdirSync(__dirname + "/.record/");
-record = record.splice(1);
 let trush = fs.readdirSync(__dirname + "/.record/.trush/");
+let restore = fs.readdirSync(__dirname + "/.record/.restored/");
 
 mathlib = function () {
-  let mathlib = ` __  __       _   _     _      _ _ \n|  \\/  |     | | | |   | |    (_) |\n| \\  / | __ _| |_| |__ | |     _| |__\n| |\\/| |/ _\` | __| '_ \\| |    | | '_ \\\n| |  | | (_| | |_| | | | |____| | |_) |\n|_|  |_|\\__,_|\\__|_| |_|______|_|_.__/\n\nmood : ${moods.mood},  status : ${moods.status},  record : ${record.length},  trush : ${trush.length}`;
+  let mathlib = ` __  __       _   _     _      _ _ \n|  \\/  |     | | | |   | |    (_) |\n| \\  / | __ _| |_| |__ | |     _| |__\n| |\\/| |/ _\` | __| '_ \\| |    | | '_ \\\n| |  | | (_| | |_| | | | |____| | |_) |\n|_|  |_|\\__,_|\\__|_| |_|______|_|_.__/\n\nmood : ${
+    moods.mood
+  },  status : ${moods.status},  record : ${record.length - 2},  trush : ${
+    trush.length
+  }, restored: ${restore.length}`;
   let i = 1;
   let st = setInterval(styleTheName, 100);
 
