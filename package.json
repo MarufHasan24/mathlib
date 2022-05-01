@@ -23,10 +23,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bicitrobiggan/mathlib-n.git"
+    "url": "git+https://github.com/MarufHasan24/mathlib.git"
   },
   "bugs": {
-    "url": "https://github.com/bicitrobiggan/mathlib-n/issues"
+    "url": "https://github.com/MarufHasan24/mathlib/tree/master/issues"
   },
-  "homepage": "https://github.com/bicitrobiggan/mathlib-n#readme"
+  "homepage": "https://github.com/MarufHasan24/mathlib/tree/master#readme"
 }
