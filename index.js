@@ -7,6 +7,20 @@ Version : 1.0.0
  */
 
 //dependencies
+const fs = require("fs");
+// all is perfect
+let recorDir = __dirname + "/.record";
+
+if (!fs.existsSync(recorDir)) {
+  fs.mkdirSync(recorDir);
+  fs.mkdirSync(recorDir + "/.trush");
+  fs.mkdirSync(recorDir + "/.restored");
+} else if (!fs.existsSync(recorDir + "/.trush")) {
+  fs.mkdirSync(recorDir + "/.trush");
+} else if (!fs.existsSync(recorDir + "/.restored")) {
+  fs.mkdirSync(recorDir + "/.restored");
+}
+
 const handelar = require("./handelar/index.js");
 
 //module scaffolding
