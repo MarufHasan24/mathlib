@@ -45,7 +45,7 @@ handelar.length =
   2 +
   __addConstantsToTheMainMathObjectCount();
 handelar.info = {
-  mathlib_functions: Object.keys(handelar) /* .length - 1 */,
+  mathlib_functions: Object.keys(handelar).length - 1,
   builtIn_functions: 35,
   total_functions: Object.keys(handelar).length + 34,
   mathlib_constants: __addConstantsToTheMainMathObjectCount(),
