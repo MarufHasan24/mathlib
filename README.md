@@ -4,7 +4,7 @@
 
 [Github](https://github.com/bicitrobiggan/mathlib-n.git) : letest and unstable version
 
-npm : 3.2.0 (stable version and recommended)
+npm : 3.2.1 (stable version and recommended)
 
 **mathlib-n** is a math library
 which can solve our simple and day to day lifes problem. like :
@@ -104,6 +104,6 @@ MIT
 
 ## History
 
-Current version : 3.2.0
+Current version : 3.2.1
 
 [History](https://marufhasan24.github.io/mathlib_wiki2/index.html#changeLog)
