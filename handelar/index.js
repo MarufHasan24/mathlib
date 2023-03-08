@@ -37,6 +37,7 @@ handelar.logx = require("./../assets/logarithm.js");
 handelar.rootx = require("./../assets/rootx.js");
 handelar.fract = require("./../assets/fractions.js");
 handelar.mathlib = require("./../clear");
+handelar.Vector = require("./../vector.js");
 
 //size
 handelar.length =

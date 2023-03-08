@@ -38,7 +38,7 @@ function trush() {
           (error) => {
             if (error)
               console.error(
-                "Somthing went wrong in auto trush system. Please report this bug here : https://github.com/bicitrobiggan/mathlib-n/issues"
+                "Somthing went wrong in auto trush system. Please report this bug here : https://github.com/MarufHasan24/mathlib/issues"
               );
           }
         );
@@ -50,7 +50,7 @@ function trush() {
             (error) => {
               if (error)
                 console.error(
-                  "Somthing went wrong in auto trush system. Please report this bug here : https://github.com/bicitrobiggan/mathlib-n/issues"
+                  "Somthing went wrong in auto trush system. Please report this bug here : https://github.com/MarufHasan24/mathlib/issues"
                 );
             }
           );
@@ -77,7 +77,7 @@ function trush() {
         (error) => {
           if (error)
             console.error(
-              "Somthing went wrong in auto trush system. Please report this bug here : https://github.com/bicitrobiggan/mathlib-n/issues"
+              "Somthing went wrong in auto trush system. Please report this bug here : https://github.com/MarufHasan24/mathlib/issues"
             );
         }
       );
@@ -93,7 +93,7 @@ function trush() {
         (error) => {
           if (error)
             console.error(
-              "Somthing went wrong in auto trush system. Please report this bug here : https://github.com/bicitrobiggan/mathlib-n/issues"
+              "Somthing went wrong in auto trush system. Please report this bug here : https://github.com/MarufHasan24/mathlib/issues"
             );
         }
       );
@@ -106,7 +106,7 @@ function trush() {
       fs.unlink(`${Dir}/${recordData[i]}`, (error) => {
         if (error)
           console.error(
-            "Somthing went wrong in auto trush system. Please report this bug here : https://github.com/bicitrobiggan/mathlib-n/issues"
+            "Somthing went wrong in auto trush system. Please report this bug here : https://github.com/MarufHasan24/mathlib/issues"
           );
       });
       //console.log([monthDate, [date.getFullYear(), date.getMonth()]]);
@@ -114,7 +114,7 @@ function trush() {
       fs.unlink(`${Dir}/${recordData[i]}`, (error) => {
         if (error)
           console.error(
-            "Somthing went wrong in auto trush system. Please report this bug here : https://github.com/bicitrobiggan/mathlib-n/issues"
+            "Somthing went wrong in auto trush system. Please report this bug here : https://github.com/MarufHasan24/mathlib/issues"
           );
       });
       //console.log([monthDate, [date.getFullYear(), date.getMonth()]]);
@@ -141,7 +141,7 @@ function deleteForever() {
           fs.unlink(`${Dir}/.trush/${trushData[i]}`, (error) => {
             if (error)
               console.error(
-                "Somthing went wrong in auto trush system. Please report this bug here : https://github.com/bicitrobiggan/mathlib-n/issues"
+                "Somthing went wrong in auto trush system. Please report this bug here : https://github.com/MarufHasan24/mathlib/issues"
               );
           });
         } else {
@@ -160,7 +160,7 @@ function deleteForever() {
       fs.unlink(`${Dir}/${recordData[i]}`, (error) => {
         if (error)
           console.error(
-            "Somthing went wrong in auto trush system. Please report this bug here : https://github.com/bicitrobiggan/mathlib-n/issues"
+            "Somthing went wrong in auto trush system. Please report this bug here : https://github.com/MarufHasan24/mathlib/issues"
           );
       });
       //console.log([monthDate, [date.getFullYear(), date.getMonth()]]);

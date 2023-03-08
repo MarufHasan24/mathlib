@@ -37,7 +37,7 @@ function main(answer) {
         return fresult;
       } else {
         console.error(
-          "Somthing went wrong. Report the bug on https://github.com/bicitrobiggan/mathlib-n/issues"
+          "Somthing went wrong. Report the bug on https://github.com/MarufHasan24/mathlib/issues"
         );
       }
     } else {
@@ -46,7 +46,7 @@ function main(answer) {
         "answer",
         "main()",
         RangeError,
-        "report the bug : https://github.com/bicitrobiggan/mathlib-n/issues"
+        "report the bug : https://github.com/MarufHasan24/mathlib/issues"
       );
     }
   } else {
