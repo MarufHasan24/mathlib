@@ -93,10 +93,10 @@ There will be an animation of `MathLib` ,but you can skip it by pressing `ctrl +
 
 **A little description** :
 
-- `math.info` : It will preasent a query data of mathlib-n laibrary as a javascript object.
-- `math.length` : It will give you the length of math object.
-- `math.mathlib()` : It's a fun function. There is no such important work it done. It's just a terminal animation. But it will give you some important information about your calculation mood and your saved,restored and trushed files number at the end.
-- `math.recList` : return an array of record's files name.
+- `mathlib.info` : It will preasent a query data of mathlib-n laibrary as a javascript object.
+- `mathlib.length` : It will give you the length of math object.
+- `mathlib.mathlib()` : It's a fun function. There is no such important work it done. It's just a terminal animation. But it will give you some important information about your calculation mood and your saved,restored and trushed files number at the end.
+- `mathlib.recList` : return an array of record's files name.
 
 ## Licence
 
