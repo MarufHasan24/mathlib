@@ -6,7 +6,7 @@ Date : 5 October , 2021
 */
 
 //dependencies
-const handelar = require("./../../.localhandelar");
+const handelar = require("./../.localhandelar");
 //main functions to export
 
 //1_@inch to centimeter
@@ -15,8 +15,7 @@ function in2Cm(inch) {
   let num = typeof inch === "number" ? inch : false;
   if (num !== false) {
     result = num * 2.54;
-    handelar.record(result, inch, "in2Cm");
-    return handelar.mood(result);
+    return handelar.record(result, inch, "in2Cm");
   } else {
     handelar.error("a number", "inch", "in2Cm");
   }
@@ -28,8 +27,7 @@ function cm2In(centimeter) {
   let num = typeof centimeter === "number" ? centimeter : false;
   if (num !== false) {
     result = num / 2.54;
-    handelar.record(result, centimeter, "cm2In");
-    return handelar.mood(result);
+    return handelar.record(result, centimeter, "cm2In");
   } else {
     handelar.error("a number", "centimeter", "cm2In");
   }
@@ -41,8 +39,7 @@ function mile2Km(mile) {
   let num = typeof mile === "number" ? mile : false;
   if (num !== false) {
     result = num * 1.609344;
-    handelar.record(result, mile, "mile2Km");
-    return handelar.mood(result);
+    return handelar.record(result, mile, "mile2Km");
   } else {
     handelar.error("a number", "mile", "mile2Km");
   }
@@ -54,8 +51,7 @@ function km2Mile(kilometer) {
   let num = typeof kilometer === "number" ? kilometer : false;
   if (num !== false) {
     result = num / 1.609344;
-    handelar.record(result, kilometer, "km2Mile");
-    return handelar.mood(result);
+    return handelar.record(result, kilometer, "km2Mile");
   } else {
     handelar.error("a number", "kilometer", "km2Mile");
   }
@@ -67,8 +63,7 @@ function ft2M(feet) {
   let num = typeof feet === "number" ? feet : false;
   if (num !== false) {
     result = num * 0.3048;
-    handelar.record(result, feet, "ft2M");
-    return handelar.mood(result);
+    return handelar.record(result, feet, "ft2M");
   } else {
     handelar.error("a number", "feet", "ft2M");
   }
@@ -80,8 +75,7 @@ function m2Ft(meter) {
   let num = typeof meter === "number" ? meter : false;
   if (num !== false) {
     result = num / 0.3048;
-    handelar.record(result, meter, "m2Ft");
-    return handelar.mood(result);
+    return handelar.record(result, meter, "m2Ft");
   } else {
     handelar.error("a number", "meter", "m2Ft");
   }

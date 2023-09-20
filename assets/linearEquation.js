@@ -44,38 +44,29 @@ function linearEq(first_Equation = [0, 0, 0], second_Equation = [0, 0, 0]) {
         : false;
       if (x !== false && y !== false) {
         result = { x, y };
-        handelar.record(result, { first_Equation, second_Equation }, "linear");
-        return handelar.mood(result);
+        return handelar.record(
+          result,
+          { first_Equation, second_Equation },
+          "linear"
+        );
       } else {
         return handelar.mood("no solve found");
       }
     } else {
       if (a1 === false) {
-        handelar.error("a number", "1st value of first_Equation", "linearEq()");
+        handelar.error("a number", "1st value of first_Equation", "linearEq");
       } else if (b1 === false) {
-        handelar.error("a number", "1st value of first_Equation", "linearEq()");
+        handelar.error("a number", "1st value of first_Equation", "linearEq");
       } else if (a2 === false) {
-        handelar.error(
-          "a number",
-          "2nd value of second_Equation",
-          "linearEq()"
-        );
+        handelar.error("a number", "2nd value of second_Equation", "linearEq");
       } else if (b2 === false) {
-        handelar.error(
-          "a number",
-          "2nd value of second_Equation",
-          "linearEq()"
-        );
+        handelar.error("a number", "2nd value of second_Equation", "linearEq");
       } else if (c1 === false) {
-        handelar.error("a number", "3rd value of first_Equation", "linearEq()");
+        handelar.error("a number", "3rd value of first_Equation", "linearEq");
       } else if (c2 === false) {
-        handelar.error(
-          "a number",
-          "3rd value of second_Equation",
-          "linearEq()"
-        );
+        handelar.error("a number", "3rd value of second_Equation", "linearEq");
       } else {
-        console.error("Somthing went wrong in linearEq()");
+        console.error("Somthing went wrong in linearEq");
       }
     }
   } else {
@@ -83,16 +74,16 @@ function linearEq(first_Equation = [0, 0, 0], second_Equation = [0, 0, 0]) {
       handelar.error(
         "an array contains [a,b,c] 3 numeric values",
         "first_Equation",
-        "linearEq()"
+        "linearEq"
       );
     } else if (secEq === false) {
       handelar.error(
         "an array contains [a,b,c] 3 numeric values",
         "second_Equation",
-        "linearEq()"
+        "linearEq"
       );
     } else {
-      console.error("Somthing went wrong in linearEq()");
+      console.error("Somthing went wrong in linearEq");
     }
   }
 }

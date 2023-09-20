@@ -8,8 +8,8 @@ Date : 6 March, 2022
 function validJSONfileName(fileName) {
   let fileNm = typeof fileName === "string" ? fileName : false;
   if (fileNm !== false) {
-    let JSONformate = /(\d).json/g;
-    if (fileNm.search(JSONformate) >= 0) {
+    let JSONformate = /^(\d+\-\d{1,2}\-\d{1,2}).json$/g;
+    if (JSONformate.test(fileNm)) {
       return [true, "true"];
     } else {
       return [false, "wrongFormate"];

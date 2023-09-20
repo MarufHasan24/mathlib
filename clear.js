@@ -11,16 +11,16 @@ let moods = JSON.parse(
   fs.readFileSync(`${__dirname}/handelar/moods/mood.json`, "utf-8")
 );
 try {
-  JSON.parse(fs.readFileSync(`${__dirname}/.mathLib/user.json`, "utf-8"));
+  JSON.parse(fs.readFileSync(`${__dirname}/.mathLib/memo.json`, "utf-8"));
 } catch {
-  fs.unlinkSync(`${__dirname}/.mathLib/user.json`);
-  fs.writeFileSync(`${__dirname}/.mathLib/user.json`, JSON.stringify({}));
+  fs.unlinkSync(`${__dirname}/.mathLib/memo.json`);
+  fs.writeFileSync(`${__dirname}/.mathLib/memo.json`, JSON.stringify({}));
 }
 let record = fs.readdirSync(__dirname + "/.record/");
 let trush = fs.readdirSync(__dirname + "/.record/.trush/");
 let restore = fs.readdirSync(__dirname + "/.record/.restored/");
 
-mathlib = function () {
+module.exports = function () {
   let mathlib = ` __  __       _   _     _      _ _ \n|  \\/  |     | | | |   | |    (_) |\n| \\  / | __ _| |_| |__ | |     _| |__\n| |\\/| |/ _\` | __| '_ \\| |    | | '_ \\\n| |  | | (_| | |_| | | | |____| | |_) |\n|_|  |_|\\__,_|\\__|_| |_|______|_|_.__/\n\nmood : ${
     moods.mood
   },  status : ${moods.status},  record : ${record.length - 2},  trush : ${
@@ -41,6 +41,3 @@ mathlib = function () {
     }
   }
 };
-
-//main function to export
-module.exports = mathlib;

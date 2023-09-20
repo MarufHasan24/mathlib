@@ -5,11 +5,8 @@ Description : change the mood of calculation.
 Date : 22 November , 2021
 */
 
-// dependencies
-const leapYear = require("../assets/others/leapyear.js");
-
 // main function to export
-function checkDateValidity(date, month, year) {
+module.exports = function (year, month, date) {
   if (month >= 1 && month <= 12) {
     if (
       month === 1 ||
@@ -32,7 +29,7 @@ function checkDateValidity(date, month, year) {
         return [false, `number between (1 to 30)`, "date"];
       }
     } else if (month === 2) {
-      if (leapYear(year)) {
+      if (year % 400 == 0 || (year % 100 != 0 && year % 4 == 0)) {
         if (date >= 1 && date <= 29) {
           return [true, 29];
         } else {
@@ -59,6 +56,4 @@ function checkDateValidity(date, month, year) {
   } else {
     return [false, "number between (1 to 12)", "month"];
   }
-}
-
-module.exports = checkDateValidity;
+};

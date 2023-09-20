@@ -23,8 +23,8 @@ if (!fs.existsSync(recorDir)) {
 }
 
 function fix_memo() {
-  fs.unlinkSync(`${dir}/user.json`);
-  fs.writeFileSync(`${dir}/user.json`, JSON.stringify({}));
+  fs.unlinkSync(`${dir}/memo.json`);
+  fs.writeFileSync(`${dir}/memo.json`, JSON.stringify({}));
   require("./../clear")();
 }
 fix_memo();

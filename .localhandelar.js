@@ -10,8 +10,6 @@ const main = {};
 
 // record
 main.record = require("./handelar/datahandelar.js");
-// mood
-main.mood = require("./handelar/moods/handelar.js");
 // error
 main.error = require("./error.js");
 

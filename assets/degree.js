@@ -1,16 +1,132 @@
 /*
-Title : degree_radian.js
+Title : degree.js
 Author : Maruf Hasan
-Description : convert degree into radian and convert  radian into degree
-Date : 7 October , 2021
+Description : convert degree into decimal and decimal into deg.
+Date : 24 October , 2021
 */
 
 //dependencies
-const handelar = require("./../../.localhandelar.js");
+const handelar = require("./../.localhandelar.js");
 
 //main functions to export
-
-//convert degree into radian
+function deg2Dcm(input = [0, 0, 0]) {
+  let result;
+  let inp = typeof input === "string" || Array.isArray(input) ? input : false;
+  if (inp !== false) {
+    if (Array.isArray(input)) {
+      if (!inp.length) {
+        inp = [0, 0, 0];
+      } else if (inp.length === 1) {
+        inp[1] = 0;
+        inp[2] = 0;
+      } else if (inp.length === 2) {
+        inp[2] = 0;
+      } else {
+        inp = inp;
+      }
+      result = deg2DcmLocal(inp);
+    } else if (typeof input === "string") {
+      let regXpDeg = /(\d(°))/gi,
+        regXpMin = /\d(\')/gi,
+        regXpSec = /\d(\")/gi,
+        deg,
+        min,
+        sec,
+        linp,
+        data;
+      data = [
+        parseFloat(inp.substring(0, inp.search(regXpDeg) + 1)),
+        parseFloat(
+          inp.substring(inp.search(regXpDeg) + 2, inp.search(regXpMin) + 1)
+        ),
+        parseFloat(
+          inp.substring(inp.search(regXpMin) + 2, inp.search(regXpSec) + 1)
+        ),
+      ];
+      (deg =
+        typeof data[0] === "number" && !Number.isNaN(data[0])
+          ? data[0]
+          : false),
+        (min =
+          typeof data[1] === "number" && !Number.isNaN(data[1])
+            ? data[1]
+            : false),
+        (sec =
+          typeof data[2] === "number" && !Number.isNaN(data[2])
+            ? data[2]
+            : false);
+      if (deg !== false && min !== false && sec !== false) {
+        if (regXpDeg.test(inp) && regXpMin.test(inp) && regXpSec.test(inp)) {
+          linp = [deg, min, sec];
+          result = deg2DcmLocal(linp);
+        } else if (
+          inp.search(regXpDeg) >= 0 &&
+          inp.search(regXpMin) >= 0 &&
+          !regXpSec.test(inp)
+        ) {
+          deg = parseFloat(inp.substring(0, inp.search(regXpDeg) + 1));
+          min = parseFloat(
+            inp.substring(inp.search(regXpDeg) + 2, inp.search(regXpMin) + 1)
+          );
+          linp = [deg, min, 0];
+          result = deg2DcmLocal(linp);
+        } else if (
+          inp.search(regXpDeg) >= 0 &&
+          inp.search(regXpMin) < 0 &&
+          !regXpSec.test(inp)
+        ) {
+          deg = parseFloat(inp.substring(0, inp.search(regXpDeg) + 1));
+          linp = [deg, 0, 0];
+          result = deg2DcmLocal(linp);
+        } else {
+          throw "Enter at least a number and symbols like °,',\"";
+        }
+      } else {
+        throw "somthing went wrong in deg2Dcm() inpput. please enter a valid srting here";
+      }
+    } else {
+      handelar.error(
+        "an array containing 3 numbers or a string which contains °,' or \"",
+        "input",
+        "deg2Dcm"
+      );
+    }
+  } else {
+    handelar.error(
+      "a number or a string which contains °,' or \"",
+      "input",
+      "deg2Dcm"
+    );
+  }
+  return handelar.record(result, input, "deg2Dcm");
+}
+function dcm2Deg(number) {
+  let num = typeof number === "number" ? number : false;
+  if (num !== false) {
+    let deg, min, sec;
+    deg = Math.ceil(num) - 1;
+    min = Math.ceil((num - deg) * 60) - 1;
+    sec = ((num - deg) * 60 - min) * 60;
+    if (sec >= 60) {
+      sec = 0;
+      min++;
+    }
+    if (min >= 60) {
+      min = 0;
+      deg++;
+    }
+    return handelar.record(
+      {
+        result: [deg, min, sec],
+        string: `${deg}°${min}'${sec}"`,
+      },
+      number,
+      "dcm2Deg"
+    );
+  } else {
+    handelar.error("a number", "number", "dcm2Deg");
+  }
+}
 function deg2Rad(input = [0, 0, 0]) {
   let result;
   if (Array.isArray(input)) {
@@ -68,11 +184,8 @@ function deg2Rad(input = [0, 0, 0]) {
       "deg2Rad"
     );
   }
-  handelar.record(result, input, "rad2Deg");
-  return handelar.mood(result);
+  return handelar.record(result, input, "rad2Deg");
 }
-
-//convert radian into degree
 function rad2Deg(radian) {
   let rad,
     result,
@@ -111,10 +224,19 @@ function rad2Deg(radian) {
   } else {
     handelar.error("a number or a string", "radian", "rad2Deg");
   }
-  handelar.record(result, radian, "deg2Rad");
-  return handelar.mood(result);
+  return handelar.record(result, radian, "deg2Rad");
 }
 
+//local functions to use
+function deg2DcmLocal(array) {
+  let data = Array.isArray(array) ? array : [0, 0, 0];
+  let deg = data[0],
+    min = data[1],
+    sec = data[2];
+  let result;
+  result = deg + min / 60 + sec / 3600;
+  return handelar.record(result);
+}
 function localRad(be4deg) {
   let deg, min, sec;
   deg = Math.ceil(be4deg * 180) - 1;
@@ -128,12 +250,11 @@ function localRad(be4deg) {
     min = 0;
     deg++;
   }
-  return handelar.mood({
+  return handelar.record({
     array: [deg, min, sec],
     degree: deg + min / 60 + sec / 3600,
   });
 }
-
 function localDeg(array) {
   let data = Array.isArray(array) ? array : [NaN, NaN, NaN];
   let deg = data[0],
@@ -143,11 +264,13 @@ function localDeg(array) {
   radian = (deg + min / 60 + sec / 3600) * (Math.PI / 180);
   string = `${radian / Math.PI}π`;
   result = { radian, string };
-  return handelar.mood(result);
+  return handelar.record(result);
 }
 
 //export and share
 module.exports = {
+  deg2Dcm,
+  dcm2Deg,
   deg2Rad,
   rad2Deg,
 };

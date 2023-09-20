@@ -6,7 +6,7 @@ Date :
 */
 
 //dependencies
-const handelar = require("./../../.localhandelar.js");
+const handelar = require("./../.localhandelar.js");
 
 //main function to export
 function leapYear(year) {
@@ -29,8 +29,7 @@ function leapYear(year) {
   } else {
     handelar.error("a year", "year", "leapYear");
   }
-  handelar.record(result, year, "leapYear");
-  return handelar.mood(result);
+  return handelar.record(result, year, "leapYear");
 }
 //export amd share
 module.exports = leapYear;

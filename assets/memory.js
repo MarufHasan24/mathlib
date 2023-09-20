@@ -1,12 +1,11 @@
 /*
-Title : memo.js
-Author : Maruf Hasan
-Description : memories data 
-Date : 4 October, 2021
+Title: getmemo.js
+Author: Maruf Hasan
+Description: get memory data
+Date: 13 September, 2023
 */
-
-// dependencies
 const handelar = require("../.localhandelar");
+const fs = require("fs");
 
 let fresult;
 //main function to export
@@ -25,7 +24,7 @@ function memo(number, name, asynchronous = false, callBack = null) {
     num = num;
     if (asy === false) {
       fresult = MemoNode(num, nam, asy);
-      handelar.record(
+      return handelar.record(
         num,
         { number, type: typeof number, name, asynchronous, callBack },
         "memo"
@@ -34,7 +33,7 @@ function memo(number, name, asynchronous = false, callBack = null) {
     } else {
       MemoNode(num, nam, asy, (call) => {
         callBack(call);
-        handelar.record(
+        return handelar.record(
           num,
           { number, type: typeof number, name, asynchronous, callBack },
           "memo"
@@ -48,29 +47,78 @@ function memo(number, name, asynchronous = false, callBack = null) {
       handelar.error(
         "a string",
         "name",
-        "memo()",
+        "memo",
         TypeError,
         "And don't add any number[0-9] at the starting of the name"
       );
     } else if (asy === null) {
       handelar.error("a boolean value", "asynchronous", "memo");
     } else {
-      console.error("Somthing went wrong in memo()");
+      console.error("Somthing went wrong in memo");
     }
   }
 }
+function delMemo(name = "ALL", asynchronous = false, callback) {
+  let nam = typeof name === "string" ? name : false;
+  let asy = typeof asynchronous === "boolean" ? asynchronous : false;
+  if (nam !== false) {
+    if (asy) {
+      delMemoLocal(nam, asy, (call) => {
+        callback(call);
+      });
+    } else {
+      return delMemoLocal(nam, asy);
+    }
+  } else {
+    if (nam === false) {
+      handelar.error("a string", "name", "delMemo");
+    } else {
+      console.error("Somthing went wrong in delMemo()");
+    }
+  }
+}
+function deMemo(name, asynchronous = false, callBack = null) {
+  let regXp = /^[0-9]/gi;
+  let nam =
+    typeof name === "string" &&
+    name.trim().length > 0 &&
+    name.search(regXp) === -1
+      ? name
+      : false;
+  let result;
+  let asy = typeof asynchronous === "boolean" ? asynchronous : null;
+  if (nam && asy !== null) {
+    if (asy === true) {
+      deMemoNode(nam, asy, (call) => {
+        result = callBack(call);
+        return handelar.record(result, { name, asynchronous }, "deMemo");
+      });
+    } else {
+      result = deMemoNode(nam, asy);
+      return handelar.record(result, { name, asynchronous }, "deMemo");
+    }
+  } else {
+    handelar.error(
+      "a string",
+      "name",
+      "deMemo",
+      TypeError,
+      "And don't add any number[0-9] at the starting of the name"
+    );
+  }
+}
 
+//assistant functions
 function MemoNode(number1, name1, asynchronous1, callBack = null) {
   let nam1 = name1;
   let num1 = number1;
   let input = {};
-  const fs = require("fs");
   if (!asynchronous1) {
     try {
       callBack = null;
       let folder = fs.readdirSync(`${__dirname}/../.mathLib`);
       const data = fs.readFileSync(
-        `${__dirname}/../.mathLib/user.json`,
+        `${__dirname}/../.mathLib/memo.json`,
         "utf-8"
       );
       input = { ...JSON.parse(data) };
@@ -82,7 +130,7 @@ function MemoNode(number1, name1, asynchronous1, callBack = null) {
       };
       if (folder) {
         fs.writeFileSync(
-          `${__dirname}/../.mathLib/user.json`,
+          `${__dirname}/../.mathLib/memo.json`,
           JSON.stringify(input),
           { encoding: "utf-8", flag: "w+" }
         );
@@ -90,7 +138,7 @@ function MemoNode(number1, name1, asynchronous1, callBack = null) {
       } else {
         fs.mkdirSync(`${__dirname}/../.mathLib`);
         fs.writeFileSync(
-          `${__dirname}/../.mathLib/user.json`,
+          `${__dirname}/../.mathLib/memo.json`,
           JSON.stringify(input),
           { encoding: "utf-8", flag: "w+" }
         );
@@ -106,16 +154,16 @@ function MemoNode(number1, name1, asynchronous1, callBack = null) {
       try {
         fs.mkdirSync(`${__dirname}/../.mathLib`);
         fs.writeFileSync(
-          `${__dirname}/../.mathLib/user.json`,
+          `${__dirname}/../.mathLib/memo.json`,
           JSON.stringify(input),
           { encoding: "utf-8", flag: "w+" }
         );
         return handelar.mood("saved");
       } catch (e) {
-        console.log("Don't delete the user.json file from .mathLib folder!");
+        console.log("Don't delete the memo.json file from .mathLib folder!");
         if (!fs.readdirSync(`${__dirname}/../.mathLib`).length) {
           fs.writeFileSync(
-            `${__dirname}/../.mathLib/user.json`,
+            `${__dirname}/../.mathLib/memo.json`,
             JSON.stringify(input),
             { encoding: "utf-8", flag: "w+" }
           );
@@ -127,7 +175,7 @@ function MemoNode(number1, name1, asynchronous1, callBack = null) {
     //asynchronous
     fs.readdir(`${__dirname}/../.mathLib`, (error, files) => {
       if (!error && files) {
-        fs.readFile(`${__dirname}/../.mathLib/user.json`, (errorM, data) => {
+        fs.readFile(`${__dirname}/../.mathLib/memo.json`, (errorM, data) => {
           if (!errorM && data.length) {
             input = { ...JSON.parse(data) };
             input[nam1] = {
@@ -138,7 +186,7 @@ function MemoNode(number1, name1, asynchronous1, callBack = null) {
             };
             return asyncMainMemoNode(
               fs,
-              "user.json",
+              "memo.json",
               JSON.stringify(input),
               callBack
             );
@@ -151,7 +199,7 @@ function MemoNode(number1, name1, asynchronous1, callBack = null) {
             };
             return asyncMainMemoNode(
               fs,
-              "user.json",
+              "memo.json",
               JSON.stringify(input),
               callBack
             );
@@ -168,7 +216,7 @@ function MemoNode(number1, name1, asynchronous1, callBack = null) {
             };
             return asyncMainMemoNode(
               fs,
-              "user.json",
+              "memo.json",
               JSON.stringify(input),
               callBack
             );
@@ -180,7 +228,6 @@ function MemoNode(number1, name1, asynchronous1, callBack = null) {
     });
   }
 }
-
 function asyncMainMemoNode(fs, fileName, input, callBack) {
   fs.open(
     `${__dirname}/../.mathLib/${fileName}`,
@@ -226,6 +273,114 @@ function asyncMainMemoNode(fs, fileName, input, callBack) {
     }
   );
 }
-
-//expot and share
-module.exports = memo;
+function delMemoLocal(name1, asynchronous1, callback) {
+  if (!asynchronous1) {
+    try {
+      let data = fs.readFileSync(`${__dirname}/../.mathLib/memo.json`, "utf8");
+      let output = JSON.parse(data);
+      let keyArr = Object.keys(output);
+      if (keyArr.indexOf(name1) >= 0) {
+        delete output[name1];
+        fs.writeFileSync(
+          `${__dirname}/../.mathLib/memo.json`,
+          JSON.stringify(output)
+        );
+        return handelar.mood("done");
+      } else if (name1 === "ALL") {
+        output = {};
+        fs.writeFileSync(
+          `${__dirname}/../.mathLib/memo.json`,
+          JSON.stringify(output)
+        );
+        return handelar.mood("all clear");
+      } else {
+        throw ReferenceError(`${name1} can't found in local databage.`);
+      }
+    } catch (e) {
+      throw e;
+    }
+  } else {
+    fs.readFile(
+      `${__dirname}/../.mathLib/memo.json`,
+      "utf8",
+      (error1, data) => {
+        if (!error1 && data) {
+          let output = JSON.parse(data);
+          let keyArr = Object.keys(output);
+          if (keyArr.indexOf(name1) >= 0) {
+            delete output[name1];
+            fs.writeFile(
+              `${__dirname}/../.mathLib/memo.json`,
+              JSON.stringify(output),
+              (error2) => {
+                if (!error2) {
+                  callback("success");
+                } else {
+                  throw error2;
+                }
+              }
+            );
+          } else if (name1 === "ALL") {
+            output = {};
+            fs.writeFile(
+              `${__dirname}/../.mathLib/memo.json`,
+              JSON.stringify(output),
+              (error3) => {
+                if (!error3) {
+                  callback("all clear");
+                } else {
+                  throw error3;
+                }
+              }
+            );
+          } else {
+            throw ReferenceError(`${name1} isn't in local databage.`);
+          }
+        } else {
+          throw error1;
+        }
+      }
+    );
+  }
+}
+function deMemoNode(name1, asynchronous1 = false, callBack = null) {
+  const fs = require("fs");
+  if (!asynchronous1) {
+    try {
+      let data = fs.readFileSync(`${__dirname}/../.mathLib/memo.json`, "utf8");
+      let output = JSON.parse(data);
+      let keyArr = Object.keys(output);
+      if (keyArr.indexOf(name1) >= 0) {
+        return handelar.mood(output[name1]);
+      } else {
+        return handelar.mood(`not found`);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  } else {
+    fs.readFile(
+      `${__dirname}/../.mathLib/memo.json`,
+      "utf8",
+      (error1, data) => {
+        if (!error1 && data) {
+          let output = JSON.parse(data);
+          let keyArr = Object.keys(output);
+          if (keyArr.indexOf(name1) >= 0) {
+            callBack(output[name1]);
+          } else {
+            callBack(`not found`);
+          }
+        } else {
+          callBack(error1);
+        }
+      }
+    );
+  }
+}
+//export and share
+module.exports = {
+  memo,
+  delMemo,
+  deMemo,
+};

@@ -7,28 +7,25 @@ Version : 1.0.0
  */
 
 //dependencies
-const fs = require("fs");
-// all is perfect
+const { existsSync, mkdirSync, writeFileSync, readFileSync } = require("fs");
+const { record, error } = require("./.localhandelar");
+
+// all is perfect?
 let recorDir = __dirname + "/.record";
-
-if (!fs.existsSync(recorDir)) {
-  fs.mkdirSync(recorDir);
-  fs.mkdirSync(recorDir + "/.trush");
-  fs.mkdirSync(recorDir + "/.restored");
-} else if (!fs.existsSync(recorDir + "/.trush")) {
-  fs.mkdirSync(recorDir + "/.trush");
-} else if (!fs.existsSync(recorDir + "/.restored")) {
-  fs.mkdirSync(recorDir + "/.restored");
+if (!existsSync(recorDir)) {
+  mkdirSync(recorDir);
+  mkdirSync(recorDir + "/.trush");
+  mkdirSync(recorDir + "/.restored");
+} else if (!existsSync(recorDir + "/.trush")) {
+  mkdirSync(recorDir + "/.trush");
+} else if (!existsSync(recorDir + "/.restored")) {
+  mkdirSync(recorDir + "/.restored");
 }
-
-const handelar = require("./handelar/index.js");
-const lhandelar = require(__dirname + "/.localhandelar");
-
 //module scaffolding
-const main = {
-  ...__addTheMathObject(),
-  ...__addConstantsToTheMainMathObject(),
-  ...handelar,
+const math = {
+  ...require(`${__dirname}/constants.json`),
+  ...a(),
+  ...require("./handelar/index.js"),
   add: (...numbers) => {
     if (numbers.length > 1) {
       let result = 0;
@@ -36,25 +33,25 @@ const main = {
         if (typeof numbers[i] === "number") {
           result += numbers[i];
         } else {
-          lhandelar.error("a number", i + " no.", "sum");
+          error("a number", i + " no.", "add");
         }
       }
-      return lhandelar.mood(result);
+      return record(result, numbers, "add");
     } else {
       throw `Please enter at least two numbers to sum.`;
     }
   },
-  multiply: (...numbers) => {
+  mul: (...numbers) => {
     if (numbers.length > 1) {
       let result = 1;
       for (let i = 0; i < numbers.length; i++) {
         if (typeof numbers[i] === "number") {
           result *= numbers[i];
         } else {
-          lhandelar.error("a number", i + " no.", "multiply");
+          error("a number", i + " no.", "mul");
         }
       }
-      return lhandelar.mood(result);
+      return record(result, numbers, "mul");
     } else {
       throw `Please enter at least two numbers to multiply.`;
     }
@@ -66,30 +63,71 @@ const main = {
         if (typeof numbers[i] === "number") {
           result -= numbers[i];
         } else {
-          lhandelar.error("a number", i + " no.", "sub");
+          error("a number", i + " no.", "sub");
         }
       }
-      return lhandelar.mood(result);
+      return record(result, numbers, "sub");
     } else {
       throw `Please enter at least two numbers to subtract.`;
     }
   },
-  divide: (...numbers) => {
+  div: (...numbers) => {
     if (numbers.length > 1) {
       let result = numbers[0];
       for (let i = 1; i < numbers.length; i++) {
         if (typeof numbers[i] === "number") {
           result /= numbers[i];
         } else {
-          lhandelar.error("a number", i + " no.", "devide");
+          error("a number", i + " no.", "div");
         }
       }
-      return lhandelar.mood(result);
+      return record(result, numbers, "div");
     } else {
       throw `Please enter at least two numbers to divide.`;
     }
   },
-  setmood: (mood, status) => {
+  sums: (start, end, func) => {
+    let Start =
+      typeof start === "number" && !Number.isNaN(start) ? start : null;
+    let End = typeof end === "number" && !Number.isNaN(end) ? end : null;
+    let Func = typeof func === "function" ? func : null;
+    if (Start !== null && End !== null && Func !== null) {
+      try {
+        r = func(start);
+        if (r === undefined)
+          error("a function", "func", "sum", SyntaxError, "return is absent");
+        else if (typeof r !== "number")
+          error(
+            "a function which return a number",
+            "func",
+            "sum",
+            SyntaxError,
+            "return is not a number"
+          );
+      } catch (err) {
+        error("a function", "func", "sum", SyntaxError);
+      }
+      if (Start <= End) {
+        let result = 0;
+        for (let i = start; i <= end; i++) {
+          result += func(i);
+        }
+        return record(result, [start, end, func], "sum");
+      } else {
+        error(
+          "start should be less than end",
+          "start and end",
+          "sum",
+          RangeError
+        );
+      }
+    } else {
+      if (Start === null) error("a number", "start", "sum");
+      if (End === null) error("a number", "end", "sum");
+      if (Func === null) error("a function", "func", "sum");
+    }
+  },
+  setMood: (mood, status) => {
     let moodpath = __dirname + "/handelar/moods/mood.json";
     if (mood === "sci" || mood === "fix") {
       //change mood
@@ -98,40 +136,33 @@ const main = {
       if (mood === "sci") mood = "science";
       else if (mood === "fix") mood = "fixed";
       //write mood
-      fs.writeFileSync(moodpath, JSON.stringify({ mood, status }));
+      writeFileSync(moodpath, JSON.stringify({ mood, status }));
       return { mood, status };
     } else {
       //write mood
-      fs.writeFileSync(
-        moodpath,
-        JSON.stringify({ mood: "normal", status: null })
-      );
+      writeFileSync(moodpath, JSON.stringify({ mood: "normal", status: null }));
       return { mood: "normal", status: null };
     }
   },
+  getMood: () => {
+    let moodpath = __dirname + "/handelar/moods/mood.json";
+    let data = readFileSync(moodpath, "utf8");
+    let obj = JSON.parse(data);
+    return obj;
+  },
 };
-
+//length
+math.length = Object.keys(math).length + 1;
+//redirects: old versions of functions
+math.multiply = math.mul;
+math.average = math.avg;
+math.sum = math.add;
 /*--add the math object--*/
-function __addTheMathObject() {
-  let MathArray = Object.getOwnPropertyNames(Math);
-  let local = {};
-  for (let i = 0; i < MathArray.length; i++) {
-    local[MathArray[i]] = Math[MathArray[i]];
-  }
-  return local;
+function a() {
+  let e = Object.getOwnPropertyNames(Math),
+    t = {};
+  for (let n = 0; n < e.length; n++) t[e[n]] = Math[e[n]];
+  return t;
 }
 require("./handelar/trush")();
-function __addConstantsToTheMainMathObject() {
-  let data = fs.readFileSync(`${__dirname}/constants.json`, "utf8");
-  let obj = { ...JSON.parse(data) };
-  return obj;
-}
-
-let mainArray = Object.keys(main);
-for (let i = 0; i < mainArray.length; i++) {
-  Object.defineProperty(main, mainArray[i], {
-    enumerable: false,
-    writable: true,
-  });
-}
-module.exports = main;
+module.exports = math;

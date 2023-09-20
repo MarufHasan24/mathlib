@@ -9,23 +9,41 @@ Date : 18 November, 2021
 
 //main function to export
 function main(number, answer) {
-  let num =
-    typeof number === "number" &&
-    Number.isInteger(number) &&
-    number <= 15 &&
-    number > 0
-      ? number
-      : 1;
-  let ans = typeof answer === "number" ? answer : false;
-  if (num) {
-    if (ans === 0) {
-      return `${ans.toFixed(num - 1)}e0`;
-    } else if (Math.abs(ans) >= 1) {
-      return local1(ans, num);
-    } else if (Math.abs(ans) < 1) {
-      return local0(ans, num);
+  let num = Number.isInteger(number) && number <= 15 && number > 0 ? number : 1;
+  let ans = Number.isInteger(answer) ? answer : parseFloat(answer);
+  if (typeof answer === "number") {
+    if (num) {
+      if (ans === 0) {
+        return `${ans.toFixed(num - 1)}e0`;
+      } else if (Math.abs(ans) >= 1) {
+        return local1(ans, num);
+      } else if (Math.abs(ans) < 1) {
+        return local0(ans, num);
+      } else {
+        return answer;
+      }
     } else {
       return answer;
+    }
+  } else if (Array.isArray(answer)) {
+    let sci = [];
+    for (let i = 0; i < answer.length; i++) {
+      sci.push(main(number, answer[i]));
+    }
+  } else if (Object.prototype.isPrototypeOf(answer)) {
+    let sci = {};
+    for (let i = 0; i < answer.length; i++) {
+      sci[i] = main(number, answer[i]);
+    }
+  } else if (Set.prototype.isPrototypeOf(answer)) {
+    let sci = new Set();
+    for (let i = 0; i < answer.length; i++) {
+      sci.add(main(number, answer[i]));
+    }
+  } else if (Map.prototype.isPrototypeOf(answer)) {
+    let sci = new Map();
+    for (let i = 0; i < answer.length; i++) {
+      sci.set(i, main(number, answer[i]));
     }
   } else {
     return answer;
