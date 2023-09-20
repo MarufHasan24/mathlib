@@ -131,10 +131,6 @@ mathlib.setmood("fix", 2); // 2 is the status
 
 There will be an animation of `MathLib` ,but you can skip it by pressing `ctrl + c` for windows and `cmd + c` for mac. But if you continue with the animation you can know the current mood and status and you can also know about your records and trushes.
 
-## History
-
-Current version : 4.0.0
-
 [History](https://marufhasan24.github.io/mathlib_wiki2/index.html#changeLog)
 
 ## Keywords
@@ -146,3 +142,24 @@ Current version : 4.0.0
 - mathlib
 - mathlibjs
 - mathjs
+
+## documentation
+
+[Documentation](https://marufhasan24.github.io/mathlib_wiki2/wiki.html)
+
+**A little description** :
+
+- `math.info` : It will preasent a query data of mathlib-n laibrary as a javascript object.
+- `math.length` : It will give you the length of math object.
+- `math.mathlib()` : It's a fun function. There is no such important work it done. It's just a terminal animation. But it will give you some important information about your calculation mood and your saved,restored and trushed files number at the end.
+- `math.recList` : return an array of record's files name.
+
+## Licence
+
+MIT
+
+## History
+
+Current version : 4.0.0
+
+[History](https://marufhasan24.github.io/mathlib_wiki/changelog.html)
