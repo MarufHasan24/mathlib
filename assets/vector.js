@@ -72,12 +72,19 @@ function Vector(x, y, z) {
   };
   //add method divide
   this.__proto__.div = function (vec) {
-    if (vec?.type !== "vector")
+    if (vec?.type !== "vector" && typeof vec !== "number")
       throw new Error("Invalid vector. Do it by a vector constructor");
-    let result = [];
-    result = [this.x / vec.x, this.y / vec.y, this.z / vec.z];
-    record(result, vec, "divide");
-    return new Vector(...result);
+    else if (typeof vec === "number") {
+      let result = [];
+      result = [this.x / vec, this.y / vec, this.z / vec];
+      record(result, vec, "divide");
+      return new Vector(...result);
+    } else {
+      let result = [];
+      result = [this.x / vec.x, this.y / vec.y, this.z / vec.z];
+      record(result, vec, "divide");
+      return new Vector(...result);
+    }
   };
   //add method angle
   this.__proto__.angle = function (vec) {

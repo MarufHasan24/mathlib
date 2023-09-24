@@ -31,5 +31,3 @@ console.log(math.sinx("0.5 pi")); // 1
 console.log(math.sin(0.5 * math.PI)); // 1
 console.log(math.linearEq([1, 2, 3], [3, 4, 9])); // -1
 console.log(math.qudrt(1, -4, 4)); // [2,2]
-console.log(math.quad([1, 2], [3, 4], [1, -4], [1, 3])); // [-1, -1]
-console.log(math.tringle([1, 2], [3, 4], [1, -4])); // [2, 2]

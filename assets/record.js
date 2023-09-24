@@ -5,7 +5,14 @@ Description: record file
 Date: 13 September, 2023
 */
 // dependencies
-const { existsSync, readFileSync, writeFile, rename, unlink } = require("fs");
+const {
+  existsSync,
+  readFileSync,
+  writeFile,
+  rename,
+  unlink,
+  readdirSync,
+} = require("fs");
 const checkDateValidity = require("./../.mathlibLocal/checkDateValidity");
 const validJSONfileName = require("./../.mathlibLocal/validJSONfileName");
 const handelar = require("./../.localhandelar");

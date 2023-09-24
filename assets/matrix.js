@@ -258,7 +258,7 @@ function Matrix(matrix, row, col) {
   this.__proto__.isOrthogonal = function () {
     if (this.isSquare()) {
       let trnsp = this.trnsp();
-      let product = this.multiply(trnsp);
+      let product = this.mul(trnsp);
       for (let i = 0; i < product.row; i++) {
         for (let j = 0; j < product.col; j++) {
           if (i === j && product.matrix[i][j] !== 1) {
@@ -276,7 +276,7 @@ function Matrix(matrix, row, col) {
   this.__proto__.isUnitary = function () {
     if (this.isSquare()) {
       let trnsp = this.trnsp();
-      let product = this.multiply(trnsp);
+      let product = this.mul(trnsp);
       for (let i = 0; i < product.row; i++) {
         for (let j = 0; j < product.col; j++) {
           if (i === j && product.matrix[i][j] !== 1) {
@@ -350,40 +350,27 @@ function Matrix(matrix, row, col) {
   };
   this.__proto__.magicSquare = function () {
     if (this.isSquare()) {
-      let n = this.row;
-      let magicSquare = [];
-      for (let i = 0; i < n; i++) {
-        let row = [];
-        for (let j = 0; j < n; j++) {
-          row.push(0);
+      let sum = this.matrix[0].reduce((a, b) => a + b);
+      for (let i = 1; i < this.row; i++) {
+        if (sum !== this.matrix[i].reduce((a, b) => a + b)) {
+          return false;
         }
-        magicSquare.push(row);
       }
-      let i = Math.floor(n / 2);
-      let j = n - 1;
-      for (let num = 1; num <= n * n; ) {
-        if (i === -1 && j === n) {
-          j = n - 2;
-          i = 0;
-        } else {
-          if (j === n) {
-            j = 0;
-          }
-          if (i < 0) {
-            i = n - 1;
-          }
+      for (let i = 0; i < this.row; i++) {
+        if (sum !== this.matrix.reduce((a, b) => a + b[i], 0)) {
+          return false;
         }
-        if (magicSquare[i][j]) {
-          j -= 2;
-          i++;
-          continue;
-        } else {
-          magicSquare[i][j] = num++;
-        }
-        j++;
-        i--;
       }
-      return new Matrix(magicSquare);
+      let sum1 = 0;
+      let sum2 = 0;
+      for (let i = 0; i < this.row; i++) {
+        sum1 += this.matrix[i][i];
+        sum2 += this.matrix[i][this.row - i - 1];
+      }
+      if (sum !== sum1 || sum !== sum2) {
+        return false;
+      }
+      return true;
     } else {
       return false;
     }
