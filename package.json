@@ -19,7 +19,7 @@
   "scripts": {
     "test": "echo \"mathLib-n version 4.0.0\" && node ./test/basic",
     "fix-memo": "node ./.workplace/fix_memo",
-    "mood": "node ./.workplace/moodchanger"
+    "mode": "node ./.workplace/modechanger"
   },
   "repository": {
     "type": "git",

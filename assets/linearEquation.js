@@ -50,7 +50,7 @@ function linearEq(first_Equation = [0, 0, 0], second_Equation = [0, 0, 0]) {
           "linear"
         );
       } else {
-        return handelar.mood("no solve found");
+        return handelar.mode("no solve found");
       }
     } else {
       if (a1 === false) {

@@ -45,7 +45,7 @@ handelar.odd = function (number) {
       }
     } else {
       if (!Number.isSafeInteger(number)) {
-        return mood(false);
+        return mode(false);
       } else {
         error("a natural number", "number", "odd");
       }
@@ -416,7 +416,7 @@ handelar.LCM = function (...num) {
         _GCD = handelar.GCD(result, num[i + 1]);
         result = (result / _GCD) * num[i + 1];
       }
-      return mood(result);
+      return mode(result);
     } else {
       error("2 or more number", `num`, "LCM");
     }

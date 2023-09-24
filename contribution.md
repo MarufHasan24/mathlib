@@ -55,7 +55,7 @@ Please note that we have a [Code of Conduct](osc/CODE_OF_CONDUCT.md) that we exp
     - customString : If you want to tell some more about input to user then put them into it. It is a string. eg:`"It should be a number"` or `"It should be a number greater than 0"` etc. **Defult is ""**
   - record function:
     It is used to record the data in the database. It takes 3 mandatory parameters and last one is optional parameter if you want to hide it from record (but not recommended).
-    - answer: Put the result into it. It will return the result according to the mood of calculation has set in the database.
+    - answer: Put the result into it. It will return the result according to the mode of calculation has set in the database.
     - input: Put the input(s) here. If they are more than one then put them into an array.
     - from: Put the name of the function from which the result is coming. It is a string. eg:`"add"` or `"sub"` etc.
 - If you want to use any other function from any other file then use `require` function.

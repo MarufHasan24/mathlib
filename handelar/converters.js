@@ -76,7 +76,7 @@ handelarX.caller = function caller(string) {
     }
   }
   return handelar.record(result, string, "caller");
-  return handelar.mood(result);
+  return handelar.mode(result);
 };
 //export and share
 module.exports = handelarX;

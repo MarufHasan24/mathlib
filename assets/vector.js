@@ -8,9 +8,23 @@ Date: 29 September, 2022
 const { record } = require("./../.localhandelar");
 
 function Vector(x, y, z) {
-  this.x = x || 0;
-  this.y = y || 0;
-  this.z = z || 0;
+  this.x =
+    typeof x === "number"
+      ? x
+      : ((x) => {
+          throw new TypeError(
+            "Invalid input in x. it must be a number, where it is " + x
+          );
+        })(typeof x);
+  this.y =
+    typeof y === "number"
+      ? y
+      : ((y) => {
+          throw new TypeError(
+            "Invalid input in y. it must be a number, where it is " + y
+          );
+        })(typeof y);
+  this.z = typeof z === "number" ? z : 0;
   this.__proto__.type = "vector";
   this.__proto__.value = function () {
     let result = 0;
@@ -19,7 +33,7 @@ function Vector(x, y, z) {
   };
   //add method add
   this.__proto__.add = function (vec) {
-    if (vec.type !== "vector")
+    if (vec?.type !== "vector")
       throw new Error("Invalid vector. Do it by a vector constructor");
     let result = [];
     result = [this.x + vec.x, this.y + vec.y, this.z + vec.z];
@@ -27,7 +41,7 @@ function Vector(x, y, z) {
   };
   //add method subtract
   this.__proto__.sub = function (vec) {
-    if (vec.type !== "vector")
+    if (vec?.type !== "vector")
       throw new Error("Invalid vector. Do it by a vector constructor");
     let result = [];
     result = [this.x - vec.x, this.y - vec.y, this.z - vec.z];
@@ -36,7 +50,7 @@ function Vector(x, y, z) {
   };
   //add method dot
   this.__proto__.dot = function (vec) {
-    if (vec.type !== "vector")
+    if (vec?.type !== "vector")
       throw new Error("Invalid vector. Do it by a vector constructor");
     let result = 0;
     result = this.x * vec.x + this.y * vec.y + this.z * vec.z;
@@ -45,7 +59,7 @@ function Vector(x, y, z) {
   };
   //add method cross
   this.__proto__.cross = function (vec) {
-    if (vec.type !== "vector")
+    if (vec?.type !== "vector")
       throw new Error("Invalid vector. Do it by a vector constructor");
     let result = [];
     result = [
@@ -57,8 +71,8 @@ function Vector(x, y, z) {
     return new Vector(...result);
   };
   //add method divide
-  this.__proto__.divide = function (vec) {
-    if (vec.type !== "vector")
+  this.__proto__.div = function (vec) {
+    if (vec?.type !== "vector")
       throw new Error("Invalid vector. Do it by a vector constructor");
     let result = [];
     result = [this.x / vec.x, this.y / vec.y, this.z / vec.z];
@@ -67,7 +81,7 @@ function Vector(x, y, z) {
   };
   //add method angle
   this.__proto__.angle = function (vec) {
-    if (vec.type !== "vector")
+    if (vec?.type !== "vector")
       throw new Error("Invalid vector. Do it by a vector constructor");
     let result = 0;
     result = this.dot(vec) / (this.value() * vec.value());
@@ -76,7 +90,7 @@ function Vector(x, y, z) {
   };
   //add method equals
   this.__proto__.equals = function (vec) {
-    if (vec.type !== "vector")
+    if (vec?.type !== "vector")
       throw new Error("Invalid vector. Do it by a vector constructor");
     let result = false;
     if (this.x === vec.x && this.y === vec.y && this.z === vec.z) {

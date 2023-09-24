@@ -30,11 +30,12 @@ function main(number, answer) {
     for (let i = 0; i < answer.length; i++) {
       sci.push(main(number, answer[i]));
     }
-  } else if (Object.prototype.isPrototypeOf(answer)) {
+  } else if (answer instanceof Object) {
     let sci = {};
     for (let i = 0; i < answer.length; i++) {
-      sci[i] = main(number, answer[i]);
+      sci[answer[i]] = main(number, answer[i]);
     }
+    return sci;
   } else if (Set.prototype.isPrototypeOf(answer)) {
     let sci = new Set();
     for (let i = 0; i < answer.length; i++) {

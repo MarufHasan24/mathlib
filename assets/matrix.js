@@ -7,10 +7,33 @@ Date: 08 March, 2023
 const { record } = require("./../.localhandelar");
 //constructor
 function Matrix(matrix, row, col) {
-  this.matrix = matrix;
+  if (
+    typeof matrix === "number" &&
+    typeof row === "number" &&
+    typeof col === "undefined"
+  ) {
+    matrix = [];
+    for (let i = 0; i < row; i++) {
+      let rowa = [];
+      for (let j = 0; j < row; j++) {
+        rowa.push(0);
+      }
+      matrix.push(rowa);
+    }
+    this.matrix = matrix;
+  } else if (Array.isArray(matrix)) {
+    this.matrix = matrix;
+  } else {
+    throw new Error(
+      "Invalid input. input must be an array seems to be a matrix or numbers of rows and columns"
+    );
+  }
   this.row = row || matrix.length;
   this.column = col || matrix[0].length;
   this.__proto__.type = "matrix";
+  if (!validMatrix(this.matrix)) {
+    throw new Error("Invalid matrix. All rows must have same length");
+  }
   this.__proto__.det = function () {
     if (this.row !== this.column) {
       throw new Error("Matrix is not square");
@@ -18,7 +41,7 @@ function Matrix(matrix, row, col) {
       return record(determinant(this.matrix));
     }
   };
-  this.__proto__.inverse = function () {
+  this.__proto__.inv = function () {
     if (this.row !== this.column) {
       throw new Error("Matrix is not square");
     } else {
@@ -28,7 +51,7 @@ function Matrix(matrix, row, col) {
     }
   };
   this.__proto__.add = function (matrix) {
-    if (matrix.type !== "matrix")
+    if (matrix?.type !== "matrix")
       throw new Error("Invalid matrix. Use matrix constructor");
     if (this.row !== matrix.row || this.column !== matrix.column) {
       throw new Error("Matrix size mismatch");
@@ -46,7 +69,7 @@ function Matrix(matrix, row, col) {
     }
   };
   this.__proto__.sub = function (matrix) {
-    if (matrix.type !== "matrix")
+    if (matrix?.type !== "matrix")
       throw new Error("Invalid matrix. Use matrix constructor");
     if (this.row !== matrix.row || this.column !== matrix.column) {
       throw new Error("Matrix size mismatch");
@@ -64,16 +87,31 @@ function Matrix(matrix, row, col) {
     }
   };
   this.__proto__.div = function (matrix) {
-    if (matrix.type !== "matrix")
-      throw new Error("Invalid matrix. Use matrix constructor");
-    if (this.row !== matrix.row || this.column !== matrix.column) {
-      throw new Error("Matrix size mismatch");
+    if (matrix?.type !== "matrix" && typeof matrix !== "number") {
+      throw new Error(
+        "Invalid matrix or NaN. Use matrix constructor or number"
+      );
+    } else if (matrix.type === "matrix") {
+      if (this.row !== matrix.row || this.column !== matrix.column) {
+        throw new Error("Matrix size mismatch");
+      } else {
+        let result = [];
+        for (let i = 0; i < this.row; i++) {
+          let row = [];
+          for (let j = 0; j < this.column; j++) {
+            row.push(this.matrix[i][j] / matrix.matrix[i][j]);
+          }
+          result.push(row);
+        }
+        record(result, matrix, "div");
+        return new Matrix(result);
+      }
     } else {
       let result = [];
       for (let i = 0; i < this.row; i++) {
         let row = [];
         for (let j = 0; j < this.column; j++) {
-          row.push(this.matrix[i][j] / matrix.matrix[i][j]);
+          row.push(this.matrix[i][j] / matrix);
         }
         result.push(row);
       }
@@ -82,25 +120,38 @@ function Matrix(matrix, row, col) {
     }
   };
   this.__proto__.mul = function (matrix) {
-    if (matrix.type !== "matrix")
-      throw new Error("Invalid matrix. Use matrix constructor");
-    if (this.column !== matrix.row) {
-      throw new Error("Matrix size mismatch");
+    if (matrix?.type !== "matrix" && typeof matrix !== "number") {
+      throw new Error("Invalid matrix or NaN. Use matrix constructor");
+    } else if (matrix.type === "matrix") {
+      if (this.column !== matrix.row) {
+        throw new Error("Matrix size mismatch");
+      } else {
+        let result = [];
+        for (let i = 0; i < this.row; i++) {
+          let row = [];
+          for (let j = 0; j < matrix.column; j++) {
+            let sum = 0;
+            for (let k = 0; k < this.column; k++) {
+              sum += this.matrix[i][k] * matrix.matrix[k][j];
+            }
+            row.push(sum);
+          }
+          result.push(row);
+        }
+        record(result, matrix, "mul");
+        return new Matrix(result, this.row, matrix.column);
+      }
     } else {
       let result = [];
       for (let i = 0; i < this.row; i++) {
         let row = [];
-        for (let j = 0; j < matrix.column; j++) {
-          let sum = 0;
-          for (let k = 0; k < this.column; k++) {
-            sum += this.matrix[i][k] * matrix.matrix[k][j];
-          }
-          row.push(sum);
+        for (let j = 0; j < this.column; j++) {
+          row.push(this.matrix[i][j] * matrix);
         }
         result.push(row);
       }
       record(result, matrix, "mul");
-      return new Matrix(result, this.row, matrix.column);
+      return new Matrix(result);
     }
   };
   this.__proto__.trnsp = function () {
@@ -337,6 +388,17 @@ function Matrix(matrix, row, col) {
       return false;
     }
   };
+  this.__proto__.trace = function () {
+    if (this.isSquare()) {
+      let sum = 0;
+      for (let i = 0; i < this.row; i++) {
+        sum += this.matrix[i][i];
+      }
+      return sum;
+    } else {
+      return false;
+    }
+  };
 }
 
 function determinant(matrix) {
@@ -392,5 +454,14 @@ function inverse(matrix) {
     }
     return inverseMatrix;
   }
+}
+function validMatrix(matrix) {
+  let il = matrix[0].length;
+  for (let i = 1; i < matrix.length; i++) {
+    if (matrix[i].length !== il) {
+      return false;
+    }
+  }
+  return true;
 }
 module.exports = Matrix;

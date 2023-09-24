@@ -309,14 +309,14 @@ handelar.limit = function (tendsTo, func, accuracy = 6) {
     }
     if (tt == Infinity) {
       let de = Number.MAX_VALUE / Number.MAX_SAFE_INTEGER ** (2 * (10 - 1) + 1);
-      return handler.record(func(de), [tendsTo, func, accuracy], "limit");
+      return record(func(de), [tendsTo, func, accuracy], "limit");
     } else if (tt == -Infinity) {
       let de = Number.MAX_VALUE / Number.MAX_SAFE_INTEGER ** (2 * (10 - 1) + 1);
-      return handler.record(func(-de), [tendsTo, func, accuracy], "limit");
+      return record(func(-de), [tendsTo, func, accuracy], "limit");
     } else {
-      let result = (fc(tt - 10 ** -(ac * 4)) + fc(tt + 10 ** -(ac * 4))) / 2;
+      let result = (fc(tt - 10 ** -(ac * 2)) + fc(tt + 10 ** -(ac * 2))) / 2;
       result = Number(result.toFixed(ac));
-      return handler.record(result, [tendsTo, func, accuracy], "limit");
+      return record(result, [tendsTo, func, accuracy], "limit");
     }
   } else {
     if (tt === false) handler.error("a valid number", "tendsTo", "limit");

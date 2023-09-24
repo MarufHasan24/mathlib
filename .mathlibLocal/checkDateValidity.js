@@ -1,7 +1,7 @@
 /*
-Title : moodchanger.js
+Title : checkDateValidity.js
 Author : Maruf Hasan
-Description : change the mood of calculation.
+Description : check the date is valid or not
 Date : 22 November , 2021
 */
 

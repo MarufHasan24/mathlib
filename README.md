@@ -111,25 +111,25 @@ if you use that, the memory will ruined. Then you should do this work :
 npm run fix-memo --prefix node_modules/mathlib-n
 ```
 
-there will be an animation of `MathLib` ,but you can skip it by pressing `ctrl + c` for windows and `cmd + c` for mac. But if you continue with the animation you can know the current mood and status and you can also know about your records and trushes.
+there will be an animation of `MathLib` ,but you can skip it by pressing `ctrl + c` for windows and `cmd + c` for mac. But if you continue with the animation you can know the current mode and status and you can also know about your records and trushes.
 
-### change or intalige mood
+### change or intalige mode
 
-Two moods are available now on mathlib-n. They are science and fix mood. `sci` for science and `fix` for fix mood. and status is the count of how many number will be after decimal.
+Two mode are available now on mathlib-n. They are science and fix mode. `sci` for science and `fix` for fix mode. and status is the count of how many number will be after decimal.
 
 ```ps
-npm run moodchanger --prefix node_modules/mathlib-n
+npm run modechanger --prefix node_modules/mathlib-n
 ```
 
-or you can chance mood via code
+or you can chance mode via code
 
 ```javascript
 const mathlib = require("mathlib-n");
-mathlib.getmood(); // to know the current mood
-mathlib.setmood("fix", 2); // 2 is the status
+mathlib.getmode(); // to know the current mode
+mathlib.setmode("fix", 2); // 2 is the status
 ```
 
-There will be an animation of `MathLib` ,but you can skip it by pressing `ctrl + c` for windows and `cmd + c` for mac. But if you continue with the animation you can know the current mood and status and you can also know about your records and trushes.
+There will be an animation of `MathLib` ,but you can skip it by pressing `ctrl + c` for windows and `cmd + c` for mac. But if you continue with the animation you can know the current mode and status and you can also know about your records and trushes.
 
 [History](https://marufhasan24.github.io/mathlib_wiki2/index.html#changeLog)
 
@@ -151,7 +151,7 @@ There will be an animation of `MathLib` ,but you can skip it by pressing `ctrl +
 
 - `math.info` : It will preasent a query data of mathlib-n laibrary as a javascript object.
 - `math.length` : It will give you the length of math object.
-- `math.mathlib()` : It's a fun function. There is no such important work it done. It's just a terminal animation. But it will give you some important information about your calculation mood and your saved,restored and trushed files number at the end.
+- `math.mathlib()` : It's a fun function. There is no such important work it done. It's just a terminal animation. But it will give you some important information about your calculation mode and your saved,restored and trushed files number at the end.
 - `math.recList` : return an array of record's files name.
 
 ## Licence

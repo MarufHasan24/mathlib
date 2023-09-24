@@ -127,26 +127,26 @@ const math = {
       if (Func === null) error("a function", "func", "sum");
     }
   },
-  setMood: (mood, status) => {
-    let moodpath = __dirname + "/handelar/moods/mood.json";
-    if (mood === "sci" || mood === "fix") {
-      //change mood
+  setmode: (mode, status) => {
+    let modepath = __dirname + "/handelar/mode/mode.json";
+    if (mode === "sci" || mode === "fix") {
+      //change mode
       if (status > 12) status = 12;
       else if (status < 0) status = 0;
-      if (mood === "sci") mood = "science";
-      else if (mood === "fix") mood = "fixed";
-      //write mood
-      writeFileSync(moodpath, JSON.stringify({ mood, status }));
-      return { mood, status };
+      if (mode === "sci") mode = "science";
+      else if (mode === "fix") mode = "fixed";
+      //write mode
+      writeFileSync(modepath, JSON.stringify({ mode, status }));
+      return { mode, status };
     } else {
-      //write mood
-      writeFileSync(moodpath, JSON.stringify({ mood: "normal", status: null }));
-      return { mood: "normal", status: null };
+      //write mode
+      writeFileSync(modepath, JSON.stringify({ mode: "normal", status: null }));
+      return { mode: "normal", status: null };
     }
   },
-  getMood: () => {
-    let moodpath = __dirname + "/handelar/moods/mood.json";
-    let data = readFileSync(moodpath, "utf8");
+  getmode: () => {
+    let modepath = __dirname + "/handelar/mode/mode.json";
+    let data = readFileSync(modepath, "utf8");
     let obj = JSON.parse(data);
     return obj;
   },

@@ -1,7 +1,7 @@
 /*
 Title : fix_memo.js
 Author : Maruf Hasan
-Description : change the mood of calculation.
+Description : change the mode of calculation.
 Date : 6 December , 2021
 */
 

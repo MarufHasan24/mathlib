@@ -7,15 +7,15 @@ tempData : require('./../assets/measurement');
 */
 
 //module scaffolding
-let handelarX = {};
+let handelar = {};
 
 //dependencies
-const handelar = require("./../.localhandelar");
+const { record, error } = require("./../.localhandelar");
 const linearEq = require("./../assets/linearEquation");
 const { rad2Deg } = require("./../assets/degree");
 
 //main functions to export
-handelarX.lineWidth = function (first_point = [0, 0], second_point = [0, 0]) {
+handelar.lineWidth = function (first_point = [0, 0], second_point = [0, 0]) {
   let fspnt =
       Array.isArray(first_point) && first_point.length === 2
         ? first_point
@@ -33,18 +33,18 @@ handelarX.lineWidth = function (first_point = [0, 0], second_point = [0, 0]) {
   if (fspnt !== false && scpnt !== false) {
     let result;
     result = Math.pow((data.x2 - data.x1) ** 2 + (data.y2 - data.y1) ** 2, 0.5);
-    return handelar.record(result, { first_point, second_point }, "lineWidth");
+    return record(result, { first_point, second_point }, "lineWidth");
   } else {
     if (fspnt === false) {
-      handelar.error("an array [x,y]", "first_point", "lineWidth");
+      error("an array [x,y]", "first_point", "lineWidth");
     } else if (scpnt === false) {
-      handelar.error("an array [x,y]", "second_point", "lineWidth");
+      error("an array [x,y]", "second_point", "lineWidth");
     } else {
-      console.error("Something went wrong in lineWidth()");
+      console.error("Something went wrong in lineWidth");
     }
   }
 };
-handelarX.tringleArea = function (
+handelar.tringleArea = function (
   first_point = [0, 0],
   second_point = [0, 0],
   third_point = [0, 0]
@@ -73,36 +73,24 @@ handelarX.tringleArea = function (
     let area = Math.abs(
       0.5 * (d.x1 * (d.y2 - d.y3) + d.x2 * (d.y3 - d.y1) + d.x3 * (d.y1 - d.y2))
     );
-    return handelar.record(
+    return record(
       area,
       { first_point, second_point, third_point },
       "tringleArea"
     );
   } else {
     if (fspnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "first_point",
-        "tringleArea"
-      );
+      error("an array contains 2 numbers[x,y]", "first_point", "tringleArea");
     } else if (scpnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "second_point",
-        "tringleArea"
-      );
+      error("an array contains 2 numbers[x,y]", "second_point", "tringleArea");
     } else if (trpnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "third_point",
-        "tringleArea"
-      );
+      error("an array contains 2 numbers[x,y]", "third_point", "tringleArea");
     } else {
-      console.error("Something went wrong in tringleArea()");
+      console.error("Something went wrong in tringleArea");
     }
   }
 };
-handelarX.tringleLines = function (
+handelar.tringleLines = function (
   first_point = [0, 0],
   second_point = [0, 0],
   third_point = [0, 0]
@@ -128,44 +116,32 @@ handelarX.tringleLines = function (
       x3: trpnt[0],
       y3: trpnt[1],
     };
-    let line_c = handelarX.lineWidth([d.x1, d.y1], [d.x2, d.y2]),
-      line_a = handelarX.lineWidth([d.x2, d.y2], [d.x3, d.y3]),
-      line_b = handelarX.lineWidth([d.x3, d.y3], [d.x1, d.y1]);
+    let line_c = handelar.lineWidth([d.x1, d.y1], [d.x2, d.y2]),
+      line_a = handelar.lineWidth([d.x2, d.y2], [d.x3, d.y3]),
+      line_b = handelar.lineWidth([d.x3, d.y3], [d.x1, d.y1]);
     let result = {
       line_a,
       line_b,
       line_c,
     };
-    return handelar.record(
+    return record(
       result,
       { first_point, second_point, third_point },
       "tringleLines"
     );
   } else {
     if (fspnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "first_point",
-        "tringleLines"
-      );
+      error("an array contains 2 numbers[x,y]", "first_point", "tringleLines");
     } else if (scpnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "second_point",
-        "tringleLines"
-      );
+      error("an array contains 2 numbers[x,y]", "second_point", "tringleLines");
     } else if (trpnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "third_point",
-        "tringleLines"
-      );
+      error("an array contains 2 numbers[x,y]", "third_point", "tringleLines");
     } else {
-      console.error("Something went wrong in tringleLines()");
+      console.error("Something went wrong in tringleLines");
     }
   }
 };
-handelarX.tringleAngles = function (
+handelar.tringleAngles = function (
   first_point = [0, 0],
   second_point = [0, 0],
   third_point = [0, 0]
@@ -194,9 +170,9 @@ handelarX.tringleAngles = function (
     let area = Math.abs(
       0.5 * (d.x1 * (d.y2 - d.y3) + d.x2 * (d.y3 - d.y1) + d.x3 * (d.y1 - d.y2))
     );
-    let line_c = handelarX.lineWidth([d.x1, d.y1], [d.x2, d.y2]),
-      line_a = handelarX.lineWidth([d.x2, d.y2], [d.x3, d.y3]),
-      line_b = handelarX.lineWidth([d.x3, d.y3], [d.x1, d.y1]),
+    let line_c = handelar.lineWidth([d.x1, d.y1], [d.x2, d.y2]),
+      line_a = handelar.lineWidth([d.x2, d.y2], [d.x3, d.y3]),
+      line_b = handelar.lineWidth([d.x3, d.y3], [d.x1, d.y1]),
       thetaA = rad2Deg(Math.asin((2 * area) / (line_c * line_b))).degree,
       thetaB = rad2Deg(Math.asin((2 * area) / (line_c * line_a))).degree,
       thetaC = rad2Deg(Math.asin((2 * area) / (line_a * line_b))).degree;
@@ -205,36 +181,28 @@ handelarX.tringleAngles = function (
       thetaB,
       thetaC,
     };
-    return handelar.record(
+    return record(
       result,
       { first_point, second_point, third_point },
       "tringleAngles"
     );
   } else {
     if (fspnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "first_point",
-        "tringleAngles"
-      );
+      error("an array contains 2 numbers[x,y]", "first_point", "tringleAngles");
     } else if (scpnt === false) {
-      handelar.error(
+      error(
         "an array contains 2 numbers[x,y]",
         "second_point",
         "tringleAngles"
       );
     } else if (trpnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "third_point",
-        "tringleAngles"
-      );
+      error("an array contains 2 numbers[x,y]", "third_point", "tringleAngles");
     } else {
-      console.error("Something went wrong in tringleAngles()");
+      console.error("Something went wrong in tringleAngles");
     }
   }
 };
-handelarX.tringleMed = function (
+handelar.tringleMed = function (
   first_point = [0, 0],
   second_point = [0, 0],
   third_point = [0, 0]
@@ -268,9 +236,9 @@ handelarX.tringleMed = function (
       y1 = (d.y2 + d.y3) / 2,
       x2 = (d.x3 + d.x1) / 2,
       y2 = (d.y3 + d.y1) / 2,
-      mid_ad = handelarX.lineWidth([d.x1, d.y1], [x1, y1]),
-      mid_be = handelarX.lineWidth([d.x2, d.y2], [x2, y2]),
-      mid_cf = handelarX.lineWidth([d.x3, d.y3], [x3, y3]);
+      mid_ad = handelar.lineWidth([d.x1, d.y1], [x1, y1]),
+      mid_be = handelar.lineWidth([d.x2, d.y2], [x2, y2]),
+      mid_cf = handelar.lineWidth([d.x3, d.y3], [x3, y3]);
     result = {
       D: [x1, y1],
       E: [x2, y2],
@@ -279,36 +247,24 @@ handelarX.tringleMed = function (
       mid_be,
       mid_cf,
     };
-    return handelar.record(
+    return record(
       result,
       { first_point, second_point, third_point },
       "tringleMed"
     );
   } else {
     if (fspnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "first_point",
-        "tringleMed"
-      );
+      error("an array contains 2 numbers[x,y]", "first_point", "tringleMed");
     } else if (scpnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "second_point",
-        "tringleMed"
-      );
+      error("an array contains 2 numbers[x,y]", "second_point", "tringleMed");
     } else if (trpnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "third_point",
-        "tringleMed"
-      );
+      error("an array contains 2 numbers[x,y]", "third_point", "tringleMed");
     } else {
-      console.error("Something went wrong in tringleMed()");
+      console.error("Something went wrong in tringleMed");
     }
   }
 };
-handelarX.tringle = function (
+handelar.tringle = function (
   first_point = [0, 0],
   second_point = [0, 0],
   third_point = [0, 0]
@@ -337,9 +293,9 @@ handelarX.tringle = function (
     let area = Math.abs(
       0.5 * (d.x1 * (d.y2 - d.y3) + d.x2 * (d.y3 - d.y1) + d.x3 * (d.y1 - d.y2))
     );
-    let line_c = handelarX.lineWidth([d.x1, d.y1], [d.x2, d.y2]),
-      line_a = handelarX.lineWidth([d.x2, d.y2], [d.x3, d.y3]),
-      line_b = handelarX.lineWidth([d.x3, d.y3], [d.x1, d.y1]),
+    let line_c = handelar.lineWidth([d.x1, d.y1], [d.x2, d.y2]),
+      line_a = handelar.lineWidth([d.x2, d.y2], [d.x3, d.y3]),
+      line_b = handelar.lineWidth([d.x3, d.y3], [d.x1, d.y1]),
       cntrd = [(d.x1 + d.x2 + d.x3) / 3, (d.y1 + d.y2 + d.y3) / 3],
       thetaA = rad2Deg(Math.asin((2 * area) / (line_c * line_b))).degree,
       thetaB = rad2Deg(Math.asin((2 * area) / (line_c * line_a))).degree,
@@ -353,38 +309,26 @@ handelarX.tringle = function (
       thetaA,
       thetaB,
       thetaC,
-      ...handelarX.tringleMed(fspnt, scpnt, trpnt),
+      ...handelar.tringleMed(fspnt, scpnt, trpnt),
     };
-    return handelar.record(
+    return record(
       result,
       { first_point, second_point, third_point },
       "tringle"
     );
   } else {
     if (fspnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "first_point",
-        "tringle"
-      );
+      error("an array contains 2 numbers[x,y]", "first_point", "tringle");
     } else if (scpnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "second_point",
-        "tringle"
-      );
+      error("an array contains 2 numbers[x,y]", "second_point", "tringle");
     } else if (trpnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "third_point",
-        "tringle"
-      );
+      error("an array contains 2 numbers[x,y]", "third_point", "tringle");
     } else {
-      console.error("Something went wrong in tringle()");
+      console.error("Something went wrong in tringle");
     }
   }
 };
-handelarX.quadArea = function (
+handelar.quadArea = function (
   first_point = [0, 0],
   second_point = [0, 0],
   third_point = [0, 0],
@@ -434,42 +378,34 @@ handelarX.quadArea = function (
           d.x4 * d.y1 -
           d.x1 * d.y4)
     );
-    return handelar.record(
+    return record(
       area,
       { first_point, second_point, third_point, fourth_point },
       "quadArea"
     );
   } else {
     if (fspnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "first_point",
-        "quadangleArea()"
-      );
+      error("an array contains 2 numbers[x,y]", "first_point", "quadangleArea");
     } else if (scpnt === false) {
-      handelar.error(
+      error(
         "an array contains 2 numbers[x,y]",
         "second_point",
-        "quadangleArea()"
+        "quadangleArea"
       );
     } else if (trpnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "third_point",
-        "quadangleArea()"
-      );
+      error("an array contains 2 numbers[x,y]", "third_point", "quadangleArea");
     } else if (frpnt === false) {
-      handelar.error(
+      error(
         "an array contains 2 numbers[x,y]",
         "fourth_point",
-        "quadangleArea()"
+        "quadangleArea"
       );
     } else {
-      console.error("Something went wrong in quadArea()");
+      console.error("Something went wrong in quadArea");
     }
   }
 };
-handelarX.quadLines = function (
+handelar.quadLines = function (
   first_point = [0, 0],
   second_point = [0, 0],
   third_point = [0, 0],
@@ -508,52 +444,36 @@ handelarX.quadLines = function (
       x4: frpnt[0],
       y4: frpnt[1],
     };
-    let line_a = handelarX.lineWidth([d.x1, d.y1], [d.x2, d.y2]),
-      line_b = handelarX.lineWidth([d.x2, d.y2], [d.x3, d.y3]),
-      line_c = handelarX.lineWidth([d.x3, d.y3], [d.x4, d.y4]),
-      line_d = handelarX.lineWidth([d.x4, d.y4], [d.x1, d.y1]);
+    let line_a = handelar.lineWidth([d.x1, d.y1], [d.x2, d.y2]),
+      line_b = handelar.lineWidth([d.x2, d.y2], [d.x3, d.y3]),
+      line_c = handelar.lineWidth([d.x3, d.y3], [d.x4, d.y4]),
+      line_d = handelar.lineWidth([d.x4, d.y4], [d.x1, d.y1]);
     let result = {
       line_a,
       line_b,
       line_c,
       line_d,
     };
-    return handelar.record(
+    return record(
       result,
       { first_point, second_point, third_point, fourth_point },
       "quadLines"
     );
   } else {
     if (fspnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "first_point",
-        "quadLines"
-      );
+      error("an array contains 2 numbers[x,y]", "first_point", "quadLines");
     } else if (scpnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "second_point",
-        "quadLines"
-      );
+      error("an array contains 2 numbers[x,y]", "second_point", "quadLines");
     } else if (trpnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "third_point",
-        "quadLines"
-      );
+      error("an array contains 2 numbers[x,y]", "third_point", "quadLines");
     } else if (frpnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "fourth_point",
-        "quadLines"
-      );
+      error("an array contains 2 numbers[x,y]", "fourth_point", "quadLines");
     } else {
       console.error("Something went wrong in quadLines");
     }
   }
 };
-handelarX.quadAngles = function (
+handelar.quadAngles = function (
   first_point = [0, 0],
   second_point = [0, 0],
   third_point = [0, 0],
@@ -582,10 +502,10 @@ handelarX.quadAngles = function (
     trpnt !== false &&
     frpnt !== false
   ) {
-    let tri1 = handelarX.tringleAngles(fspnt, scpnt, frpnt),
-      tri2 = handelarX.tringleAngles(scpnt, trpnt, frpnt);
-    let obj = { ...handelarX.quadLines(fspnt, scpnt, trpnt, frpnt) };
-    obj.area = handelarX.quadArea(fspnt, scpnt, trpnt, frpnt);
+    let tri1 = handelar.tringleAngles(fspnt, scpnt, frpnt),
+      tri2 = handelar.tringleAngles(scpnt, trpnt, frpnt);
+    let obj = { ...handelar.quadLines(fspnt, scpnt, trpnt, frpnt) };
+    obj.area = handelar.quadArea(fspnt, scpnt, trpnt, frpnt);
     obj.thetaB = tri1.thetaB + tri2.thetaA;
     obj.thetaD = tri1.thetaC + tri2.thetaC;
     obj.thetaA = tri1.thetaA;
@@ -596,42 +516,26 @@ handelarX.quadAngles = function (
       thetaC: obj.thetaC,
       thetaD: obj.thetaD,
     };
-    return handelar.record(
+    return record(
       result,
       { first_point, second_point, third_point, fourth_point },
       "quadAngles"
     );
   } else {
     if (fspnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "first_point",
-        "quadAngles"
-      );
+      error("an array contains 2 numbers[x,y]", "first_point", "quadAngles");
     } else if (scpnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "second_point",
-        "quadAngles"
-      );
+      error("an array contains 2 numbers[x,y]", "second_point", "quadAngles");
     } else if (trpnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "third_point",
-        "quadAngles"
-      );
+      error("an array contains 2 numbers[x,y]", "third_point", "quadAngles");
     } else if (frpnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "fourth_point",
-        "quadAngles"
-      );
+      error("an array contains 2 numbers[x,y]", "fourth_point", "quadAngles");
     } else {
       console.error("Something went wrong in quadAngles");
     }
   }
 };
-handelarX.quadCorners = function (
+handelar.quadCorners = function (
   first_point = [0, 0],
   second_point = [0, 0],
   third_point = [0, 0],
@@ -660,8 +564,8 @@ handelarX.quadCorners = function (
     trpnt !== false &&
     frpnt !== false
   ) {
-    let corner_ac = handelarX.lineWidth(fspnt, trpnt),
-      corner_bd = handelarX.lineWidth(scpnt, frpnt);
+    let corner_ac = handelar.lineWidth(fspnt, trpnt),
+      corner_bd = handelar.lineWidth(scpnt, frpnt);
     let d = {
       x1: fspnt[0],
       y1: fspnt[1],
@@ -693,42 +597,34 @@ handelarX.quadCorners = function (
       corner_bd,
       crossPoint,
     };
-    return handelar.record(
+    return record(
       result,
       { first_point, second_point, third_point, fourth_point },
       "quadCorners"
     );
   } else {
     if (fspnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "first_point",
-        "quadangleArea()"
-      );
+      error("an array contains 2 numbers[x,y]", "first_point", "quadangleArea");
     } else if (scpnt === false) {
-      handelar.error(
+      error(
         "an array contains 2 numbers[x,y]",
         "second_point",
-        "quadangleArea()"
+        "quadangleArea"
       );
     } else if (trpnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "third_point",
-        "quadangleArea()"
-      );
+      error("an array contains 2 numbers[x,y]", "third_point", "quadangleArea");
     } else if (frpnt === false) {
-      handelar.error(
+      error(
         "an array contains 2 numbers[x,y]",
         "fourth_point",
-        "quadangleArea()"
+        "quadangleArea"
       );
     } else {
-      console.error("Something went wrong in quadangleArea()");
+      console.error("Something went wrong in quadangleArea");
     }
   }
 };
-handelarX.quad = function (
+handelar.quad = function (
   first_point = [0, 0],
   second_point = [0, 0],
   third_point = [0, 0],
@@ -758,47 +654,31 @@ handelarX.quad = function (
     frpnt !== false
   ) {
     let obj = {
-      ...handelarX.quadLines(fspnt, scpnt, trpnt, frpnt),
-      ...handelarX.quadAngles(fspnt, scpnt, trpnt, frpnt),
-      ...handelarX.quadCorners(fspnt, scpnt, trpnt, frpnt),
+      ...handelar.quadLines(fspnt, scpnt, trpnt, frpnt),
+      ...handelar.quadAngles(fspnt, scpnt, trpnt, frpnt),
+      ...handelar.quadCorners(fspnt, scpnt, trpnt, frpnt),
     };
-    obj.area = handelarX.quadArea(fspnt, scpnt, trpnt, frpnt);
-    return handelar.record(
+    obj.area = handelar.quadArea(fspnt, scpnt, trpnt, frpnt);
+    return record(
       obj,
       { first_point, second_point, third_point, fourth_point },
       "quad"
     );
   } else {
     if (fspnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "first_point",
-        "quadLines()"
-      );
+      error("an array contains 2 numbers[x,y]", "first_point", "quad");
     } else if (scpnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "second_point",
-        "quadLines()"
-      );
+      error("an array contains 2 numbers[x,y]", "second_point", "quad");
     } else if (trpnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "third_point",
-        "quadLines()"
-      );
+      error("an array contains 2 numbers[x,y]", "third_point", "quad");
     } else if (frpnt === false) {
-      handelar.error(
-        "an array contains 2 numbers[x,y]",
-        "fourth_point",
-        "quadLines()"
-      );
+      error("an array contains 2 numbers[x,y]", "fourth_point", "quad");
     } else {
-      console.error("Something went wrong in quadLines()");
+      console.error("Something went wrong in quad");
     }
   }
 };
-handelarX.polyArea = function (...dots) {
+handelar.polyArea = function (...dots) {
   let n = dots.length >= 3 ? dots : false;
   var d = {};
   var fresult,
@@ -813,10 +693,10 @@ handelarX.polyArea = function (...dots) {
           "An unexpected end of input : enter at least 3 dots hare"
         );
       } else if (!Array.isArray(n[i])) {
-        handelarX.error(
+        handelar.error(
           "an array contains 2 values [x,y]",
           `${i + 1}th dot (array[x,y])`,
-          "multiangelarea()"
+          "multiangelarea"
         );
       } else {
         throw TypeError(`enter 2 values in ${i + 1} no. array`);
@@ -829,12 +709,12 @@ handelarX.polyArea = function (...dots) {
     } else if (i === n.length) {
       result += d[`x${i}`] * d[`y${1}`] - d[`x${1}`] * d[`y${i}`];
     } else {
-      console.error("Something went wrong in polyArea()");
+      console.error("Something went wrong in polyArea");
     }
   }
   fresult = Math.abs(0.5 * result);
-  return handelar.record(fresult, { ...dots }, "polyArea");
+  return record(fresult, { ...dots }, "polyArea");
 };
 
 //export and share
-module.exports = handelarX;
+module.exports = handelar;

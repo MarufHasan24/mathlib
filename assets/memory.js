@@ -29,7 +29,7 @@ function memo(number, name, asynchronous = false, callBack = null) {
         { number, type: typeof number, name, asynchronous, callBack },
         "memo"
       );
-      return handelar.mood(fresult);
+      return handelar.mode(fresult);
     } else {
       MemoNode(num, nam, asy, (call) => {
         callBack(call);
@@ -134,7 +134,7 @@ function MemoNode(number1, name1, asynchronous1, callBack = null) {
           JSON.stringify(input),
           { encoding: "utf-8", flag: "w+" }
         );
-        return handelar.mood("saved");
+        return handelar.mode("saved");
       } else {
         fs.mkdirSync(`${__dirname}/../.mathLib`);
         fs.writeFileSync(
@@ -142,7 +142,7 @@ function MemoNode(number1, name1, asynchronous1, callBack = null) {
           JSON.stringify(input),
           { encoding: "utf-8", flag: "w+" }
         );
-        return handelar.mood("saved");
+        return handelar.mode("saved");
       }
     } catch (e) {
       input[nam1] = {
@@ -158,7 +158,7 @@ function MemoNode(number1, name1, asynchronous1, callBack = null) {
           JSON.stringify(input),
           { encoding: "utf-8", flag: "w+" }
         );
-        return handelar.mood("saved");
+        return handelar.mode("saved");
       } catch (e) {
         console.log("Don't delete the memo.json file from .mathLib folder!");
         if (!fs.readdirSync(`${__dirname}/../.mathLib`).length) {
@@ -167,7 +167,7 @@ function MemoNode(number1, name1, asynchronous1, callBack = null) {
             JSON.stringify(input),
             { encoding: "utf-8", flag: "w+" }
           );
-          return handelar.mood("saved");
+          return handelar.mode("saved");
         }
       }
     }
@@ -285,14 +285,14 @@ function delMemoLocal(name1, asynchronous1, callback) {
           `${__dirname}/../.mathLib/memo.json`,
           JSON.stringify(output)
         );
-        return handelar.mood("done");
+        return handelar.mode("done");
       } else if (name1 === "ALL") {
         output = {};
         fs.writeFileSync(
           `${__dirname}/../.mathLib/memo.json`,
           JSON.stringify(output)
         );
-        return handelar.mood("all clear");
+        return handelar.mode("all clear");
       } else {
         throw ReferenceError(`${name1} can't found in local databage.`);
       }
@@ -351,9 +351,9 @@ function deMemoNode(name1, asynchronous1 = false, callBack = null) {
       let output = JSON.parse(data);
       let keyArr = Object.keys(output);
       if (keyArr.indexOf(name1) >= 0) {
-        return handelar.mood(output[name1]);
+        return handelar.mode(output[name1]);
       } else {
-        return handelar.mood(`not found`);
+        return handelar.mode(`not found`);
       }
     } catch (e) {
       console.log(e);

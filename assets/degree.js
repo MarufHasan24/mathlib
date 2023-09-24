@@ -190,9 +190,9 @@ function rad2Deg(radian) {
   let rad,
     result,
     deg,
-    regXp = /(π$){1}/gi,
+    regXp = /(PI$){1}/gi,
     be4deg,
-    regXp2 = /(π\/){1}/gi;
+    regXp2 = /(PI\/){1}/gi;
   if (typeof radian === "number") {
     rad = radian;
     deg = rad * (180 / Math.PI);
@@ -208,17 +208,17 @@ function rad2Deg(radian) {
       rad = radian.substring(0, radian.search(regXp));
       be4deg = Number.isNaN(parseFloat(rad)) ? 1 : parseFloat(rad);
       result = localRad(be4deg);
-    } else if (radian.search(regXp2) >= 0 && radian.search(/^π/gi) === -1) {
-      rad = Function("return " + radian.replace(/(π){1}/gi, ""))();
+    } else if (radian.search(regXp2) >= 0 && radian.search(/^PI/gi) === -1) {
+      rad = Function("return " + radian.replace(/(PI){1}/gi, ""))();
       be4deg = rad % (Math.PI / 180);
       result = localRad(be4deg);
-    } else if (radian.search(regXp2) >= 0 && radian.search(/^π/gi) >= 0) {
-      rad = Function(`return 1${radian.replace(/(π){1}/gi, "")}`)();
+    } else if (radian.search(regXp2) >= 0 && radian.search(/^PI/gi) >= 0) {
+      rad = Function(`return 1${radian.replace(/(PI){1}/gi, "")}`)();
       be4deg = rad % (Math.PI / 180);
       result = localRad(be4deg);
     } else {
       console.error(
-        `TypeError : Please put a π symbol at the last of your string`
+        `TypeError : Please put a PI symbol at the last of your string`
       );
     }
   } else {
@@ -262,7 +262,7 @@ function localDeg(array) {
     sec = data[2];
   let result, radian, string;
   radian = (deg + min / 60 + sec / 3600) * (Math.PI / 180);
-  string = `${radian / Math.PI}π`;
+  string = `${radian / Math.PI}PI`;
   result = { radian, string };
   return handelar.record(result);
 }
