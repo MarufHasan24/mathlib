@@ -6,7 +6,7 @@ mathlib-n is a Node.js library that provides a collection of mathematical functi
 
 [Github](https://github.com/marufHasan24/mathlib.git) : letest and unstable version
 
-npm : 4.0.31 (stable version and recommended)
+npm : 4.0.31-beta (stable version and recommended)
 
 **mathlib-n** is a math library
 which can solve our simple and day to day lifes problem. like :
@@ -159,6 +159,6 @@ MIT
 
 ## History
 
-Current version : 4.0.31
+Current version : 4.0.31-beta
 
 [History](https://marufhasan24.github.io/mathlib_wiki/history.html)
