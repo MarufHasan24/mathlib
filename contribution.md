@@ -68,6 +68,32 @@ Please note that we have a [Code of Conduct](osc/CODE_OF_CONDUCT.md) that we exp
 - Write unit tests for new code and make sure all tests pass before submitting a PR.
 - Run linting and formatting tools (e.g., ESLint, Prettier) to maintain code quality.
 
+## Template for new files
+
+```js
+/*
+Title : [file name].js
+Author : [your name]
+Description : [short description about the perpose of the file]
+Date : [creation date of the file as [day monthName, year]]
+*/
+
+// require localhandelar file
+const { error, record } = require("./localhandelar");
+
+function functionName(input) {
+  //check input's expected type, range, and constraints. like:
+  if (typeof input !== "number" || input < 0) {
+    error("a number", "number1", "functionName");
+  } else {
+    // write your code here
+    return record(result, input, "functionName");
+  }
+}
+
+module.exports = [functionName];
+```
+
 ## Reporting Issues
 
 If you find a bug, have questions, or want to suggest an improvement, please create an issue on the GitHub repository. Provide detailed information about the problem or suggestion to help us address it effectively.
