@@ -132,7 +132,7 @@ Again, the command includes an informative animation that you can skip if needed
 
 ## Stay Informed
 
-For a detailed version history and updates, refer to the [History](https://marufhasan24.github.io/mathlib_wiki2/index.html#changeLog) section.
+For a detailed version history and updates, refer to the [npm History](https://www.npmjs.com/package/mathlib-n?activeTab=versions) section.
 
 ## Keywords
 
@@ -146,7 +146,7 @@ For a detailed version history and updates, refer to the [History](https://maruf
 
 ## Documentation
 
-For extensive documentation, visit the [MathLib-n Documentation](https://marufhasan24.github.io/mathlib_wiki2/wiki.html).
+For extensive documentation, visit the [MathLib-n Documentation](https://marufhasan24.github.io/mathlib_wiki/wiki.html).
 
 **Additional Notes**:
 
