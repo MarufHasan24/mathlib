@@ -54,25 +54,6 @@ handelar.odd = function (number) {
     error("a natural number", "number", "odd");
   }
 };
-handelar.sums = function (end, start = 0) {
-  let srt = typeof start === "number" ? start : false;
-  let result = srt;
-  let num = typeof end === "number" ? end : false;
-  if (num !== false && srt !== false) {
-    for (let i = 1; i <= num; i++) {
-      result += i;
-    }
-  } else {
-    if (num === false) {
-      error("a number", "end", "sums");
-    } else if (srt === false) {
-      error("a number", "start", "sums");
-    } else {
-      console.error("Somthin went wrong in sums()");
-    }
-  }
-  return record(result, { end, start }, "sums");
-};
 handelar.permut = function (n, r) {
   let _n = typeof n === "number" && n > 0 ? n : false,
     _r = typeof r === "number" && r >= 0 && r <= n ? r : false;
