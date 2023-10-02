@@ -154,10 +154,6 @@ For extensive documentation, visit the [MathLib-n Documentation](https://marufha
 - `math.mathlib()`: A fun function with terminal animation, providing valuable mode and file information.
 - `math.recList`: Returns an array of recorded file names.
 
-## License
-
-MIT License
-
 ## Version History
 
 Current Version: 4.0.31-beta
