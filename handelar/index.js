@@ -273,7 +273,8 @@ handelar.asIntRatio = function (number, as) {
     }
   }
 };
-handelar.limit = function (tendsTo, func, accuracy = 6) {
+handelar.limit = function (tendsTo, func, accuracy = 4) {
+  let result;
   let tt =
     typeof tendsTo == "number" && !Number.isNaN(tendsTo) ? tendsTo : false;
   let fc = typeof func == "function" ? func : false;
@@ -309,15 +310,14 @@ handelar.limit = function (tendsTo, func, accuracy = 6) {
     }
     if (tt == Infinity) {
       let de = Number.MAX_VALUE / Number.MAX_SAFE_INTEGER ** (2 * (10 - 1) + 1);
-      return record(func(de), [tendsTo, func, accuracy], "limit");
+      result = func(de);
     } else if (tt == -Infinity) {
       let de = Number.MAX_VALUE / Number.MAX_SAFE_INTEGER ** (2 * (10 - 1) + 1);
-      return record(func(-de), [tendsTo, func, accuracy], "limit");
+      result = func(-de);
     } else {
-      let result = (fc(tt - 10 ** -(ac * 2)) + fc(tt + 10 ** -(ac * 2))) / 2;
-      result = Number(result.toFixed(ac));
-      return record(result, [tendsTo, func, accuracy], "limit");
+      result = (fc(tt - 10 ** -(ac * 2)) + fc(tt + 10 ** -(ac * 2))) / 2;
     }
+    return Number(result.toFixed(ac));
   } else {
     if (tt === false) handler.error("a valid number", "tendsTo", "limit");
     else if (fc === false) handler.error("a valid function", "func", "limit");
