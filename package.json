@@ -19,7 +19,8 @@
     "nodejs"
   ],
   "scripts": {
-    "test": "echo \"mathLib-n version 4.0.31-beta\" && node ./test/basic",
+    "test": "vitest run",
+    "test-watch": "vitest",
     "fix-memo": "node ./.workplace/fix_memo",
     "mode": "node ./.workplace/modechanger"
   },
@@ -30,5 +31,8 @@
   "bugs": {
     "url": "https://github.com/MarufHasan24/mathlib/tree/master/issues"
   },
-  "homepage": "https://github.com/MarufHasan24/mathlib/tree/master#readme"
+  "homepage": "https://github.com/MarufHasan24/mathlib/tree/master#readme",
+  "dependencies": {
+    "vitest": "^0.34.6"
+  }
 }
