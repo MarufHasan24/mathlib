@@ -1,5 +1,5 @@
 let math = require("../index");
-
+const {describe, it, expect} = require("vitest");
 describe("math", function () {
   it("should add numbers", function () {
     expect(math.add(1, 3, 5)).toEqual(9);

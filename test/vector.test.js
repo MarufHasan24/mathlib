@@ -1,4 +1,5 @@
 const { Vector } = require("../index.js");
+const { describe, it, expect } = require("vitest");
 
 describe("Vector", function () {
     it("should add vectors", function () {

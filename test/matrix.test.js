@@ -1,5 +1,5 @@
 const { Matrix } = require("../index.js");
-
+const { describe, it, expect } = require("vitest");
 describe("Matrix", function () {
   it("should add matrices", function () {
     expect(matrix1.add(matrix2)).toEqual(

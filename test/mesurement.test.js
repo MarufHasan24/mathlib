@@ -1,5 +1,5 @@
 const math = require("../index");
-
+const { describe, it, expect } = require("vitest");
 describe("Measurement", function () {
     it("should find the area of a polygon", function () {
         expect(math.polyArea([1, 2], [3, 4], [1, -4], [1, 3], [4, 9], [7, 3])).toEqual(27);
