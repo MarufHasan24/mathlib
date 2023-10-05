@@ -19,7 +19,7 @@
     "nodejs"
   ],
   "scripts": {
-    "test": "./.workplace/tester.sh",
+    "test": "chmod +x ./.workplace/tester.sh && ./.workplace/tester.sh",
     "fix-memo": "node ./.workplace/fix_memo",
     "mode": "node ./.workplace/modechanger"
   },
