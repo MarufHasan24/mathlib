@@ -1,5 +1,5 @@
 const math = require("../index");
-const { describe, it, expect } = require("vitest");
+const { describe, it, expect } = require("./../.workplace/tester");
 describe("Measurement", function () {
     it("should find the area of a polygon", function () {
         expect(math.polyArea([1, 2], [3, 4], [1, -4], [1, 3], [4, 9], [7, 3])).toEqual(27);
@@ -11,6 +11,5 @@ describe("Measurement", function () {
     );
     it("should find the area of a quadrilateral", function () {
         expect(math.quad([1, 2], [3, 4], [1, -4], [1, 3])).toEqual([-1,-1]);
-    }
-    );  
-    });
+    });  
+});

@@ -26,4 +26,4 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - name: 🧪 Run all tests
-      run: npm test
+      run: npm run test

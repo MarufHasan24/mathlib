@@ -1,5 +1,8 @@
 const { Vector } = require("../index.js");
-const { describe, it, expect } = require("vitest");
+const { describe, it, expect } = require("./../.workplace/tester");
+
+const vector1 = new Vector(2, 3, 5);
+const vector2 = new Vector(4, 5, 0);
 
 describe("Vector", function () {
     it("should add vectors", function () {

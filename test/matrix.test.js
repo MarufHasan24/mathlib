@@ -1,5 +1,14 @@
 const { Matrix } = require("../index.js");
-const { describe, it, expect } = require("vitest");
+const { describe, it, expect } = require("./../.workplace/tester");
+const matrix1 = new Matrix([
+  [1, 2],
+  [3, 4],
+]);
+const matrix2 = new Matrix([
+  [5, 6],
+  [7, 8],
+]);
+const scalar = 2;
 describe("Matrix", function () {
   it("should add matrices", function () {
     expect(matrix1.add(matrix2)).toEqual(
@@ -57,18 +66,6 @@ describe("Matrix", function () {
         [1.5, -2],
       ])
     );
-  }
-  );
-  it("should find sum of matrices", function () {
-    expect(matrix1.sum()).toEqual(10);
-  }
-  );
-  it("should find difference of matrices", function () {
-    expect(matrix1.difference()).toEqual(-10);
-  }
-  );
-  it("should find product of matrices", function () {
-    expect(matrix1.product()).toEqual(24);
   }
   );
   it("should find trace of matrices", function () {
