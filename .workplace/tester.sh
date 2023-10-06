@@ -2,6 +2,15 @@
 # Desc: Run all test files in test folder
 path=$(pwd)
 echo "Running tests in $path/test/"
+if [[ ! -d $path/.record ]]; then
+    mkdir $path/.record
+fi
+if [[ ! -d $path/.record/.restored ]]; then
+    mkdir $path/.record/.restored
+fi
+if [[ ! -d $path/.record/.trush ]]; then
+    mkdir $path/.record/.trush
+fi
 declare -A matrix
 row_count=0
 pass_count=0
@@ -33,6 +42,11 @@ echo ""
 echo "total categories: $row_count"
 total=$(expr $pass_count + $fail_count)
 echo "Total tests: $total"
+
+#remove log file
+rm -rf $path/.record/*.json
+rm -rf $path/.workplace/log.txt
+
 if [[ $fail_count -eq 0 ]]; then
     echo "All tests passed"
 else
@@ -40,8 +54,3 @@ else
     echo "Failed: $fail_count"
     exit 1
 fi
-
-#remove all records from database
-rm -rf $path/.record/*json
-cat $path/.workplace/log.txt
-rm -rf $path/.workplace/log.txt
