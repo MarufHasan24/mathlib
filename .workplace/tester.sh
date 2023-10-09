@@ -11,23 +11,19 @@ fi
 if [[ ! -d $path/.record/.trush ]]; then
     mkdir $path/.record/.trush
 fi
-declare -A matrix
 row_count=0
 pass_count=0
 fail_count=0
 for file in `ls $path/test/`; do
 if [[ $file == *".test.js" ]]; then
-    echo "-----------------------------------"
     row_count=$((row_count+1))
     echo "Testing $file"
     node ./test/$file  
     echo "Done for $file"
-    echo "-----------------------------------"
     echo ""
     value=$(<"$path/.workplace/log.txt")
     out=()
     IFS=', ' read -ra out <<< "$value"
-    echo "${out[@]}"
     pass_count=$((pass_count+${out[1]}))
     fail_count=$((fail_count+${out[2]}))
     else

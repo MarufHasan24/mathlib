@@ -22,11 +22,11 @@ function expect(actual) {
             passCount++;
           }else{
             Failed++;
-            console.error("❌ Failed: " + actual + " is not equal to " + expected);
+            console.error("❌ Failed: answer is not equal to " + expected);
           }
         } else {
           Failed++;
-          console.error("❌ Failed: " + actual + " is not equal to " + expected);
+          console.error("❌ Failed: answer is not equal to " + expected);
         }
       }else if (actual instanceof Object && expected instanceof Object) {
         if (Object.keys(actual).length === Object.keys(expected).length) {
@@ -36,7 +36,7 @@ function expect(actual) {
           }
           else{
             Failed++;
-            console.error("❌ Failed: " + actual + " is not equal to " + expected);
+            console.error("❌ Failed: answer is not equal to " + expected);
           }
         }
       }
@@ -45,7 +45,7 @@ function expect(actual) {
         passCount++;
       } else {
         Failed++;
-        console.error("❌ Failed: " + actual + " is not equal to " + expected);
+        console.error("❌ Failed: answer is not equal to " + expected);
       }
     },
     toBeLessThanOrEqual: function (expected) {
@@ -54,7 +54,7 @@ function expect(actual) {
         passCount++;
       } else {
         Failed++;
-        console.error("❌ Failed: " + actual + " is not less than or equal to " + expected);
+        console.error("❌ Failed: answer is not less than or equal to " + expected);
       }
     },
     toBeGreaterThanOrEqual: function (expected) {
@@ -63,7 +63,7 @@ function expect(actual) {
         passCount++;
       } else {
         Failed++;
-        console.error("❌ Failed: " + actual + " is not greater than or equal to " + expected);
+        console.error("❌ Failed: answer is not greater than or equal to " + expected);
       }
     },
     catchError: function (expected) {
@@ -75,7 +75,7 @@ function expect(actual) {
             passCount++;
         } else {
             Failed++;
-            console.errorr("❌ Failed: " + actual + " is not an instance of " + expected);
+            console.errorr("❌ Failed: answer is not an instance of " + expected);
         }
       }
     },
